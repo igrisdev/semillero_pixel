@@ -2,21 +2,34 @@
 const { pathname } = Astro.url
 
 import Facebook from '@assets/icons/facebook.svg'
+import X from '@assets/icons/x.svg'
+import Instagram from '@assets/icons/instagram.svg'
+import Github from '@assets/icons/github.svg'
+import Sun from '@assets/icons/sun.svg'
 
 import Container from '@share_components/Container.astro'
 import Split from '@share_components/Split.astro'
 
 const SOCIALS_MEDIA = [
   {
-    name: 'Instagram',
-    icon: '',
-  },
-  {
     name: 'Facebook',
     icon: Facebook,
+    link: '#',
+  },
+  {
+    name: 'Instagram',
+    icon: Instagram,
+    link: '#',
   },
   {
     name: 'X',
+    icon: X,
+    link: '#',
+  },
+  {
+    name: 'Github',
+    icon: Github,
+    link: '#',
   },
 ]
 
@@ -52,8 +65,14 @@ const LINKS = [
   class='h-[50vh] overflow-hidden w-full bg-theme-background flex flex-col'
 >
   <Container styles='h-20 flex items-center justify-between'>
-    <div>
-      <Facebook />
+    <div class='flex gap-5'>
+      {
+        SOCIALS_MEDIA.map(({ link, icon: Icon }) => (
+          <a href={link} class='flex items-center gap-2 text-theme-decoration'>
+            <Icon />
+          </a>
+        ))
+      }
     </div>
 
     <nav>
@@ -73,7 +92,9 @@ const LINKS = [
       </ul>
     </nav>
 
-    <div>icons</div>
+    <div>
+      <Sun />
+    </div>
   </Container>
 
   <Split />
