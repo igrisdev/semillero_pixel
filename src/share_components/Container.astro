@@ -1,0 +1,11 @@
+---
+const { NameTagHtml, styles = '' } = Astro.props
+
+const NameTag = NameTagHtml ?? 'section'
+
+const stylesClass = 'max-w-7xl w-full mx-auto px-4 ' + styles
+---
+
+<NameTag class={stylesClass}>
+  <slot />
+</NameTag>
