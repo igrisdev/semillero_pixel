@@ -1,0 +1,29 @@
+---
+import Pixel_bg from '@assets/icons/pixel_bg.svg'
+import Container from '@share_components/Container.astro'
+---
+
+<Container styles='h-[50vh] flex py-4'>
+  <div
+    class='grid grid-cols-3 gap-10 h-full border-[1px] rounded-sm border-theme-decoration'
+  >
+    <section class='grid place-content-center col-span-1 pl-8'>
+      <h2 class='text-4xl font-bold uppercase mb-2'>Descripción</h2>
+      <p class='text-theme-text text-lg'>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. In omnis,
+        veritatis qui dolor eos deleniti quo ad possimus illum dolores voluptate
+        dolorum voluptatum dolorem nihil laborum dicta velit, hic nobis?
+      </p>
+    </section>
+
+    <section class='col-span-2 overflow-hidden bg'></section>
+  </div>
+</Container>
+
+<style>
+  .bg {
+    background-image: url('../../assets/icons/pixel_bg.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+  }
+</style>
