@@ -1,0 +1,51 @@
+---
+import Articles from '@assets/icons/article.svg'
+import Arrow from '@assets/icons/arrow.svg'
+---
+
+<article
+  class='border-[1px] rounded-sm border-theme-decoration p-3 flex flex-col gap-3'
+>
+  <div class='flex gap-4 items-center'>
+    <Articles />
+
+    <h3 class='line-clamp-2 uppercase font-semibold text-xl'>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    </h3>
+  </div>
+
+  <div class='flex gap-2 items-center'>
+    <div
+      class='flex border-[1px] border-theme-decoration gap-1 text-xs bg-theme-decoration/3 w-max px-4 py-1 rounded-sm'
+    >
+      <div>icon</div>
+      <span>Marta Castillo</span>
+    </div>
+    <div
+      class='flex border-[1px] border-theme-decoration gap-1 text-xs bg-theme-decoration/3 w-max px-4 py-1 rounded-sm'
+    >
+      <div>icon</div>
+      <span>26 de febrero de 2024</span>
+    </div>
+  </div>
+
+  <div class='font-light text-xs [&>*]:mb-2 text-theme-text'>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </p>
+  </div>
+
+  <a href='#' class='text-xs text-theme-text flex gap-1 items-center'>
+    Continuar leyendo <Arrow />
+  </a>
+</article>
