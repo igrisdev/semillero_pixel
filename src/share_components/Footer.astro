@@ -1,0 +1,39 @@
+---
+import Logo_pixel from '@assets/icons/logo_pixel.svg'
+import Split from './Split.astro'
+
+import { SOCIALS_MEDIA } from '@share_components/Header.astro'
+---
+
+<footer class='flex flex-col gap-6 pb-6'>
+  <section class='relative flex gap-4 items-center justify-center'>
+    {
+      SOCIALS_MEDIA.map(({ link, icon: Icon }) => (
+        <a
+          href={link}
+          class='flex items-center gap-2 bg-theme-background border-4 rounded-full p-2 border-theme-split z-10'
+        >
+          <Icon class='' />
+        </a>
+      ))
+    }
+
+    <Split styles='w-full absolute left-0 right-0' />
+  </section>
+
+  <section class='grid place-content-center'>
+    <div class='flex gap-4 items-center h-full text-theme-title'>
+      <Logo_pixel class='size-[40px]' />
+
+      <h1 class='uppercase font-micro5 text-4xl'>
+        Semillero <span class='text-theme-decoration'>Pixel</span>
+      </h1>
+    </div>
+  </section>
+
+  <section>
+    <p class='text-center text-xs text-theme-text'>
+      © Todos los derechos reservados por Semillero Pixel
+    </p>
+  </section>
+</footer>
