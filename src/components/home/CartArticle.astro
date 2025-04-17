@@ -7,28 +7,32 @@ import Calendar from '@assets/icons/calendar.svg'
 <article
   class='border-[1px] rounded-sm border-theme-decoration p-3 flex flex-col gap-3'
 >
-  <div class='flex gap-4 items-center'>
-    <Articles />
+  <div class='flex gap-1 sm:gap-4 items-center'>
+    <Articles
+      class='min-w-[40px] min-h-[40px] sm:min-w-[50px] sm:min-h-[50px]'
+    />
 
     <a href='#'>
-      <h3 class='line-clamp-2 uppercase font-semibold text-xl'>
+      <h3
+        class='line-clamp-2 uppercase font-semibold text-md sm:text-lg md:text-xl'
+      >
         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
       </h3>
     </a>
   </div>
 
-  <div class='flex gap-2 items-center'>
+  <div class='flex gap-2 items-center flex-wrap'>
     <div
-      class='flex items-center border-[1px] border-theme-decoration gap-2 text-xs bg-theme-decoration/3 w-max px-4 py-1 rounded-sm'
+      class='flex items-center border-[1px] border-theme-decoration gap-2 text-[10px] sm:text-xs bg-theme-decoration/3 w-max px-4 py-1 rounded-sm'
     >
-      <div>icon</div>
+      <div class='size-3 sm:size-4 bg-theme-decoration/5'></div>
       <span>Marta Castillo</span>
     </div>
     <div
-      class='flex items-center border-[1px] border-theme-decoration gap-2 text-xs bg-theme-decoration/3 w-max px-4 py-1 rounded-sm'
+      class='flex items-center border-[1px] border-theme-decoration gap-2 text-[10px] sm:text-xs bg-theme-decoration/3 w-max px-4 py-1 rounded-sm'
     >
       <Calendar />
-      <span>26 de febrero de 2024</span>
+      <span>26 febrero 2024</span>
     </div>
   </div>
 
