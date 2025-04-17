@@ -1,8 +1,9 @@
 ---
+import CartEvent from '@components/home/CartEvent.astro'
 import Container from '@share_components/Container.astro'
 ---
 
-<Container styles='py-10 grid gap-10'>
+<Container styles='py-10 grid gap-5'>
   <h2
     class='text-theme-title text-2xl sm:text-4xl font-bold uppercase mb-2 text-center'
   >
@@ -10,14 +11,41 @@ import Container from '@share_components/Container.astro'
   </h2>
 
   <div class='grid gap-5'>
-    <section class='flex flex-wrap gap-5'>
-      <button
-        class='text-base bg-theme-decoration/10 py-2 px-6 border-1 border-theme-decoration'
-      >
-        Todos</button
-      >
+    <section class='grid place-content-center gap-4 flex-wrap'>
+      <!-- <form>
+        <select name='type'>
+          <option value='for-years'>Por años</option>
+          <option value='time-line'>Linea de tiempo</option>
+        </select>
+      </form> -->
+      <div class='flex flex-wrap gap-4'>
+        <button
+          class='text-sm bg-theme-decoration/10 py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+        >
+          Todos
+        </button>
+        <button
+          class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+        >
+          2025
+        </button>
+        <button
+          class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+        >
+          2024
+        </button>
+        <button
+          class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+        >
+          2023
+        </button>
+      </div>
     </section>
 
-    <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>hola</section>
+    <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>
+      <CartEvent />
+      <CartEvent />
+      <CartEvent />
+    </section>
   </div>
 </Container>
