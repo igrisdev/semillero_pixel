@@ -11,7 +11,7 @@ import Logo_pixel from '@assets/icons/logo_pixel.svg'
 import Container from '@share_components/Container.astro'
 import Split from '@share_components/Split.astro'
 
-const SOCIALS_MEDIA = [
+export const SOCIALS_MEDIA = [
   {
     name: 'Facebook',
     icon: Facebook,
@@ -68,7 +68,7 @@ const LINKS = [
       {
         SOCIALS_MEDIA.map(({ link, icon: Icon }) => (
           <a href={link} class='flex items-center gap-2'>
-            <Icon class='text-theme-decoration' fill='currentColor' />
+            <Icon class='' />
           </a>
         ))
       }
