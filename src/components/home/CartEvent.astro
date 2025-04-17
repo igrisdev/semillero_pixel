@@ -1,1 +1,20 @@
-<article>evento</article>
+---
+const { image, title } = Astro.props
+---
+
+<article
+  class='h-[350px] bg-theme-decoration/10 relative group overflow-hidden'
+>
+  <img src={image} alt={title} class='w-full h-full object-cover select-none' />
+
+  <a
+    href='#'
+    class='absolute bottom-4 left-1/2 px-4 py-1 rounded-sm -translate-x-1/2 bg-black/5 backdrop-blur-3xl translate-y-20 group-hover:translate-y-0 transition-transform ease-in-out'
+  >
+    <h3
+      class='text-theme-title text-center line-clamp-1 truncate font-semibold text-sm'
+    >
+      {title}
+    </h3>
+  </a>
+</article>
