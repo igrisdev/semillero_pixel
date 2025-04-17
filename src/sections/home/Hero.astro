@@ -4,18 +4,22 @@ import Container from '@share_components/Container.astro'
 
 <Container styles='h-[54.9vh] flex py-10'>
   <div
-    class='grid grid-cols-3 gap-10 h-full border-[1px] rounded-sm border-theme-decoration'
+    class='grid grid-cols-2 md:grid-cols-3 gap-10 h-full border-[1px] rounded-sm border-theme-decoration'
   >
     <section class='grid place-content-center col-span-1 pl-8'>
-      <h2 class='text-4xl font-bold uppercase mb-2'>Descripción</h2>
-      <p class='text-theme-text text-lg'>
+      <h2
+        class='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold uppercase mb-2'
+      >
+        Descripción
+      </h2>
+      <p class='text-theme-text md:text-md lg:text-lg line-clamp-8'>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. In omnis,
         veritatis qui dolor eos deleniti quo ad possimus illum dolores voluptate
         dolorum voluptatum dolorem nihil laborum dicta velit, hic nobis?
       </p>
     </section>
 
-    <section class='col-span-2 overflow-hidden bg'></section>
+    <section class='col-span-1 md:col-span-2 overflow-hidden bg'></section>
   </div>
 </Container>
 
