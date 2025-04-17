@@ -2,6 +2,7 @@
 import '../styles/global.css'
 
 import Header from '@share_components/Header.astro'
+import Footer from '@share_components/Footer.astro'
 ---
 
 <!doctype html>
@@ -15,7 +16,12 @@ import Header from '@share_components/Header.astro'
   </head>
   <body class='bg-theme-background'>
     <Header />
-    <slot />
+
+    <main>
+      <slot />
+    </main>
+
+    <Footer />
   </body>
 </html>
 
