@@ -62,15 +62,13 @@ const LINKS = [
 ]
 ---
 
-<header
-  class='h-[45vh] overflow-hidden w-full bg-theme-background flex flex-col'
->
+<header class='h-[45vh] overflow-hidden w-full flex flex-col'>
   <Container styles='h-20 flex items-center justify-between'>
     <div class='flex gap-5'>
       {
         SOCIALS_MEDIA.map(({ link, icon: Icon }) => (
-          <a href={link} class='flex items-center gap-2 text-theme-decoration'>
-            <Icon />
+          <a href={link} class='flex items-center gap-2'>
+            <Icon class='text-theme-decoration' fill='currentColor' />
           </a>
         ))
       }
@@ -83,7 +81,11 @@ const LINKS = [
             <li>
               <a
                 href={link}
-                class={pathname === link ? 'text-theme-decoration' : ''}
+                class={
+                  pathname === link
+                    ? 'text-theme-decoration'
+                    : 'text-theme-text'
+                }
               >
                 {name}
               </a>
@@ -101,7 +103,9 @@ const LINKS = [
   <Split />
 
   <section class='grid place-content-center h-full'>
-    <div class='flex gap-4 sm:gap-6 md:gap-10 items-center h-full'>
+    <div
+      class='flex gap-4 sm:gap-6 md:gap-10 items-center h-full text-theme-title'
+    >
       <Logo_pixel
         class='size-[40px] sm:size-[60px] md:size-[80px] lg:size-[100px]'
       />
