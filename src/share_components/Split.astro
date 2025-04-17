@@ -1,1 +1,7 @@
-<hr class='text-theme-split' />
+---
+const { styles = '' } = Astro.props
+
+const stylesClass = 'text-theme-split ' + styles
+---
+
+<hr class={stylesClass} />
