@@ -12,11 +12,19 @@
   --color-theme-text: var(--tertiary);
   --color-theme-decoration: var(--accent);
   --color-theme-split: var(--quaternary);
-  /* --color-theme-icon: var(--); */
+  --color-theme-icon: var(--quaternary);
 
   --font-fallback: 'Adjusted Arial Fallback', system-ui;
   --font-micro5: 'Micro5';
   --font-poppins: 'Poppins';
+}
+
+.dark {
+  --primary: #121212;
+  --secondary: #ffffff;
+  --accent: #3c6cfe;
+  --tertiary: #c8c8c8;
+  --quaternary: #5b5b5b;
 }
 
 @font-face {
