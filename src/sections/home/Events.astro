@@ -1,6 +1,26 @@
 ---
 import CartEvent from '@components/home/CartEvent.astro'
 import Container from '@share_components/Container.astro'
+
+import Arrow from '@assets/icons/arrow.svg'
+
+import Evento1 from '@assets/events/evento1.jpg'
+import Evento2 from '@assets/events/evento2.jpg'
+
+const EVENTS = [
+  {
+    title: 'Semillero Pixel 2025',
+    image: Evento1.src,
+  },
+  {
+    title: 'Semillero Pixel 2024',
+    image: Evento2.src,
+  },
+  {
+    title: 'Semillero Pixel 2023',
+    image: Evento1.src,
+  },
+]
 ---
 
 <Container styles='py-10 grid gap-5'>
@@ -39,13 +59,23 @@ import Container from '@share_components/Container.astro'
         >
           2023
         </button>
+        <a
+          href='#'
+          class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer flex gap-2 items-center'
+        >
+          Ver más
+
+          <Arrow />
+        </a>
       </div>
     </section>
 
     <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>
-      <CartEvent />
-      <CartEvent />
-      <CartEvent />
+      {
+        EVENTS.map(({ title, image }) => (
+          <CartEvent title={title} image={image} />
+        ))
+      }
     </section>
   </div>
 </Container>
