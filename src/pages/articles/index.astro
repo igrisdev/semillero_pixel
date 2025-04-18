@@ -1,0 +1,104 @@
+---
+import Container from '@share_components/Container.astro'
+import CartArticle from '@components/home/CartArticle.astro'
+import Layout from '@layouts/Layout.astro'
+import Split from '@share_components/Split.astro'
+
+const ARTICLES = [
+  {
+    year: '2025',
+    articles: [
+      {
+        title: 'Lorem ipsum dolor sit ad',
+      },
+      {
+        title: 'Lorem ipsum dolor sit ad',
+      },
+    ],
+  },
+  {
+    year: '2024',
+    articles: [
+      {
+        title: 'Lorem ipsum dolor sit ad',
+      },
+    ],
+  },
+]
+
+const isYear = new Date().getFullYear()
+---
+
+<Layout title='Artículos'>
+  <Split />
+
+  <Container styles='py-10 grid gap-10'>
+    <h2
+      class='text-theme-title text-2xl sm:text-4xl font-bold uppercase mb-2 text-center'
+    >
+      Artículos
+    </h2>
+
+    <div class='grid gap-10'>
+      <section class='grid gap-4 flex-wrap'>
+        <form>
+          <select name='type'>
+            <option value='for-years'>Por años</option>
+            <option value='time-line'>Linea de tiempo</option>
+          </select>
+        </form>
+        <div class='flex-wrap gap-4 text-theme-text hidden'>
+          <button
+            class='text-sm bg-theme-decoration/10 py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+          >
+            Todos
+          </button>
+          <button
+            class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+          >
+            2025
+          </button>
+          <button
+            class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+          >
+            2024
+          </button>
+          <button
+            class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+          >
+            2023
+          </button>
+        </div>
+      </section>
+
+      <section id='to-year' class='grid-cols-1 gap-5 md:grid-cols-2 hidden'>
+        <CartArticle />
+        <CartArticle />
+        <CartArticle />
+        <CartArticle />
+        <CartArticle />
+      </section>
+
+      <section class='pl-4 border-l-2 border-theme-split grid gap-4'>
+        {
+          ARTICLES.map(({ year, articles }) => (
+            <div class='flex flex-col gap-2'>
+              <header class='relative'>
+                <span class='text-sm text-theme-title'>
+                  {isYear.toString() === year ? 'Ahora' : year}
+                </span>
+                <div class='size-3 bg-theme-decoration rounded-full absolute -left-[23px] top-[7px]' />
+              </header>
+
+              <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>
+                {articles.map(({ title }) => (
+                  <CartArticle title={title} />
+                ))}
+              </section>
+            </div>
+          ))
+        }
+      </section>
+    </div>
+  </Container>
+</Layout>
