@@ -4,6 +4,9 @@ import CartArticle from '@components/home/CartArticle.astro'
 import Layout from '@layouts/Layout.astro'
 import Split from '@share_components/Split.astro'
 
+import Row from '@assets/icons/row.svg'
+import Grid from '@assets/icons/grid.svg'
+
 const ARTICLES = [
   {
     year: '2025',
@@ -40,39 +43,45 @@ const isYear = new Date().getFullYear()
     </h2>
 
     <div class='grid gap-10'>
-      <section class='grid gap-4 flex-wrap'>
-        <form>
-          <select name='type'>
-            <option value='to-years'>Por cada años</option>
-            <option value='time-line'>Linea tiempo</option>
-          </select>
-        </form>
+      <section class='flex gap-4 justify-between items-center flex-wrap'>
+        <div>
+          <div class='flex-wrap gap-4 text-theme-text'>
+            <button
+              class='text-sm bg-theme-decoration/10 py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+            >
+              Todos
+            </button>
+            <button
+              class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+            >
+              2025
+            </button>
+            <button
+              class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+            >
+              2024
+            </button>
+            <button
+              class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+            >
+              2023
+            </button>
+          </div>
+        </div>
 
-        <div id='to-year-buttons' class='flex-wrap gap-4 text-theme-text'>
+        <div>
           <button
-            class='text-sm bg-theme-decoration/10 py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+            id='btn-toggle-view-articles'
+            class='grid place-content-center size-7 text-theme-text cursor-pointer'
+            data-state='to-years'
           >
-            Todos
-          </button>
-          <button
-            class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'
-          >
-            2025
-          </button>
-          <button
-            class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'
-          >
-            2024
-          </button>
-          <button
-            class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'
-          >
-            2023
+            <Grid class='w-full h-full to-years' />
+            <Row class='w-full h-full time-line' />
           </button>
         </div>
       </section>
 
-      <section id='to-year' class='grid grid-cols-1 gap-5 md:grid-cols-2'>
+      <section class='to-years grid grid-cols-1 gap-5 md:grid-cols-2'>
         <CartArticle />
         <CartArticle />
         <CartArticle />
@@ -80,10 +89,7 @@ const isYear = new Date().getFullYear()
         <CartArticle />
       </section>
 
-      <section
-        id='time-line'
-        class='pl-4 border-l-2 border-theme-split grid gap-4'
-      >
+      <section class='time-line pl-4 border-l-2 border-theme-split grid gap-4'>
         {
           ARTICLES.map(({ year, articles }) => (
             <div class='flex flex-col gap-2'>
@@ -108,38 +114,45 @@ const isYear = new Date().getFullYear()
 </Layout>
 
 <!-- Seleccionar si quiero ver los artículos por años o por linea de tiempo -->
-
 <script is:inline>
-  const select = document.querySelector('select')
-  const toYear = document.getElementById('to-year')
-  const toYearButtons = document.getElementById('to-year-buttons')
-  const timeLine = document.getElementById('time-line')
+  const $ = el => document.querySelector(el)
+  const $$ = el => document.querySelectorAll(el)
 
-  if (select.value === 'to-years') {
+  const btnToggleViewArticles = $('#btn-toggle-view-articles')
+
+  const toYears = $$('.to-years')
+  const timeLine = $$('.time-line')
+
+  if (btnToggleViewArticles.dataset.state === 'to-years') {
     handleTimeLine()
   } else {
     handleToYear()
   }
 
-  select.addEventListener('change', e => {
-    const type = e.target.value
+  console.log(btnToggleViewArticles)
+
+  btnToggleViewArticles.addEventListener('click', e => {
+    console.log('-----------------------------------------')
+    const type = e.currentTarget.dataset.state
 
     if (type === 'to-years') {
       handleToYear()
     } else {
       handleTimeLine()
     }
+
+    const newType = type === 'to-years' ? 'time-line' : 'to-years'
+
+    btnToggleViewArticles.setAttribute('data-state', newType)
   })
 
   function handleToYear() {
-    toYear.classList.remove('hidden')
-    toYearButtons.classList.remove('hidden')
-    timeLine.classList.add('hidden')
+    toYears.forEach(el => el.classList.remove('hidden'))
+    timeLine.forEach(el => el.classList.add('hidden'))
   }
 
   function handleTimeLine() {
-    timeLine.classList.remove('hidden')
-    toYear.classList.add('hidden')
-    toYearButtons.classList.add('hidden')
+    toYears.forEach(el => el.classList.add('hidden'))
+    timeLine.forEach(el => el.classList.remove('hidden'))
   }
 </script>
