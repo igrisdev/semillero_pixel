@@ -43,8 +43,8 @@ const isYear = new Date().getFullYear()
       <section class='grid gap-4 flex-wrap'>
         <form>
           <select name='type'>
-            <option value='for-years'>Por años</option>
-            <option value='time-line'>Linea de tiempo</option>
+            <option value='to-years'>Por cada años</option>
+            <option value='time-line'>Linea tiempo</option>
           </select>
         </form>
         <div class='flex-wrap gap-4 text-theme-text hidden'>
@@ -71,7 +71,7 @@ const isYear = new Date().getFullYear()
         </div>
       </section>
 
-      <section id='to-year' class='grid-cols-1 gap-5 md:grid-cols-2 hidden'>
+      <section id='to-year' class='grid grid-cols-1 gap-5 md:grid-cols-2'>
         <CartArticle />
         <CartArticle />
         <CartArticle />
@@ -79,7 +79,10 @@ const isYear = new Date().getFullYear()
         <CartArticle />
       </section>
 
-      <section class='pl-4 border-l-2 border-theme-split grid gap-4'>
+      <section
+        id='time-line'
+        class='pl-4 border-l-2 border-theme-split grid gap-4'
+      >
         {
           ARTICLES.map(({ year, articles }) => (
             <div class='flex flex-col gap-2'>
@@ -102,3 +105,29 @@ const isYear = new Date().getFullYear()
     </div>
   </Container>
 </Layout>
+
+<script is:inline>
+  const select = document.querySelector('select')
+  const toYear = document.getElementById('to-year')
+  const timeLine = document.getElementById('time-line')
+
+  if (select.value === 'to-years') {
+    toYear.classList.remove('hidden')
+    timeLine.classList.add('hidden')
+  } else {
+    toYear.classList.add('hidden')
+    timeLine.classList.remove('hidden')
+  }
+
+  select.addEventListener('change', e => {
+    const type = e.target.value
+
+    if (type === 'to-years') {
+      toYear.classList.remove('hidden')
+      timeLine.classList.add('hidden')
+    } else {
+      toYear.classList.add('hidden')
+      timeLine.classList.remove('hidden')
+    }
+  })
+</script>
