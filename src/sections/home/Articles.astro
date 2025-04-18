@@ -1,4 +1,6 @@
 ---
+import Arrow from '@assets/icons/arrow.svg'
+
 import Container from '@share_components/Container.astro'
 import CartArticle from '@components/home/CartArticle.astro'
 ---
@@ -16,5 +18,23 @@ import CartArticle from '@components/home/CartArticle.astro'
     <CartArticle />
     <CartArticle />
     <CartArticle />
+    <article class='grid grid-rows-2 gap-3 text-theme-text h-70'>
+      <section
+        class='border-1 rounded-sm border-theme-decoration p-3 grid place-content-center'
+      >
+        <div>
+          <h3 class='uppercase text-4xl'>Próximamente</h3>
+        </div>
+      </section>
+
+      <section
+        class='border-1 rounded-sm border-theme-decoration p-3 grid place-content-center'
+      >
+        <a href='#' class='flex gap-2 items-center'>
+          <h3 class='uppercase text-4xl'>Ver más artículos</h3>
+          <Arrow width={30} height={30} />
+        </a>
+      </section>
+    </article>
   </section>
 </Container>

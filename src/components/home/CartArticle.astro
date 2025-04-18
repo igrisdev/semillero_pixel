@@ -5,7 +5,7 @@ import Calendar from '@assets/icons/calendar.svg'
 ---
 
 <article
-  class='border-[1px] rounded-sm border-theme-decoration p-3 flex flex-col gap-3'
+  class='border-[1px] rounded-sm border-theme-decoration p-3 flex flex-col gap-3 h-72'
 >
   <div class='flex gap-1 sm:gap-4 items-center'>
     <Articles
@@ -36,19 +36,22 @@ import Calendar from '@assets/icons/calendar.svg'
     </div>
   </div>
 
-  <div class='font-light text-xs [&>*]:mb-2 text-theme-text'>
-    <p>
+  <div
+    class='flex-1 font-light text-xs [&>*]:mb-2 text-theme-text h-full overflow-y-auto text-ellipsis'
+  >
+    <p class=''>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet,
-      consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
       dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
       ullamco.
     </p>
-    <p>
+    <p class=''>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam.
+      veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet,
+      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco.
     </p>
   </div>
 
