@@ -47,7 +47,8 @@ const isYear = new Date().getFullYear()
             <option value='time-line'>Linea tiempo</option>
           </select>
         </form>
-        <div class='flex-wrap gap-4 text-theme-text hidden'>
+
+        <div id='to-year-buttons' class='flex-wrap gap-4 text-theme-text'>
           <button
             class='text-sm bg-theme-decoration/10 py-1 px-4 border-1 border-theme-decoration cursor-pointer'
           >
@@ -111,25 +112,34 @@ const isYear = new Date().getFullYear()
 <script is:inline>
   const select = document.querySelector('select')
   const toYear = document.getElementById('to-year')
+  const toYearButtons = document.getElementById('to-year-buttons')
   const timeLine = document.getElementById('time-line')
 
   if (select.value === 'to-years') {
-    toYear.classList.remove('hidden')
-    timeLine.classList.add('hidden')
+    handleTimeLine()
   } else {
-    toYear.classList.add('hidden')
-    timeLine.classList.remove('hidden')
+    handleToYear()
   }
 
   select.addEventListener('change', e => {
     const type = e.target.value
 
     if (type === 'to-years') {
-      toYear.classList.remove('hidden')
-      timeLine.classList.add('hidden')
+      handleToYear()
     } else {
-      toYear.classList.add('hidden')
-      timeLine.classList.remove('hidden')
+      handleTimeLine()
     }
   })
+
+  function handleToYear() {
+    toYear.classList.remove('hidden')
+    toYearButtons.classList.remove('hidden')
+    timeLine.classList.add('hidden')
+  }
+
+  function handleTimeLine() {
+    timeLine.classList.remove('hidden')
+    toYear.classList.add('hidden')
+    toYearButtons.classList.add('hidden')
+  }
 </script>
