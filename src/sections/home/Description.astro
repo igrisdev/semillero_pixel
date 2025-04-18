@@ -1,5 +1,6 @@
 ---
 import Container from '@share_components/Container.astro'
+// import Pixel_bg from '/icons/pixel_bg.svg'
 ---
 
 <Container styles='h-[54.9vh] flex py-10'>
@@ -21,14 +22,9 @@ import Container from '@share_components/Container.astro'
       </p>
     </section>
 
-    <section class='col-span-1 md:col-span-2 overflow-hidden bg'></section>
+    <section
+      class=`col-span-1 md:col-span-2 overflow-hidden [background-image:url('/icons/pixel_bg.svg')] bg-cover bg-right bg-no-repeat`
+    >
+    </section>
   </div>
 </Container>
-
-<style>
-  .bg {
-    background-image: url('../../assets/icons/pixel_bg.svg');
-    background-repeat: no-repeat;
-    background-position: right;
-  }
-</style>
