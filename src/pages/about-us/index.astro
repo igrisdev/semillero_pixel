@@ -1,0 +1,23 @@
+---
+import Layout from '@layouts/Layout.astro'
+import Container from '@share_components/Container.astro'
+import Split from '@share_components/Split.astro'
+import AboutUs from '@sections/about-us/AboutUs.astro'
+import Members from '@sections/about-us/Members.astro'
+---
+
+<Layout title='Sobre Nosotros'>
+  <Split />
+
+  <div class='py-10 grid gap-10'>
+    <Container>
+      <AboutUs />
+    </Container>
+
+    <Split />
+
+    <Container>
+      <Members />
+    </Container>
+  </div>
+</Layout>
