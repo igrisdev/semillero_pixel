@@ -1,4 +1,6 @@
 ---
+import Arrow from '@assets/icons/arrow.svg'
+
 import Container from '@share_components/Container.astro'
 
 import SliderProjects from '@components/home/SliderProjects.astro'
@@ -10,6 +12,13 @@ import SliderProjects from '@components/home/SliderProjects.astro'
   >
     Proyectos
   </h2>
+
+  <div class='flex justify-end'>
+    <a href='#' class='w-max flex gap-2 items-center text-sm'>
+      Ver más proyectos
+      <Arrow width={20} height={20} />
+    </a>
+  </div>
 
   <section class='overflow-hidden'>
     <SliderProjects />
