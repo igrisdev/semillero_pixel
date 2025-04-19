@@ -4,7 +4,7 @@ import { addDotBtnsAndClickHandlers } from './EmblaCarouselDotButton'
 
 import '@styles/slider/embla.css'
 
-const OPTIONS = { align: 'start' }
+const OPTIONS = { align: 'start', loop: true }
 
 const emblaNode = document.querySelector('.embla')
 const viewportNode = emblaNode.querySelector('.embla__viewport')
