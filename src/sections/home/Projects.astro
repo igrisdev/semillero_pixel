@@ -4,6 +4,8 @@ import Arrow from '@assets/icons/arrow.svg'
 import Container from '@share_components/Container.astro'
 
 import SliderProjects from '@components/home/SliderProjects.astro'
+
+import CartProject from '@components/home/CartProject.astro'
 ---
 
 <Container styles='py-10 grid gap-10'>
@@ -14,6 +16,14 @@ import SliderProjects from '@components/home/SliderProjects.astro'
   </h2>
 
   <section class='overflow-hidden'>
-    <SliderProjects />
+    <SliderProjects>
+      <CartProject />
+      <CartProject />
+      <CartProject />
+      <CartProject />
+      <CartProject />
+      <CartProject />
+      <CartProject />
+    </SliderProjects>
   </section>
 </Container>

@@ -1,33 +1,11 @@
 ---
-import CartProject from '@components/home/CartProject.astro'
-
 import Arrow from '@assets/icons/arrow.svg'
 ---
 
 <section class='embla'>
   <div class='embla__viewport'>
     <div class='embla__container'>
-      <div class='embla__slide'>
-        <CartProject />
-      </div>
-      <div class='embla__slide'>
-        <CartProject />
-      </div>
-      <div class='embla__slide'>
-        <CartProject />
-      </div>
-      <div class='embla__slide'>
-        <CartProject />
-      </div>
-      <div class='embla__slide'>
-        <CartProject />
-      </div>
-      <div class='embla__slide'>
-        <CartProject />
-      </div>
-      <div class='embla__slide'>
-        <CartProject />
-      </div>
+      <slot />
     </div>
   </div>
 
@@ -52,7 +30,11 @@ import Arrow from '@assets/icons/arrow.svg'
       </button>
     </div>
 
-    <div class='flex justify-end'>
+    <div class='flex justify-between items-center'>
+      <div></div>
+
+      <!-- <div class='embla__dots'></div> -->
+
       <a
         href='#'
         class='w-max flex gap-1 items-center text-xs sm:text-sm text-theme-text'
