@@ -9,7 +9,6 @@ import GitHub from '@assets/icons/github.svg'
 import X from '@assets/icons/x.svg'
 import CartMembers from '@components/about-us/CartMembers.astro'
 import Container from '@share_components/Container.astro'
-import { Image } from 'astro:assets'
 
 const MEMBERS = [
   {
@@ -35,7 +34,7 @@ const MEMBERS = [
     ],
   },
   {
-    image: ImageJuan.src,
+    image: '../../assets/members/juan.jpg',
     name: 'Juan Manuel Quijano Quijano',
     orcid: 'https://orcid.org/0000-0002-3456-7890',
     rol: 'Egresado',
