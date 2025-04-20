@@ -207,6 +207,14 @@ const LINKS = [
     touchClose.forEach(el => el.addEventListener('click', handleNotView))
   }
 
+  isView.addEventListener('click', e => {
+    const nameElement = e.target.nodeName
+
+    if (nameElement !== 'LI') {
+      handleNotView()
+    }
+  })
+
   handleTouchClose()
   handleTouchOpen()
 </script>
