@@ -1,5 +1,7 @@
 ---
 import CartProject from '@components/home/CartProject.astro'
+
+import Arrow from '@assets/icons/arrow.svg'
 ---
 
 <section class='embla'>
@@ -50,7 +52,12 @@ import CartProject from '@components/home/CartProject.astro'
       </button>
     </div>
 
-    <!-- <div class='embla__dots'></div> -->
+    <div class='flex justify-end'>
+      <a href='#' class='w-max flex gap-1 items-center text-sm text-theme-text'>
+        Ver más proyectos
+        <Arrow width={20} height={20} />
+      </a>
+    </div>
   </div>
 </section>
 
