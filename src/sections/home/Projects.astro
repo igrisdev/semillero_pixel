@@ -6,19 +6,12 @@ import Container from '@share_components/Container.astro'
 import SliderProjects from '@components/home/SliderProjects.astro'
 ---
 
-<Container styles='py-10 grid gap-5'>
+<Container styles='py-10 grid gap-10'>
   <h2
     class='text-theme-title text-2xl sm:text-4xl font-bold uppercase mb-2 text-center'
   >
     Proyectos
   </h2>
-
-  <div class='flex justify-end'>
-    <a href='#' class='w-max flex gap-2 items-center text-sm'>
-      Ver más proyectos
-      <Arrow width={20} height={20} />
-    </a>
-  </div>
 
   <section class='overflow-hidden'>
     <SliderProjects />
