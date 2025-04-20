@@ -5,7 +5,12 @@ import Facebook from '@assets/icons/facebook.svg'
 import X from '@assets/icons/x.svg'
 import Instagram from '@assets/icons/instagram.svg'
 import Github from '@assets/icons/github.svg'
+
 import Sun from '@assets/icons/sun.svg'
+
+import Menu from '@assets/icons/menu.svg'
+import Close from '@assets/icons/close.svg'
+
 import Logo_pixel from '@assets/icons/logo_pixel.svg'
 
 import Container from '@share_components/Container.astro'
@@ -62,8 +67,10 @@ const LINKS = [
 ]
 ---
 
-<header class='h-[45vh] overflow-hidden w-full flex flex-col'>
-  <Container styles='h-20 flex items-center justify-between'>
+<header class='h-[45vh] overflow-hidden w-full flex flex-col relative'>
+  <Container
+    styles='min-h-20 max-h-20 flex items-center justify-between relative'
+  >
     <div class='flex gap-5'>
       {
         SOCIALS_MEDIA.map(({ link, icon: Icon }) => (
@@ -74,7 +81,7 @@ const LINKS = [
       }
     </div>
 
-    <nav>
+    <nav class=''>
       <ul class='gap-5 text-sm items-center font-medium hidden md:flex'>
         {
           LINKS.map(({ name, link }) => (
@@ -95,8 +102,14 @@ const LINKS = [
       </ul>
     </nav>
 
-    <div>
-      <Sun />
+    <div class='flex gap-6 text-theme-text'>
+      <button class=''>
+        <Sun width={24} height={24} />
+      </button>
+
+      <button class='block md:hidden touch-open cursor-pointer'>
+        <Menu width={24} height={24} />
+      </button>
     </div>
   </Container>
 
@@ -120,3 +133,80 @@ const LINKS = [
     </div>
   </section>
 </header>
+
+<!-- Menu para mobile -->
+<header
+  id='is-view'
+  class='h-screen overflow-hidden w-full flex flex-col fixed top-0 z-50 md:hidden hidden bg-theme-decoration'
+>
+  <Container
+    styles='min-h-20 max-h-20 flex items-center justify-between relative bg-theme-background'
+  >
+    <div class='flex gap-5'>
+      {
+        SOCIALS_MEDIA.map(({ link, icon: Icon }) => (
+          <a href={link} class='flex items-center gap-2'>
+            <Icon class='' />
+          </a>
+        ))
+      }
+    </div>
+
+    <nav
+      class='absolute left-0 top-20 right-0 h-[92vh] grid place-content-center'
+    >
+      <ul
+        class='gap-5 text-xl items-center font-medium flex flex-col text-theme-title'
+      >
+        {
+          LINKS.map(({ name, link }) => (
+            <li>
+              <a href={link} class={pathname === link ? 'text-white' : ''}>
+                {name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class='flex gap-6 text-theme-text'>
+      <button class=''>
+        <Sun width={24} height={24} />
+      </button>
+
+      <button class='touch-close cursor-pointer'>
+        <Close class='' width={24} height={24} />
+      </button>
+    </div>
+  </Container>
+</header>
+
+<script is:inline>
+  const $ = el => document.querySelector(el)
+  const $$ = el => document.querySelectorAll(el)
+
+  const touchOpen = $('.touch-open')
+  const touchClose = $$('.touch-close')
+  const isView = $('#is-view')
+
+  function handleIsView() {
+    isView.classList.remove('hidden')
+  }
+
+  function handleNotView() {
+    console.log('touchOpen')
+    isView.classList.add('hidden')
+  }
+
+  function handleTouchOpen() {
+    touchOpen.addEventListener('click', handleIsView)
+  }
+
+  function handleTouchClose() {
+    touchClose.forEach(el => el.addEventListener('click', handleNotView))
+  }
+
+  handleTouchClose()
+  handleTouchOpen()
+</script>
