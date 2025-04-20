@@ -12,10 +12,32 @@ import Container from '@share_components/Container.astro'
 
 const MEMBERS = [
   {
-    image: ImageJohan,
+    image: '../../assets/members/johan.jpg',
     name: 'Johan Manuel Alvarez Pinta',
     orcid: 'https://orcid.org/0000-0002-3456-7890',
     rol: 'Estudiante',
+    career: 'Ingeniería Informática',
+    state: true,
+    date_init: '2022 - 1',
+    date_end: '',
+    social_media: [
+      {
+        name: 'Github',
+        link: '#',
+        icon: GitHub,
+      },
+      {
+        name: 'X',
+        link: '#',
+        icon: X,
+      },
+    ],
+  },
+  {
+    image: '../../assets/members/juan.jpg',
+    name: 'Juan Manuel Quijano Quijano',
+    orcid: 'https://orcid.org/0000-0002-3456-7890',
+    rol: 'Egresado',
     career: 'Ingeniería Informática',
     state: false,
     date_init: '2022 - 1',
@@ -33,52 +55,52 @@ const MEMBERS = [
       },
     ],
   },
-  {
-    image: ImageMateo,
-    name: 'Mateo Jesus Cadena Cabrera ',
-    orcid: 'https://orcid.org/0000-0002-3456-7890',
-    rol: 'Estudiante',
-    career: 'Ingeniería Informática',
-    state: true,
-    date_init: '2022 - 1',
-    date_end: '',
-    social_media: [
-      {
-        name: 'Github',
-        link: '#',
-        icon: GitHub,
-      },
-      {
-        name: 'X',
-        link: '#',
-        icon: X,
-      },
-    ],
-  },
-  {
-    image: ImageMiguel,
-    name: 'Miguel Manuel Alvarez Pinta',
-    orcid: 'https://orcid.org/0000-0002-3456-7890',
-    rol: 'Estudiante',
-    career: 'Ingeniería Informática',
-    state: true,
-    date_init: '2022 - 1',
-    date_end: '',
-    social_media: [
-      {
-        name: 'Github',
-        link: '#',
-        icon: GitHub,
-      },
-      {
-        name: 'X',
-        link: '#',
-        icon: X,
-      },
-    ],
-  },
   // {
-  //   image: ImageJuan.src,
+  //   image: ImageMateo,
+  //   name: 'Mateo Jesus Cadena Cabrera ',
+  //   orcid: 'https://orcid.org/0000-0002-3456-7890',
+  //   rol: 'Estudiante',
+  //   career: 'Ingeniería Informática',
+  //   state: true,
+  //   date_init: '2022 - 1',
+  //   date_end: '',
+  //   social_media: [
+  //     {
+  //       name: 'Github',
+  //       link: '#',
+  //       icon: GitHub,
+  //     },
+  //     {
+  //       name: 'X',
+  //       link: '#',
+  //       icon: X,
+  //     },
+  //   ],
+  // },
+  // {
+  //   image: ImageMiguel,
+  //   name: 'Miguel Manuel Alvarez Pinta',
+  //   orcid: 'https://orcid.org/0000-0002-3456-7890',
+  //   rol: 'Estudiante',
+  //   career: 'Ingeniería Informática',
+  //   state: true,
+  //   date_init: '2022 - 1',
+  //   date_end: '',
+  //   social_media: [
+  //     {
+  //       name: 'Github',
+  //       link: '#',
+  //       icon: GitHub,
+  //     },
+  //     {
+  //       name: 'X',
+  //       link: '#',
+  //       icon: X,
+  //     },
+  //   ],
+  // },
+  // {
+  //   image: ImageJuan,
   //   name: 'Juan Diego ',
   //   orcid: 'https://orcid.org/0000-0002-3456-7890',
   //   rol: 'Estudiante',
@@ -99,28 +121,28 @@ const MEMBERS = [
   //     },
   //   ],
   // },
-  {
-    image: ImageMartha,
-    name: 'Martha Cecilia Camacho',
-    orcid: 'https://orcid.org/0000-0002-3456-7890',
-    rol: 'Docente',
-    career: 'Ingeniería Informática',
-    state: true,
-    date_init: '2022 - 1',
-    date_end: '',
-    social_media: [
-      {
-        name: 'Github',
-        link: '#',
-        icon: GitHub,
-      },
-      {
-        name: 'X',
-        link: '#',
-        icon: X,
-      },
-    ],
-  },
+  // {
+  //   image: ImageMartha,
+  //   name: 'Martha Cecilia Camacho',
+  //   orcid: 'https://orcid.org/0000-0002-3456-7890',
+  //   rol: 'Docente',
+  //   career: 'Ingeniería Informática',
+  //   state: true,
+  //   date_init: '2022 - 1',
+  //   date_end: '',
+  //   social_media: [
+  //     {
+  //       name: 'Github',
+  //       link: '#',
+  //       icon: GitHub,
+  //     },
+  //     {
+  //       name: 'X',
+  //       link: '#',
+  //       icon: X,
+  //     },
+  //   ],
+  // },
 ]
 ---
 
