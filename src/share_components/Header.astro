@@ -7,6 +7,7 @@ import Instagram from '@assets/icons/instagram.svg'
 import Github from '@assets/icons/github.svg'
 
 import Sun from '@assets/icons/sun.svg'
+import Moon from '@assets/icons/moon.svg'
 
 import Menu from '@assets/icons/menu.svg'
 import Close from '@assets/icons/close.svg'
@@ -104,7 +105,8 @@ const LINKS = [
 
     <div class='flex gap-6 text-theme-text'>
       <button class='touch-change-theme cursor-pointer'>
-        <Sun width={24} height={24} />
+        <Sun width={24} height={24} class='is-dark' />
+        <Moon width={24} height={24} class='is-light' />
       </button>
 
       <button class='block md:hidden touch-open cursor-pointer'>
@@ -155,13 +157,18 @@ const LINKS = [
     <nav
       class='absolute left-0 top-20 right-0 h-[92vh] grid place-content-center'
     >
-      <ul
-        class='gap-6 text-xl items-center font-medium flex flex-col text-theme-title'
-      >
+      <ul class='gap-6 text-xl items-center font-medium flex flex-col'>
         {
           LINKS.map(({ name, link }) => (
             <li>
-              <a href={link} class={pathname === link ? 'text-white' : ''}>
+              <a
+                href={link}
+                class={
+                  pathname === link
+                    ? 'text-theme-title-secondary'
+                    : 'text-theme-title'
+                }
+              >
                 {name}
               </a>
             </li>
@@ -171,8 +178,9 @@ const LINKS = [
     </nav>
 
     <div class='flex gap-6 text-theme-text'>
-      <button class=''>
-        <Sun width={24} height={24} />
+      <button class='touch-change-theme cursor-pointer'>
+        <Sun width={24} height={24} class='is-dark' />
+        <Moon width={24} height={24} class='is-light' />
       </button>
 
       <button class='touch-close cursor-pointer'>
@@ -183,8 +191,6 @@ const LINKS = [
 </header>
 
 <script is:inline>
-  import { set } from 'astro:schema'
-
   const $ = el => document.querySelector(el)
   const $$ = el => document.querySelectorAll(el)
 
@@ -223,9 +229,16 @@ const LINKS = [
 
 <!-- cambiar color de tema -->
 <script is:inline>
-  const touchChangeTheme = document.querySelector('.touch-change-theme')
+  const html = $('html')
+
+  const isDark = $$('.is-dark')
+  const isLight = $$('.is-light')
+
+  const touchChangeTheme = $$('.touch-change-theme')
+
   const localStorageTheme = localStorage.getItem('theme')
-  const html = document.querySelector('html')
+
+  handleChangeThemeIcon(localStorageTheme)
 
   function setLocalStorageTheme(theme) {
     localStorage.setItem('theme', theme)
@@ -235,13 +248,30 @@ const LINKS = [
     handleChangeTheme()
   }
 
-  function handleChangeTheme() {
+  function handleChangeTheme(e) {
+    if (e) {
+      e.stopPropagation()
+    }
     html.classList.toggle('dark')
 
     const theme = html.classList.contains('dark') ? 'dark' : 'light'
 
+    handleChangeThemeIcon(theme)
+
     setLocalStorageTheme(theme)
   }
 
-  touchChangeTheme.addEventListener('click', handleChangeTheme)
+  function handleChangeThemeIcon(theme) {
+    if (theme === 'dark') {
+      isDark.forEach(el => el.classList.remove('hidden'))
+      isLight.forEach(el => el.classList.add('hidden'))
+    } else {
+      isDark.forEach(el => el.classList.add('hidden'))
+      isLight.forEach(el => el.classList.remove('hidden'))
+    }
+  }
+
+  touchChangeTheme.forEach(el =>
+    el.addEventListener('click', handleChangeTheme)
+  )
 </script>
