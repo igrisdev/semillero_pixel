@@ -28,17 +28,23 @@ const {
 
       <p>{name}</p>
     </div>
-    <div class='flex gap-2 items-center [&>a]:text-theme-text text-xs'>
+    <div
+      class='flex gap-2 items-center [&>*]:text-theme-title [&>a]:text-theme-text text-xs'
+    >
       <Orcid width={20} height={20} />
       <a href='#' target='_blank' rel='noopener noreferrer'>
         {orcid}
       </a>
     </div>
-    <div class='flex gap-2 items-center [&>p]:text-theme-text text-xs'>
+    <div
+      class='flex gap-2 items-center [&>*]:text-theme-title [&>p]:text-theme-text text-xs'
+    >
       <Rol width={20} height={20} />
       <p>{rol}</p>
     </div>
-    <div class='flex gap-2 items-center [&>p]:text-theme-text text-xs'>
+    <div
+      class='flex gap-2 items-center [&>*]:text-theme-title [&>p]:text-theme-text text-xs'
+    >
       <University width={20} height={20} />
       <p>{career}</p>
     </div>
