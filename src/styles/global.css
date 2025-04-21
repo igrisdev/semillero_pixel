@@ -9,6 +9,7 @@
 
   --color-theme-background: var(--primary);
   --color-theme-title: var(--secondary);
+  --color-theme-title-secondary: var(--primary);
   --color-theme-text: var(--tertiary);
   --color-theme-decoration: var(--accent);
   --color-theme-split: var(--quaternary);
