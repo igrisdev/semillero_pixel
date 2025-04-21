@@ -113,13 +113,12 @@ const isYear = new Date().getFullYear()
 
 <!-- Seleccionar si quiero ver los artículos por años o por linea de tiempo -->
 <script is:inline>
-  const $ = el => document.querySelector(el)
-  const $$ = el => document.querySelectorAll(el)
+  const btnToggleViewArticles = document.querySelector(
+    '#btn-toggle-view-articles'
+  )
 
-  const btnToggleViewArticles = $('#btn-toggle-view-articles')
-
-  const toYears = $$('.to-years')
-  const timeLine = $$('.time-line')
+  const toYears = document.querySelectorAll('.to-years')
+  const timeLine = document.querySelectorAll('.time-line')
 
   if (btnToggleViewArticles.dataset.state === 'to-years') {
     handleTimeLine()
@@ -127,10 +126,7 @@ const isYear = new Date().getFullYear()
     handleToYear()
   }
 
-  console.log(btnToggleViewArticles)
-
   btnToggleViewArticles.addEventListener('click', e => {
-    console.log('-----------------------------------------')
     const type = e.currentTarget.dataset.state
 
     if (type === 'to-years') {

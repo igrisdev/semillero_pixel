@@ -89,7 +89,7 @@ const LINKS = [
               <a
                 href={link}
                 class={
-                  pathname.includes(link)
+                  link === pathname
                     ? 'text-theme-decoration'
                     : 'text-theme-text'
                 }
