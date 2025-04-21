@@ -183,6 +183,8 @@ const LINKS = [
 </header>
 
 <script is:inline>
+  import { set } from 'astro:schema'
+
   const $ = el => document.querySelector(el)
   const $$ = el => document.querySelectorAll(el)
 
@@ -220,14 +222,25 @@ const LINKS = [
 </script>
 
 <!-- cambiar color de tema -->
-
 <script is:inline>
   const touchChangeTheme = document.querySelector('.touch-change-theme')
+  const localStorageTheme = localStorage.getItem('theme')
+  const html = document.querySelector('html')
+
+  function setLocalStorageTheme(theme) {
+    localStorage.setItem('theme', theme)
+  }
+
+  if (localStorageTheme === 'dark') {
+    handleChangeTheme()
+  }
 
   function handleChangeTheme() {
-    const html = document.querySelector('html')
-
     html.classList.toggle('dark')
+
+    const theme = html.classList.contains('dark') ? 'dark' : 'light'
+
+    setLocalStorageTheme(theme)
   }
 
   touchChangeTheme.addEventListener('click', handleChangeTheme)
