@@ -103,7 +103,7 @@ const LINKS = [
     </nav>
 
     <div class='flex gap-6 text-theme-text'>
-      <button class=''>
+      <button class='touch-change-theme cursor-pointer'>
         <Sun width={24} height={24} />
       </button>
 
@@ -217,4 +217,18 @@ const LINKS = [
 
   handleTouchClose()
   handleTouchOpen()
+</script>
+
+<!-- cambiar color de tema -->
+
+<script is:inline>
+  const touchChangeTheme = document.querySelector('.touch-change-theme')
+
+  function handleChangeTheme() {
+    const html = document.querySelector('html')
+
+    html.classList.toggle('dark')
+  }
+
+  touchChangeTheme.addEventListener('click', handleChangeTheme)
 </script>
