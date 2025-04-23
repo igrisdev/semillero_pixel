@@ -65,7 +65,7 @@
 .embla__controls {
   display: grid;
   grid-template-columns: auto 1fr;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   gap: 1.2rem;
   margin-top: 1.8rem;
 }
@@ -100,6 +100,18 @@
 /* .embla__button:disabled {
   color: var(--detail-high-contrast);
 } */
+
+@media (max-width: 640px) {
+  .embla__controls {
+    grid-template-columns: 1fr;
+  }
+
+  .embla__buttons {
+    background: red;
+    display: none;
+  }
+}
+
 .embla__button__svg {
   width: 35%;
   height: 35%;
