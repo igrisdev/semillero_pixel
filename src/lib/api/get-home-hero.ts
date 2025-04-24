@@ -1,4 +1,5 @@
 import { query } from './strapi'
+
 const { STRAPI_HOST } = import.meta.env
 
 export function getHomeHero() {
