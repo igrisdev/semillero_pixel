@@ -1,21 +1,19 @@
 ---
 import Logo_pixel from '@assets/icons/logo_pixel.svg'
+
+import { getAboutUsInfo } from '@lib/api/get-about-us-info'
+
+const { title_about_us, text_about_us } = await getAboutUsInfo()
 ---
 
 <div class='grid md:grid-cols-3 gap-4 py-10'>
   <section class='col-span-2 flex flex-col'>
     <h2 class='text-theme-title text-2xl sm:text-4xl font-bold uppercase mb-2'>
-      Sobre Nosotros
+      {title_about_us}
     </h2>
 
     <p class='text-theme-text text-xs sm:text-sm md:text-base'>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum
+      {text_about_us}
     </p>
   </section>
 
