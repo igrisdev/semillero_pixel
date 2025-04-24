@@ -15,6 +15,8 @@ const {
   date_init,
   date_end,
 } = Astro.props
+
+console.log(social_media)
 ---
 
 <article class='h-[565px] flex flex-col gap-2'>
@@ -54,8 +56,17 @@ const {
     <section class='flex gap-2 items-center'>
       {
         social_media.map((social: any) => (
-          <a href={social.link} target='_blank' rel='noopener noreferrer'>
-            <social.icon width={24} height={24} />
+          <a
+            href={social.link_red_social_media}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <img
+              src={social.logo_red_social}
+              alt={social.name_social_media}
+              width={24}
+              height={24}
+            />
           </a>
         ))
       }
