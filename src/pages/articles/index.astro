@@ -12,10 +12,22 @@ const ARTICLES = [
     year: '2025',
     articles: [
       {
-        title: 'Lorem ipsum dolor sit ad',
+        title: 'Diseño de un sistema de gestión de eventos',
+        author: 'Marta Camacho',
+        date: '26 febrero 2025',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
+        link: '#',
+        image_author: 'https://picsum.photos/id/10/200/200',
       },
       {
         title: 'Lorem ipsum dolor sit ad',
+        author: 'Marta Camacho',
+        date: '26 febrero 2025',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
+        link: '#',
+        image_author: 'https://picsum.photos/id/10/200/200',
       },
     ],
   },
@@ -24,6 +36,62 @@ const ARTICLES = [
     articles: [
       {
         title: 'Lorem ipsum dolor sit ad',
+        author: 'Marta Camacho',
+        date: '26 febrero 2025',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
+        link: '#',
+        image_author: 'https://picsum.photos/id/10/200/200',
+      },
+    ],
+  },
+  {
+    year: '2023',
+    articles: [
+      {
+        title: 'Lorem ipsum dolor sit ad',
+        author: 'Marta Camacho',
+        date: '26 febrero 2025',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
+        link: '#',
+        image_author: 'https://picsum.photos/id/10/200/200',
+      },
+      {
+        title: 'Lorem ipsum dolor sit ad',
+        author: 'Marta Camacho',
+        date: '26 febrero 2025',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
+        link: '#',
+        image_author: 'https://picsum.photos/id/10/200/200',
+      },
+      {
+        title: 'Lorem ipsum dolor sit ad',
+        author: 'Marta Camacho',
+        date: '26 febrero 2025',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
+        link: '#',
+        image_author: 'https://picsum.photos/id/10/200/200',
+      },
+      {
+        title: 'Lorem ipsum dolor sit ad',
+        author: 'Marta Camacho',
+        date: '26 febrero 2025',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
+        link: '#',
+        image_author: 'https://picsum.photos/id/10/200/200',
+      },
+      {
+        title: 'Lorem ipsum dolor sit ad',
+        author: 'Marta Camacho',
+        date: '26 febrero 2025',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
+        link: '#',
+        image_author: 'https://picsum.photos/id/10/200/200',
       },
     ],
   },
@@ -47,21 +115,25 @@ const isYear = new Date().getFullYear()
         <div class='flex-wrap gap-4 text-theme-text'>
           <button
             class='text-sm bg-theme-decoration/10 py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+            data-year='all'
           >
             Todos
           </button>
           <button
             class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+            data-year='2025'
           >
             2025
           </button>
           <button
             class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+            data-year='2024'
           >
             2024
           </button>
           <button
             class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+            data-year='2023'
           >
             2023
           </button>
@@ -80,11 +152,11 @@ const isYear = new Date().getFullYear()
       </section>
 
       <section class='to-years grid grid-cols-1 gap-5 md:grid-cols-2'>
-        <CartArticle />
-        <CartArticle />
-        <CartArticle />
-        <CartArticle />
-        <CartArticle />
+        {
+          ARTICLES.map(({ articles }) =>
+            articles.map(article => <CartArticle {...article} />)
+          )
+        }
       </section>
 
       <section class='time-line pl-4 border-l-2 border-theme-split grid gap-4'>
@@ -99,8 +171,8 @@ const isYear = new Date().getFullYear()
               </header>
 
               <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>
-                {articles.map(({ title }) => (
-                  <CartArticle title={title} />
+                {articles.map(article => (
+                  <CartArticle {...article} />
                 ))}
               </section>
             </div>
@@ -150,3 +222,10 @@ const isYear = new Date().getFullYear()
     timeLine.forEach(el => el.classList.remove('hidden'))
   }
 </script>
+
+<!-- Filtrar los artículos por años seleccionados -->
+
+<!-- <script is:inline>
+  const $ = el => document.querySelector(el)
+  const $$ = el => document.querySelectorAll(el)
+</script> -->

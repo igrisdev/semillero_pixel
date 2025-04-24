@@ -2,6 +2,8 @@
 import Articles from '@assets/icons/article.svg'
 import Arrow from '@assets/icons/arrow.svg'
 import Calendar from '@assets/icons/calendar.svg'
+
+const { title, author, date, description, link, image_author } = Astro.props
 ---
 
 <article
@@ -12,11 +14,11 @@ import Calendar from '@assets/icons/calendar.svg'
       class='min-w-[40px] min-h-[40px] sm:min-w-[50px] sm:min-h-[50px]'
     />
 
-    <a href='#'>
+    <a href={link}>
       <h3
         class='text-theme-title line-clamp-2 uppercase font-semibold text-base sm:text-lg md:text-xl'
       >
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        {title}
       </h3>
     </a>
   </div>
@@ -25,37 +27,30 @@ import Calendar from '@assets/icons/calendar.svg'
     <div
       class='flex items-center border-[1px] border-theme-decoration gap-2 text-[10px] sm:text-xs bg-theme-decoration/10 w-max px-4 py-1 rounded-sm'
     >
-      <div class='size-3 sm:size-4 bg-theme-decoration/5'></div>
-      <span>Marta Castillo</span>
+      <div class='size-3 sm:size-4 bg-theme-decoration/5'>
+        <img
+          src={image_author}
+          alt={author}
+          class='w-full h-full object-cover'
+        />
+      </div>
+      <span>{author}</span>
     </div>
     <div
       class='flex items-center border-[1px] border-theme-decoration gap-2 text-[10px] sm:text-xs bg-theme-decoration/10 w-max px-4 py-1 rounded-sm'
     >
       <Calendar />
-      <span>26 febrero 2024</span>
+      <span>{date}</span>
     </div>
   </div>
 
   <div
     class='flex-1 font-light text-xs [&>*]:mb-2 text-theme-text h-full overflow-y-auto text-ellipsis'
   >
-    <p class=''>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-      ullamco.
-    </p>
-    <p class=''>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet,
-      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-      ullamco.
-    </p>
+    {description}
   </div>
 
-  <a href='#' class='text-xs text-theme-text flex gap-1 items-center w-max'>
+  <a href={link} class='text-xs text-theme-text flex gap-1 items-center w-max'>
     Continuar leyendo <Arrow />
   </a>
 </article>
