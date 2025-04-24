@@ -1,149 +1,10 @@
 ---
-import ImageJohan from '@assets/members/johan.jpg'
-import ImageMateo from '@assets/members/mateo.jpg'
-import ImageMiguel from '@assets/members/miguel.jpg'
-// import ImageJuan from '@assets/members/juan.jpg'
-// import ImageMartha from '@assets/members/martha.jpg'
-
-import GitHub from '@assets/icons/github.svg'
-import X from '@assets/icons/x.svg'
 import CartMembers from '@components/about-us/CartMembers.astro'
 import Container from '@share_components/Container.astro'
 
-const MEMBERS = [
-  {
-    image: ImageJohan.src,
-    name: 'Johan Manuel Alvarez Pinta',
-    orcid: 'https://orcid.org/0000-0002-3456-7890',
-    rol: 'Estudiante',
-    career: 'Ingeniería Informática',
-    state: true,
-    date_init: '2022 - 1',
-    date_end: '',
-    social_media: [
-      {
-        name: 'Github',
-        link: '#',
-        icon: GitHub,
-      },
-      {
-        name: 'X',
-        link: '#',
-        icon: X,
-      },
-    ],
-  },
-  {
-    image: ImageJohan.src,
-    name: 'Juan Manuel Quijano Quijano',
-    orcid: 'https://orcid.org/0000-0002-3456-7890',
-    rol: 'Egresado',
-    career: 'Ingeniería Informática',
-    state: false,
-    date_init: '2022 - 1',
-    date_end: '2026 - 1',
-    social_media: [
-      {
-        name: 'Github',
-        link: '#',
-        icon: GitHub,
-      },
-      {
-        name: 'X',
-        link: '#',
-        icon: X,
-      },
-    ],
-  },
-  {
-    image: ImageMateo.src,
-    name: 'Mateo Jesus Cadena Cabrera ',
-    orcid: 'https://orcid.org/0000-0002-3456-7890',
-    rol: 'Estudiante',
-    career: 'Ingeniería Informática',
-    state: true,
-    date_init: '2022 - 1',
-    date_end: '',
-    social_media: [
-      {
-        name: 'Github',
-        link: '#',
-        icon: GitHub,
-      },
-      {
-        name: 'X',
-        link: '#',
-        icon: X,
-      },
-    ],
-  },
-  {
-    image: ImageMiguel.src,
-    name: 'Miguel Manuel Alvarez Pinta',
-    orcid: 'https://orcid.org/0000-0002-3456-7890',
-    rol: 'Estudiante',
-    career: 'Ingeniería Informática',
-    state: true,
-    date_init: '2022 - 1',
-    date_end: '',
-    social_media: [
-      {
-        name: 'Github',
-        link: '#',
-        icon: GitHub,
-      },
-      {
-        name: 'X',
-        link: '#',
-        icon: X,
-      },
-    ],
-  },
-  // {
-  //   image: ImageJuan.src,
-  //   name: 'Juan Diego ',
-  //   orcid: 'https://orcid.org/0000-0002-3456-7890',
-  //   rol: 'Estudiante',
-  //   career: 'Ingeniería Informática',
-  //   state: true,
-  //   date_init: '2022 - 1',
-  //   date_end: '',
-  //   social_media: [
-  //     {
-  //       name: 'Github',
-  //       link: '#',
-  //       icon: GitHub,
-  //     },
-  //     {
-  //       name: 'X',
-  //       link: '#',
-  //       icon: X,
-  //     },
-  //   ],
-  // },
-  // {
-  //   image: ImageMartha.src,
-  //   name: 'Martha Cecilia Camacho',
-  //   orcid: 'https://orcid.org/0000-0002-3456-7890',
-  //   rol: 'Docente',
-  //   career: 'Ingeniería Informática',
-  //   state: true,
-  //   date_init: '2022 - 1',
-  //   date_end: '',
-  //   social_media: [
-  //     {
-  //       name: 'Github',
-  //       link: '#',
-  //       icon: GitHub,
-  //     },
-  //     {
-  //       name: 'X',
-  //       link: '#',
-  //       icon: X,
-  //     },
-  //   ],
-  // },
-]
+import { getAboutUsMembers } from '@lib/api/get-about-us-members'
+
+const MEMBERS = await getAboutUsMembers()
 ---
 
 <section>
@@ -161,9 +22,9 @@ const MEMBERS = [
       class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-5 pb-10'
     >
       {
-        MEMBERS.filter(({ state }) => state === true).map(member => (
-          <CartMembers {...member} />
-        ))
+        MEMBERS.filter(({ state }: { state: boolean }) => state === true).map(
+          (member: any) => <CartMembers {...member} />
+        )
       }
     </div>
   </Container>
@@ -178,9 +39,9 @@ const MEMBERS = [
   <Container>
     <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-10'>
       {
-        MEMBERS.filter(({ state }) => state !== true).map(member => (
-          <CartMembers {...member} />
-        ))
+        MEMBERS.filter(({ state }: { state: boolean }) => state !== true).map(
+          (member: any) => <CartMembers {...member} />
+        )
       }
     </div>
   </Container>
