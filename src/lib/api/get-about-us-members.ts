@@ -8,6 +8,7 @@ export function getAboutUsMembers() {
   ).then((res) => {
     const members = res.data.map((member: any) => {
       const imageMember = `${STRAPI_HOST}${member.image_member.url}`
+
       const imageSocial = member.red_social_member.map((social: any) => ({
         logo_red_social: `${STRAPI_HOST}${social.logo_red_social.url}`,
         name_social_media: social.name_red_social_media,
