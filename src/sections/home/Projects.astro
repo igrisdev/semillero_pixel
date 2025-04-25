@@ -4,6 +4,10 @@ import Container from '@share_components/Container.astro'
 import SliderProjects from '@components/home/SliderProjects.astro'
 
 import CartProject from '@components/home/CartProject.astro'
+
+import { getHomeProjects } from '@lib/api/get-home-projects'
+
+const projects = await getHomeProjects()
 ---
 
 <Container styles='py-10 grid gap-10'>
@@ -15,13 +19,7 @@ import CartProject from '@components/home/CartProject.astro'
 
   <section class='overflow-hidden'>
     <SliderProjects>
-      <CartProject />
-      <CartProject />
-      <CartProject />
-      <CartProject />
-      <CartProject />
-      <CartProject />
-      <CartProject />
+      {projects.map((project: any) => <CartProject {...project} />)}
     </SliderProjects>
   </section>
 </Container>
