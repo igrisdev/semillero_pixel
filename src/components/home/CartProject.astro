@@ -1,5 +1,6 @@
 ---
 import GitHub from '@assets/icons/github.svg'
+import Redirect from '@assets/icons/redirect.svg'
 ---
 
 <div class='embla__slide'>
@@ -20,8 +21,13 @@ import GitHub from '@assets/icons/github.svg'
           <h2 class='text-theme-title font-medium text-xl'>SisReport</h2>
         </a>
 
-        <a href='#'>
-          <GitHub />
+        <a
+          href='#'
+          target='_blank'
+          rel='noopener noreferrer'
+          class='text-theme-text'
+        >
+          <GitHub width={24} height={24} />
         </a>
       </section>
 
@@ -36,12 +42,25 @@ import GitHub from '@assets/icons/github.svg'
       </section>
     </main>
 
-    <footer
-      class='px-4 pb-4 [&>*]:text-theme-text [&>*]:font-medium [&>*]:text-[8px] [&>*]:border-1 [&>*]:border-theme-decoration [&>*]:rounded-sm [&>*]:px-2 [&>*]:py-1'
-    >
-      <span>React</span>
-      <span>Tailwind</span>
-      <span>MongoDB</span>
+    <footer class='px-4 pb-4 flex items-center justify-between'>
+      <section
+        class='[&>*]:text-theme-text [&>*]:font-medium [&>*]:text-[8px] [&>*]:border-1 [&>*]:border-theme-decoration [&>*]:rounded-sm [&>*]:px-2 [&>*]:py-1 flex gap-1 overflow-x-auto'
+      >
+        <span>React</span>
+        <span>React</span>
+        <span>Tailwind</span>
+        <span>MongoDB</span>
+      </section>
+
+      <a
+        href='#'
+        target='_blank'
+        rel='noopener noreferrer'
+        class='flex gap-2 items-center text-xs text-theme-text'
+      >
+        Leer más
+        <Redirect width={16} height={16} />
+      </a>
     </footer>
   </article>
 </div>
