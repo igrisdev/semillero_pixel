@@ -3,7 +3,7 @@ import Logo_pixel from '@assets/icons/logo_pixel.svg'
 
 import { getAboutUsInfo } from '@lib/api/get-about-us-info'
 
-const { title_about_us, text_about_us } = await getAboutUsInfo()
+const { title_about_us, description_about_us } = await getAboutUsInfo()
 ---
 
 <div class='grid md:grid-cols-3 gap-4 py-10'>
@@ -13,7 +13,7 @@ const { title_about_us, text_about_us } = await getAboutUsInfo()
     </h2>
 
     <p class='text-theme-text text-xs sm:text-sm md:text-base'>
-      {text_about_us}
+      {description_about_us}
     </p>
   </section>
 
