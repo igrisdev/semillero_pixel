@@ -3,14 +3,7 @@ import Articles from '@assets/icons/article.svg'
 import Arrow from '@assets/icons/arrow.svg'
 import Calendar from '@assets/icons/calendar.svg'
 
-const {
-  title,
-  author: publisher,
-  date,
-  description,
-  link,
-  image_author,
-} = Astro.props
+const { title, author, date, description, link, image_author } = Astro.props
 ---
 
 <article
@@ -37,11 +30,11 @@ const {
       <div class='size-3 sm:size-4 bg-theme-decoration/5'>
         <img
           src={image_author}
-          alt={publisher}
+          alt={author}
           class='w-full h-full object-cover'
         />
       </div>
-      <span>{publisher}</span>
+      <span>{author}</span>
     </div>
     <div
       class='flex items-center border-[1px] border-theme-decoration gap-2 text-[10px] sm:text-xs bg-theme-decoration/10 w-max px-4 py-1 rounded-sm'

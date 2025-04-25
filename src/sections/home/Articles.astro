@@ -5,9 +5,9 @@ import Arrow from '@assets/icons/arrow.svg'
 import Container from '@share_components/Container.astro'
 import CartArticle from '@components/home/CartArticle.astro'
 
-// import { getHomeArticles } from '@lib/api/get-home-articles'
+import { getHomeArticleCard } from '@lib/api/get-home-article-card'
 
-// const articles = await getHomeArticles()
+const articles = await getHomeArticleCard()
 ---
 
 <Container styles='py-10 grid gap-10'>
@@ -18,11 +18,7 @@ import CartArticle from '@components/home/CartArticle.astro'
   </h2>
 
   <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>
-    <CartArticle />
-    <CartArticle />
-    <CartArticle />
-    <CartArticle />
-    <CartArticle />
+    {articles.map((article: any) => <CartArticle {...article} />)}
 
     <article class='grid grid-rows-2 gap-3 text-theme-text md:h-72'>
       <section
