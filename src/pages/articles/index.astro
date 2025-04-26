@@ -7,97 +7,15 @@ import Split from '@share_components/Split.astro'
 import Row from '@assets/icons/row.svg'
 import Grid from '@assets/icons/grid.svg'
 
-const ARTICLES = [
-  {
-    year: '2025',
-    articles: [
-      {
-        title: 'Diseño de un sistema de gestión de eventos',
-        author: 'Marta Camacho',
-        date: '26 febrero 2025',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
-        link: '#',
-        image_author: 'https://picsum.photos/id/10/200/200',
-      },
-      {
-        title: 'Lorem ipsum dolor sit ad',
-        author: 'Marta Camacho',
-        date: '26 febrero 2025',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
-        link: '#',
-        image_author: 'https://picsum.photos/id/10/200/200',
-      },
-    ],
-  },
-  {
-    year: '2024',
-    articles: [
-      {
-        title: 'Lorem ipsum dolor sit ad',
-        author: 'Marta Camacho',
-        date: '26 febrero 2025',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
-        link: '#',
-        image_author: 'https://picsum.photos/id/10/200/200',
-      },
-    ],
-  },
-  {
-    year: '2023',
-    articles: [
-      {
-        title: 'Lorem ipsum dolor sit ad',
-        author: 'Marta Camacho',
-        date: '26 febrero 2025',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
-        link: '#',
-        image_author: 'https://picsum.photos/id/10/200/200',
-      },
-      {
-        title: 'Lorem ipsum dolor sit ad',
-        author: 'Marta Camacho',
-        date: '26 febrero 2025',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
-        link: '#',
-        image_author: 'https://picsum.photos/id/10/200/200',
-      },
-      {
-        title: 'Lorem ipsum dolor sit ad',
-        author: 'Marta Camacho',
-        date: '26 febrero 2025',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
-        link: '#',
-        image_author: 'https://picsum.photos/id/10/200/200',
-      },
-      {
-        title: 'Lorem ipsum dolor sit ad',
-        author: 'Marta Camacho',
-        date: '26 febrero 2025',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
-        link: '#',
-        image_author: 'https://picsum.photos/id/10/200/200',
-      },
-      {
-        title: 'Lorem ipsum dolor sit ad',
-        author: 'Marta Camacho',
-        date: '26 febrero 2025',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
-        link: '#',
-        image_author: 'https://picsum.photos/id/10/200/200',
-      },
-    ],
-  },
-]
+import { getHomeArticleCard } from '@lib/api/get-home-article-card'
+
+import { parseArticles } from '@lib/parseArticles'
+
+const articles: any[] = await getHomeArticleCard()
 
 const isYear = new Date().getFullYear()
+
+const newArticles = parseArticles(articles)
 ---
 
 <Layout title='Artículos'>
@@ -153,15 +71,15 @@ const isYear = new Date().getFullYear()
 
       <section class='to-years grid grid-cols-1 gap-5 md:grid-cols-2'>
         {
-          ARTICLES.map(({ articles }) =>
-            articles.map(article => <CartArticle {...article} />)
+          newArticles.map(({ articles }) =>
+            articles.map((article: any) => <CartArticle {...article} />)
           )
         }
       </section>
 
       <section class='time-line pl-4 border-l-2 border-theme-split grid gap-4'>
         {
-          ARTICLES.map(({ year, articles }) => (
+          newArticles.map(({ year, articles }) => (
             <div class='flex flex-col gap-2'>
               <header class='relative'>
                 <span class='text-sm text-theme-title'>
@@ -171,7 +89,7 @@ const isYear = new Date().getFullYear()
               </header>
 
               <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>
-                {articles.map(article => (
+                {articles.map((article: any) => (
                   <CartArticle {...article} />
                 ))}
               </section>
