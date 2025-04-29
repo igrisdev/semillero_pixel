@@ -1,4 +1,4 @@
----
+<!-- ---
 import Container from '@share_components/Container.astro'
 import CartArticle from '@components/home/CartArticle.astro'
 import Layout from '@layouts/Layout.astro'
@@ -16,12 +16,8 @@ import Grid from '@assets/icons/grid.svg'
 // const isYear = new Date().getFullYear()
 
 // const newArticles = parseArticles(articles)
----
-
-<Layout title='Artículos'>
-  <Split />
-
-  <!-- <Container styles='py-10 grid gap-10'>
+--- --><!-- <Layout title='Artículos'>
+  <Split /> --><!-- <Container styles='py-10 grid gap-10'>
     <h2
       class='text-theme-title text-2xl sm:text-4xl font-bold uppercase mb-2 text-center'
     >
@@ -98,11 +94,7 @@ import Grid from '@assets/icons/grid.svg'
         }
       </section>
     </div>
-  </Container> -->
-</Layout>
-
-<!-- Seleccionar si quiero ver los artículos por años o por linea de tiempo -->
-<script is:inline>
+  </Container> --><!-- </Layout> --><!-- Seleccionar si quiero ver los artículos por años o por linea de tiempo --><!-- <script is:inline>
   const btnToggleViewArticles = document.querySelector(
     '#btn-toggle-view-articles'
   )
@@ -139,11 +131,7 @@ import Grid from '@assets/icons/grid.svg'
     toYears.forEach(el => el.classList.add('hidden'))
     timeLine.forEach(el => el.classList.remove('hidden'))
   }
-</script>
-
-<!-- Filtrar los artículos por años seleccionados -->
-
-<!-- <script is:inline>
+</script> --><!-- Filtrar los artículos por años seleccionados --><!-- <script is:inline>
   const $ = el => document.querySelector(el)
   const $$ = el => document.querySelectorAll(el)
 </script> -->
