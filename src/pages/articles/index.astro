@@ -97,7 +97,9 @@ const newArticles = parseArticles(articles)
       </section>
     </div>
   </Container>
-</Layout> Seleccionar si quiero ver los artículos por años o por linea de tiempo
+</Layout>
+
+<!-- Seleccionar si quiero ver los artículos por años o por linea de tiempo -->
 <script is:inline>
   const btnToggleViewArticles = document.querySelector(
     '#btn-toggle-view-articles'
@@ -135,7 +137,10 @@ const newArticles = parseArticles(articles)
     toYears.forEach(el => el.classList.add('hidden'))
     timeLine.forEach(el => el.classList.remove('hidden'))
   }
-</script> Filtrar los artículos por años seleccionados <script is:inline>
+</script>
+
+<!-- Filtrar los artículos por años seleccionados  -->
+<script is:inline>
   const $ = el => document.querySelector(el)
   const $$ = el => document.querySelectorAll(el)
 </script>
