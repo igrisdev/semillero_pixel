@@ -5,6 +5,7 @@ export function getAboutUsInfo() {
     console.log('----------------------------------------------------')
     console.log(res.data)
     console.log('----------------------------------------------------')
+    console.log('----------------------------------------------------')
     const { title_about_us, description_about_us } = res.data
     return { title_about_us, description_about_us }
   })
