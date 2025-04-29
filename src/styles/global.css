@@ -13,7 +13,7 @@
   --color-theme-text: var(--tertiary);
   --color-theme-decoration: var(--accent);
   --color-theme-split: var(--quaternary);
-  --color-theme-icon: var(--quaternary);
+  --color-theme-icon: var(--tertiary);
 
   --font-fallback: 'Adjusted Arial Fallback', system-ui;
   --font-micro5: 'Micro5';
@@ -21,7 +21,7 @@
 }
 
 .dark {
-  --primary: #121212;
+  --primary: #000000;
   --secondary: #ffffff;
   --accent: #3c6cfe;
   --tertiary: #c8c8c8;
