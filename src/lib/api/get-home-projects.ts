@@ -20,7 +20,7 @@ export function getHomeProjects() {
         }
       })
 
-      const image_project = `${STRAPI_HOST}${project.image_project.url}`
+      const image_project = `${STRAPI_HOST}${project.image_project?.url}`
 
       return {
         title: project.title_project,
