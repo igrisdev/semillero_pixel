@@ -3,7 +3,10 @@ import Articles from '@assets/icons/article.svg'
 import Arrow from '@assets/icons/arrow.svg'
 import Calendar from '@assets/icons/calendar.svg'
 
-const { title, author, date, description, image_author, slug } = Astro.props
+const { title, author, date, description, image_author, slug, types } =
+  Astro.props
+
+const link = `publications/${slug}`
 ---
 
 <article
@@ -14,7 +17,7 @@ const { title, author, date, description, image_author, slug } = Astro.props
       class='min-w-[40px] min-h-[40px] sm:min-w-[50px] sm:min-h-[50px]'
     />
 
-    <a href={'articles/' + slug}>
+    <a href={link}>
       <h3
         class='text-theme-title line-clamp-2 uppercase font-semibold text-base sm:text-lg md:text-xl'
       >
@@ -42,6 +45,16 @@ const { title, author, date, description, image_author, slug } = Astro.props
       <Calendar />
       <span>{date}</span>
     </div>
+    {
+      types.map((type: any) => (
+        <div
+          class='flex items-center border-[1px] border-theme-decoration gap-2 text-[10px] sm:text-xs w-max px-4 py-1 rounded-sm'
+          style=`background-color: color-mix(in oklab, ${type.color_type} 10%, transparent);`
+        >
+          <span>{type.title}</span>
+        </div>
+      ))
+    }
   </div>
 
   <div
@@ -50,10 +63,7 @@ const { title, author, date, description, image_author, slug } = Astro.props
     {description}
   </div>
 
-  <a
-    href={'articles/' + slug}
-    class='text-xs text-theme-text flex gap-1 items-center w-max'
-  >
+  <a href={link} class='text-xs text-theme-text flex gap-1 items-center w-max'>
     Continuar leyendo <Arrow />
   </a>
 </article>
