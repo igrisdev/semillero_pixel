@@ -15,9 +15,9 @@ const article = await getArticleBySlug(slug!)
 <Layout title={slug + ' - Artículo Pixel'}>
   <Split />
 
-  <Container styles='py-10 grid gap-10'>
-    <section class='grid gap-7 text-theme-text'>
-      <div class='flex gap-2 items-center'>
+  <Container styles='py-10 grid gap-5 md:gap-10'>
+    <section class='grid gap-4 md:gap-7 text-theme-text'>
+      <div class='flex gap-2 items-center text-xs sm:text-sm md:text-lg'>
         <section class='flex gap-2 items-center'>
           <div class='size-[24px] overflow-hidden'>
             <img src={article?.image_author} alt={article?.author} />
@@ -35,13 +35,13 @@ const article = await getArticleBySlug(slug!)
       </div>
 
       <h2
-        class='text-theme-title text-2xl sm:text-6xl font-bold max-w-3xl leading-16'
+        class='text-theme-title text-4xl md:text-6xl font-bold max-w-3xl leading-11 md:leading-16'
       >
         {article?.title}
       </h2>
     </section>
 
-    <section class='max-w-4xl m-auto'>
+    <section class='max-w-4xl m-auto text-sm md:text-lg font-light'>
       <div set:html={article?.content} />
     </section>
   </Container>
