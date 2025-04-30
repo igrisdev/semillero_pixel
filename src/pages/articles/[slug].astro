@@ -3,6 +3,8 @@ import Layout from '@layouts/Layout.astro'
 import Container from '@share_components/Container.astro'
 import Split from '@share_components/Split.astro'
 
+import { renderMarkdown } from '@lib/markdown-renderer'
+
 import Calendar from '@assets/icons/calendar.svg'
 
 import { getArticleBySlug } from '@lib/api/get-one-article'
@@ -10,6 +12,8 @@ import { getArticleBySlug } from '@lib/api/get-one-article'
 const { slug } = Astro.params
 
 const article = await getArticleBySlug(slug!)
+
+const content = await renderMarkdown(article?.content)
 ---
 
 <Layout title={slug + ' - Artículo Pixel'}>
@@ -44,7 +48,7 @@ const article = await getArticleBySlug(slug!)
     <section
       class='max-w-4xl m-auto text-sm md:text-lg font-light text-theme-text'
     >
-      <div set:html={article?.content} />
+      <div set:html={content} />
     </section>
   </Container>
 </Layout>
