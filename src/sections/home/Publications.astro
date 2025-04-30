@@ -1,0 +1,54 @@
+---
+import TimeArticle from '@assets/icons/time_article.svg'
+import Arrow from '@assets/icons/arrow.svg'
+
+import Container from '@share_components/Container.astro'
+import CartPublication from '@components/home/CartPublication.astro'
+
+import { getHomePublicationCard } from '@lib/api/get-home-publication-card'
+import { parsePublications } from '@lib/parsePublications'
+
+const publications = await getHomePublicationCard()
+
+const newPublications = parsePublications(publications)
+---
+
+<Container styles='py-10 grid gap-10'>
+  <h2
+    class='text-theme-title text-2xl sm:text-4xl font-bold uppercase mb-2 text-center'
+  >
+    Publicaciones
+  </h2>
+
+  <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>
+    {
+      newPublications.map(({ publications }) =>
+        publications.map((article: any) => <CartPublication {...article} />)
+      )
+    }
+
+    <article class='grid grid-rows-2 gap-3 text-theme-text md:h-72'>
+      <section
+        class='border-1 rounded-sm border-theme-decoration p-3 grid place-content-center'
+      >
+        <div class='flex gap-2 items-center'>
+          <TimeArticle />
+          <h3 class='uppercase text-xl md:text-2xl lg:text-4xl'>
+            Próximamente ...
+          </h3>
+        </div>
+      </section>
+
+      <section
+        class='border-1 rounded-sm border-theme-decoration p-3 grid place-content-center'
+      >
+        <a href='/publications' class='flex gap-2 items-center'>
+          <h3 class='uppercase text-xl md:text-2xl lg:text-4xl'>
+            Ver más publicaciones
+          </h3>
+          <Arrow width={30} height={30} />
+        </a>
+      </section>
+    </article>
+  </section>
+</Container>
