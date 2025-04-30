@@ -1,9 +1,16 @@
 ---
 import Layout from '@layouts/Layout.astro'
+import Container from '@share_components/Container.astro'
+import Split from '@share_components/Split.astro'
 ---
 
 <Layout title='Error 404'>
-  Error 404
+  <Split />
+  <Container styles='grid place-content-center py-40 text-center gap-6'>
+    <h2 class='text-2xl font-bold'>404 - Página no encontrada</h2>
 
-  <a href='/'> Volver a la página principal </a>
+    <a href='/' class='text-theme-decoration underline underline-offset-4'
+      >Volver al inicio</a
+    >
+  </Container>
 </Layout>
