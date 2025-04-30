@@ -3,7 +3,7 @@ import Articles from '@assets/icons/article.svg'
 import Arrow from '@assets/icons/arrow.svg'
 import Calendar from '@assets/icons/calendar.svg'
 
-const { title, author, date, description, link, image_author } = Astro.props
+const { title, author, date, description, image_author, slug } = Astro.props
 ---
 
 <article
@@ -14,7 +14,7 @@ const { title, author, date, description, link, image_author } = Astro.props
       class='min-w-[40px] min-h-[40px] sm:min-w-[50px] sm:min-h-[50px]'
     />
 
-    <a href={link}>
+    <a href={'articles/' + slug}>
       <h3
         class='text-theme-title line-clamp-2 uppercase font-semibold text-base sm:text-lg md:text-xl'
       >
@@ -27,7 +27,7 @@ const { title, author, date, description, link, image_author } = Astro.props
     <div
       class='flex items-center border-[1px] border-theme-decoration gap-2 text-[10px] sm:text-xs bg-theme-decoration/10 w-max px-4 py-1 rounded-sm'
     >
-      <div class='size-3 sm:size-4 bg-theme-decoration/5'>
+      <div class='size-3 sm:size-4 bg-theme-decoration/5 overflow-hidden'>
         <img
           src={image_author}
           alt={author}
@@ -50,7 +50,10 @@ const { title, author, date, description, link, image_author } = Astro.props
     {description}
   </div>
 
-  <a href={link} class='text-xs text-theme-text flex gap-1 items-center w-max'>
+  <a
+    href={'articles/' + slug}
+    class='text-xs text-theme-text flex gap-1 items-center w-max'
+  >
     Continuar leyendo <Arrow />
   </a>
 </article>

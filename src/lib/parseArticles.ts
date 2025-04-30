@@ -30,7 +30,7 @@ export function parseArticles(articles: any[]) {
       author: article.author,
       date: formattedDate,
       description: article.description,
-      link: article.link,
+      slug: article.slug,
       image_author: article.image_author,
     })
   })

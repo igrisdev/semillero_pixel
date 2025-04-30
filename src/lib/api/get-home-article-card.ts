@@ -15,8 +15,8 @@ export function getHomeArticleCard() {
           author: authorName,
           date: article.date_publication_article,
           description: article.description_article,
-          link: article.slug,
           image_author: image,
+          slug: article.slug,
         }
       })
 
