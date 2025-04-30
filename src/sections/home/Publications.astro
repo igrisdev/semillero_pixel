@@ -23,7 +23,9 @@ const newPublications = parsePublications(publications)
   <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>
     {
       newPublications.map(({ publications }) =>
-        publications.map((article: any) => <CartPublication {...article} />)
+        publications.map((publication: any) => (
+          <CartPublication {...publication} />
+        ))
       )
     }
 

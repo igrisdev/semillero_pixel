@@ -73,7 +73,9 @@ const types = Array.from(filterPublications)
       <section class='to-years grid grid-cols-1 gap-5 md:grid-cols-2'>
         {
           newPublications.map(({ publications }) =>
-            publications.map((article: any) => <CartPublication {...article} />)
+            publications.map((publication: any) => (
+              <CartPublication {...publication} />
+            ))
           )
         }
       </section>
@@ -90,8 +92,8 @@ const types = Array.from(filterPublications)
               </header>
 
               <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>
-                {publications.map((article: any) => (
-                  <CartPublication {...article} />
+                {publications.map((publication: any) => (
+                  <CartPublication {...publication} />
                 ))}
               </section>
             </div>
