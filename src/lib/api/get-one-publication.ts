@@ -7,7 +7,6 @@ export function getPublicationBySlug(slug: string) {
   return query(
     `publications?filters[slug][$eq]=${slug}&populate=publisher.image_member&populate=type_publications&populate=work_done_bies`
   ).then((res) => {
-    console.log(res.data[0])
     const publication = res.data[0]
     if (!publication) return null
 
