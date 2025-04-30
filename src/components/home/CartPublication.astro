@@ -49,7 +49,7 @@ const link = `publications/${slug}`
       types.map((type: any) => (
         <div
           class='flex items-center border-[1px] border-theme-decoration gap-2 text-[10px] sm:text-xs w-max px-4 py-1 rounded-sm'
-          style=`background-color: color-mix(in oklab, ${type.color_type} 10%, transparent);`
+          style={`background-color: color-mix(in oklab, ${type.color_type} 10%, transparent);`}
         >
           <span>{type.title}</span>
         </div>
