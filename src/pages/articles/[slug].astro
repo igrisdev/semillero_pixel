@@ -1,9 +1,48 @@
 ---
 import Layout from '@layouts/Layout.astro'
+import Container from '@share_components/Container.astro'
+import Split from '@share_components/Split.astro'
+
+import Calendar from '@assets/icons/calendar.svg'
+
+import { getArticleBySlug } from '@lib/api/get-one-article'
 
 const { slug } = Astro.params
+
+const article = await getArticleBySlug(slug!)
 ---
 
-<Layout title='Artículos'>
-  <h1>{slug}</h1>
+<Layout title={slug + ' - Artículo Pixel'}>
+  <Split />
+
+  <Container styles='py-10 grid gap-10'>
+    <section class='grid gap-7 text-theme-text'>
+      <div class='flex gap-2 items-center'>
+        <section class='flex gap-2 items-center'>
+          <div class='size-[24px] overflow-hidden'>
+            <img src={article?.image_author} alt={article?.author} />
+          </div>
+
+          <span>{article?.author}</span>
+        </section>
+
+        <span class='px-2'>/</span>
+
+        <section class='flex gap-2 items-center'>
+          <Calendar width={24} height={24} />
+          <span>{article?.date}</span>
+        </section>
+      </div>
+
+      <h2
+        class='text-theme-title text-2xl sm:text-6xl font-bold max-w-3xl leading-16'
+      >
+        {article?.title}
+      </h2>
+    </section>
+
+    <section class='max-w-4xl m-auto'>
+      <div set:html={article?.content} />
+    </section>
+  </Container>
 </Layout>
