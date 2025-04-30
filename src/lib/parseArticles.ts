@@ -1,3 +1,5 @@
+import { parseDate } from './parseDate'
+
 export function parseArticles(articles: any[]) {
   const articlesByYear: any = {}
 
@@ -8,22 +10,7 @@ export function parseArticles(articles: any[]) {
       articlesByYear[year] = []
     }
 
-    const dateObj = new Date(article.date)
-    const months = [
-      'enero',
-      'febrero',
-      'marzo',
-      'abril',
-      'mayo',
-      'junio',
-      'julio',
-      'agosto',
-      'septiembre',
-      'octubre',
-      'noviembre',
-      'diciembre',
-    ]
-    const formattedDate = `${dateObj.getDate()} ${months[dateObj.getMonth()]} ${year}`
+    const formattedDate = parseDate(article.date)
 
     articlesByYear[year].push({
       title: article.title,
