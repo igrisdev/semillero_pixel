@@ -188,12 +188,9 @@ const LINKS = [
 
 <!-- Abrir o cerrar el menu -->
 <script is:inline>
-  const $ = el => document.querySelector(el)
-  const $$ = el => document.querySelectorAll(el)
-
-  const touchOpen = $('.touch-open')
-  const touchClose = $$('.touch-close')
-  const isView = $('#is-view')
+  const touchOpen = document.querySelector('.touch-open')
+  const touchClose = document.querySelectorAll('.touch-close')
+  const isView = document.querySelector('#is-view')
 
   function handleIsView() {
     isView.classList.remove('hidden')
@@ -225,12 +222,12 @@ const LINKS = [
 
 <!-- cambiar color de tema -->
 <script is:inline>
-  const html = $('html')
+  const html = document.querySelector('html')
 
-  const isDark = $$('.is-dark')
-  const isLight = $$('.is-light')
+  const isDark = document.querySelectorAll('.is-dark')
+  const isLight = document.querySelectorAll('.is-light')
 
-  const touchChangeTheme = $$('.touch-change-theme')
+  const touchChangeTheme = document.querySelectorAll('.touch-change-theme')
 
   const localStorageTheme = localStorage.getItem('theme')
 
