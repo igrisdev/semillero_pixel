@@ -53,13 +53,15 @@ const content = await renderMarkdown(publication?.content)
       <Split />
       <div>
         <div>
-          <h3 class='font-normal text-lg'>Trabajo realizado por:</h3>
+          <h3 class='font-normal text-sm md:text-lg mb-2'>
+            Trabajo realizado por :
+          </h3>
 
           <ul>
             {
               publication?.work_done_bies.map(
                 ({ name_member }: { name_member: string }) => (
-                  <li class='text-sm'>{name_member}</li>
+                  <li class='text-xs sm:text-sm'>{name_member}</li>
                 )
               )
             }
