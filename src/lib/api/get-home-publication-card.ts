@@ -1,15 +1,22 @@
 import { query } from './strapi'
 
-const { STRAPI_HOST } = import.meta.env
+const { STRAPI_HOST_IMG } = import.meta.env
 
 export function getHomePublicationCard() {
   return query(
     'publications?populate=publisher.image_member&populate=type_publications'
   ).then((res) => {
     const publications = res.data.map((publication: any) => {
-      const image = `${STRAPI_HOST}${publication.publisher.image_member.url}`
+      let image
+      let authorName
 
-      const authorName = publication.publisher.name_member
+      if (publication.publisher) {
+        image = `${STRAPI_HOST_IMG}${publication.publisher.image_member.url}`
+        authorName = publication.publisher.name_member
+      } else {
+        image = `/icons/image-not-found.svg`
+        authorName = 'No Author'
+      }
 
       return {
         title: publication.title,

@@ -1,6 +1,6 @@
 import { query } from './strapi'
 
-const { STRAPI_HOST } = import.meta.env
+const { STRAPI_HOST_IMG } = import.meta.env
 
 export function getHomeProjects() {
   return query(
@@ -20,7 +20,7 @@ export function getHomeProjects() {
         }
       })
 
-      const image_project = `${STRAPI_HOST}${project.image_project?.url}`
+      const image_project = `${STRAPI_HOST_IMG}${project.image_project?.url}`
 
       return {
         title: project.title_project,
