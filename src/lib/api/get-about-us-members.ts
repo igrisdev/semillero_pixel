@@ -1,16 +1,16 @@
 import { query } from './strapi'
 
-const { STRAPI_HOST } = import.meta.env
+const { STRAPI_HOST_IMG } = import.meta.env
 
 export function getAboutUsMembers() {
   return query(
     'members?populate[0]=image_member&populate[1]=red_social_member.logo_red_social'
   ).then((res) => {
     const members = res.data.map((member: any) => {
-      const imageMember = `${STRAPI_HOST}${member.image_member.url}`
+      const imageMember = `${STRAPI_HOST_IMG}${member.image_member.url}`
 
       const imageSocial = member.red_social_member.map((social: any) => ({
-        logo_red_social: `${STRAPI_HOST}${social.logo_red_social.url}`,
+        logo_red_social: `${STRAPI_HOST_IMG}${social.logo_red_social.url}`,
         name_social_media: social.name_red_social_media,
         link_red_social_media: social.link_red_social_media,
       }))
