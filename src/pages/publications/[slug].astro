@@ -23,7 +23,9 @@ const content = await renderMarkdown(publication?.content)
 
   <Container styles='py-10 grid gap-5 md:gap-10'>
     <section class='grid gap-4 md:gap-7 text-theme-text'>
-      <div class='flex gap-2 items-center text-xs sm:text-sm md:text-lg'>
+      <div
+        class='flex gap-2 sm:gap-4 md:gap-8 flex-wrap items-center text-xs sm:text-sm md:text-lg'
+      >
         <section class='flex gap-2 items-center'>
           <div class='size-[24px] overflow-hidden'>
             <img src={publication?.image_author} alt={publication?.author} />
@@ -32,10 +34,8 @@ const content = await renderMarkdown(publication?.content)
           <span>{publication?.author}</span>
         </section>
 
-        <span class='px-2'>/</span>
-
         <section class='flex gap-2 items-center'>
-          <Calendar width={24} height={24} />
+          <Calendar class='size-[24px] overflow-hidden' />
           <span>{publication?.date}</span>
         </section>
       </div>
