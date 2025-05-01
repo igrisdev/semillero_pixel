@@ -1,7 +1,7 @@
 import { parseDate } from '@lib/parseDate'
 import { query } from './strapi'
 
-const { STRAPI_HOST } = import.meta.env
+const { STRAPI_HOST_IMG } = import.meta.env
 
 export function getPublicationBySlug(slug: string) {
   return query(
@@ -10,7 +10,7 @@ export function getPublicationBySlug(slug: string) {
     const publication = res.data[0]
     if (!publication) return null
 
-    const image = `${STRAPI_HOST}${publication.publisher.image_member.url}`
+    const image = `${STRAPI_HOST_IMG}${publication.publisher.image_member.url}`
     const authorName = publication.publisher.name_member
     const date = parseDate(publication.date_publication)
 
