@@ -12,6 +12,7 @@
     "@astrojs/vercel": "^8.1.4",
     "@tailwindcss/vite": "^4.1.4",
     "astro": "^5.7.0",
+    "astro-remote": "^0.3.4",
     "embla-carousel": "^8.6.0",
     "highlight.js": "^11.11.1",
     "rehype-highlight": "^7.0.2",
