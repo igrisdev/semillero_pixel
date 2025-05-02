@@ -9,9 +9,6 @@ import vercel from '@astrojs/vercel'
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
-    experimental: {
-      svg: true,
-    },
   },
   output: 'server',
   adapter: vercel(),
