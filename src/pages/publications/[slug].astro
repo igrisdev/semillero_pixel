@@ -8,6 +8,7 @@ import { renderMarkdown } from '@lib/markdown-renderer'
 import Calendar from '@assets/icons/calendar.svg'
 
 import { getPublicationBySlug } from '@lib/api/get-one-publication'
+import ContentMarkdown from '@share_components/ContentMarkdown.astro'
 
 const { slug } = Astro.params
 
@@ -15,7 +16,7 @@ const publication = await getPublicationBySlug(slug!)
 
 if (!publication) return Astro.redirect('/404')
 
-const content = await renderMarkdown(publication?.content)
+const content = publication?.content
 ---
 
 <Layout title={slug + ' - Publicación Pixel'}>
@@ -83,7 +84,7 @@ const content = await renderMarkdown(publication?.content)
 
       <Split />
 
-      <div class='[&>p>img]:py-4' set:html={content} />
+      <ContentMarkdown markdown={content} />
     </section>
   </Container>
 </Layout>

@@ -1,0 +1,9 @@
+---
+import { Markup, Markdown } from 'astro-remote'
+// const { html, markdown } = await fetch('http://my-site.com/api/v1/post').then(res => res.json());
+
+const { markdown } = Astro.props
+---
+
+<!-- <Markup content={html} /> -->
+<Markdown content={markdown} />
