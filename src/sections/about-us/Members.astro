@@ -5,6 +5,10 @@ import Container from '@share_components/Container.astro'
 import { getAboutUsMembers } from '@lib/api/get-about-us-members'
 
 const MEMBERS = await getAboutUsMembers()
+
+const membersGraduated = MEMBERS.filter(
+  ({ rol }: { rol: 'Egresado' }) => rol == 'Egresado'
+)
 ---
 
 <section>
@@ -22,27 +26,32 @@ const MEMBERS = await getAboutUsMembers()
       class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-5 pb-10'
     >
       {
-        MEMBERS.filter(({ state }: { state: boolean }) => state === true).map(
-          (member: any) => <CartMembers {...member} />
-        )
+        MEMBERS.filter(({ state, rol }: { state: boolean; rol: string }) => {
+          return state === true && rol !== 'Egresado'
+        }).map((member: any) => <CartMembers {...member} />)
       }
     </div>
   </Container>
-
-  <div class='grid place-content-center border-y-1 border-theme-split'>
-    <h2 class='text-theme-text text-2xl font-semibold uppercase py-4'>
-      Graduados
-    </h2>
-  </div>
 
   <!-- Miembros Graduados -->
-  <Container>
-    <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-10'>
-      {
-        MEMBERS.filter(({ state }: { state: boolean }) => state !== true).map(
-          (member: any) => <CartMembers {...member} />
-        )
-      }
-    </div>
-  </Container>
+  {
+    membersGraduated.length > 0 && (
+      <>
+        <div class='grid place-content-center border-y-1 border-theme-split'>
+          <h2 class='text-theme-text text-2xl font-semibold uppercase py-4'>
+            Graduados
+          </h2>
+        </div>
+        <Container>
+          <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-10'>
+            {MEMBERS.filter(
+              ({ rol }: { rol: string }) => rol === 'Egresado'
+            ).map((member: any) => (
+              <CartMembers {...member} />
+            ))}
+          </div>
+        </Container>
+      </>
+    )
+  }
 </section>
