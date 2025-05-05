@@ -17,13 +17,13 @@ const {
 
 <div class='embla__slide'>
   <article
-    class='h-[500px] bg-theme-decoration/10 rounded-sm border-1 border-theme-decoration flex flex-col overflow-hidden'
+    class='h-[560px] bg-theme-decoration/10 rounded-sm border-1 border-theme-decoration flex flex-col overflow-hidden'
   >
-    <header class='h-[280px] overflow-hidden'>
+    <header class='min-h-[280px] max-h-[280px] overflow-hidden'>
       <img src={image} alt={title} class='w-full h-full object-cover' />
     </header>
 
-    <main class='p-4 flex-1'>
+    <main class='p-4 flex-1 flex flex-col overflow-hidden'>
       <section class='flex gap-2 items-center justify-between'>
         <a href='#' class='truncate w-max'>
           <h2 class='text-theme-title font-medium text-xl'>{title}</h2>
@@ -39,14 +39,14 @@ const {
         </a>
       </section>
 
-      <section class='pt-2'>
-        <p class='font-light text-xs text-theme-text'>
+      <section class='pt-2 overflow-y-auto'>
+        <p class='text-sm font-light text-theme-text'>
           {description}
         </p>
       </section>
     </main>
 
-    <footer class='px-4 pb-4 flex items-center justify-between'>
+    <footer class='px-4 py-2 flex items-center justify-between'>
       <section
         class='[&>*]:text-theme-text [&>*]:font-medium [&>*]:text-[8px] [&>*]:border-1 [&>*]:border-theme-decoration [&>*]:rounded-sm [&>*]:px-2 [&>*]:py-1 flex gap-1 overflow-x-auto'
       >
