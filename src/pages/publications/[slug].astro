@@ -82,7 +82,11 @@ const content = publication?.content
 
       <Split />
 
-      <ContentMarkdown markdown={content} />
+      <div
+        class='prose prose-sm sm:prose-lg lg:prose-xl w-full prose-h1:text-theme-title prose-h2:text-theme-title prose-h3:text-theme-title prose-h4:text-theme-title prose-h5:text-theme-title prose-h6:text-theme-title text-theme-text'
+      >
+        <ContentMarkdown markdown={content} />
+      </div>
     </section>
   </Container>
 </Layout>
