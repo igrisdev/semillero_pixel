@@ -4,58 +4,44 @@ import Container from '@share_components/Container.astro'
 
 import Arrow from '@assets/icons/arrow.svg'
 
-import Evento1 from '@assets/events/evento1.jpg'
-import Evento2 from '@assets/events/evento2.jpg'
+import { getHomeEventsCard } from '@lib/api/get-home-events-card'
 
-const EVENTS = [
-  {
-    title: 'Semillero Pixel 2025',
-    image: Evento1.src,
-  },
-  {
-    title: 'Semillero Pixel 2024',
-    image: Evento2.src,
-  },
-  {
-    title: 'Semillero Pixel 2023',
-    image: Evento1.src,
-  },
-]
+const events = await getHomeEventsCard()
 ---
 
 <Container styles='py-10 grid gap-5'>
   <h2
-    class='text-theme-title text-2xl sm:text-4xl font-bold uppercase mb-2 text-center'
+    class='text-theme-title mb-2 text-center text-2xl font-bold uppercase sm:text-4xl'
   >
     Eventos
   </h2>
 
   <div class='grid gap-10'>
-    <section class='grid place-content-center gap-4 flex-wrap'>
-      <div class='flex flex-wrap gap-4 text-theme-text'>
+    <section class='grid flex-wrap place-content-center gap-4'>
+      <div class='text-theme-text flex flex-wrap gap-4'>
         <button
-          class='text-sm bg-theme-decoration/10 py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+          class='bg-theme-decoration/10 border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'
         >
           Todos
         </button>
         <button
-          class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+          class='border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'
         >
           2025
         </button>
         <button
-          class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+          class='border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'
         >
           2024
         </button>
         <button
-          class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'
+          class='border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'
         >
           2023
         </button>
         <a
           href='#'
-          class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer flex gap-2 items-center'
+          class='border-theme-decoration flex cursor-pointer items-center gap-2 border-1 px-4 py-1 text-sm'
         >
           Ver más
           <Arrow />
@@ -65,9 +51,11 @@ const EVENTS = [
 
     <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>
       {
-        EVENTS.map(({ title, image }) => (
-          <CartEvent title={title} image={image} />
-        ))
+        events.map(({ title, info }: any) =>
+          info.map(({ image, slug }: any) => (
+            <CartEvent title={title} image={image} slug={slug} />
+          ))
+        )
       }
     </section>
   </div>
