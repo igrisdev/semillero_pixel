@@ -7,7 +7,7 @@ import Split from '@share_components/Split.astro'
 import Row from '@assets/icons/row.svg'
 import Grid from '@assets/icons/grid.svg'
 
-import { getHomePublicationCard } from '@lib/api/get-home-publication-card'
+import { getHomePublicationCard } from '@lib/api/get-home-publications-card'
 import { parsePublications } from '@lib/parsePublications'
 
 const publications: any[] = await getHomePublicationCard()
