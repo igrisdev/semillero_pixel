@@ -6,12 +6,12 @@ import { SOCIALS_MEDIA } from '@share_components/Header.astro'
 ---
 
 <footer class='flex flex-col gap-6 pb-6'>
-  <section class='relative flex gap-4 items-center justify-center'>
+  <section class='relative flex items-center justify-center gap-4'>
     {
       SOCIALS_MEDIA.map(({ link, icon: Icon }) => (
         <a
           href={link}
-          class='flex text-theme-icon items-center gap-2 bg-theme-background border-4 rounded-full p-2 border-theme-split z-10'
+          class='text-theme-icon bg-theme-background border-theme-split z-10 flex items-center gap-2 rounded-full border-4 p-2'
         >
           <Icon class='' />
         </a>
@@ -22,18 +22,20 @@ import { SOCIALS_MEDIA } from '@share_components/Header.astro'
   </section>
 
   <section class='grid place-content-center'>
-    <div class='flex gap-4 items-center h-full text-theme-title'>
+    <div class='text-theme-title flex h-full items-center gap-4'>
       <Logo_pixel class='size-[40px]' />
 
-      <h1 class='uppercase font-micro5 text-4xl'>
+      <a href='/' class='font-micro5 text-4xl uppercase'>
         Semillero <span class='text-theme-decoration'>Pixel</span>
-      </h1>
+      </a>
     </div>
   </section>
 
-  <section>
-    <p class='text-center text-xs text-theme-text'>
-      © Todos los derechos reservados por Semillero Pixel
-    </p>
+  <section class='grid place-content-center'>
+    <a href='' class='text-theme-text animate-pulse text-center'>
+      Blog desarrollado por <span class='text-theme-decoration'
+        >Johan Alvarez</span
+      >
+    </a>
   </section>
 </footer>
