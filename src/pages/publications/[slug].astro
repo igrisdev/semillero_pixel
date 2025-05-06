@@ -21,11 +21,11 @@ const content = publication?.content
   <Split />
 
   <Container styles='py-10 grid gap-5 md:gap-10'>
-    <section class='grid gap-4 md:gap-7 text-theme-text'>
+    <section class='text-theme-text grid gap-4 md:gap-7'>
       <div
-        class='flex gap-2 sm:gap-4 md:gap-8 flex-wrap items-center text-xs sm:text-sm md:text-lg'
+        class='flex flex-wrap items-center gap-2 text-xs sm:gap-4 sm:text-sm md:gap-8 md:text-lg'
       >
-        <section class='flex gap-2 items-center'>
+        <section class='flex items-center gap-2'>
           <div class='size-[24px] overflow-hidden'>
             <img src={publication?.image_author} alt={publication?.author} />
           </div>
@@ -33,44 +33,61 @@ const content = publication?.content
           <span>{publication?.author}</span>
         </section>
 
-        <section class='flex gap-2 items-center'>
+        <section class='flex items-center gap-2'>
           <Calendar class='size-[24px] overflow-hidden' />
           <span>{publication?.date}</span>
         </section>
       </div>
 
       <h2
-        class='text-theme-title text-4xl md:text-6xl font-bold max-w-3xl leading-11 md:leading-16'
+        class='text-theme-title max-w-3xl text-4xl leading-11 font-bold md:text-6xl md:leading-16'
       >
         {publication?.title}
       </h2>
     </section>
 
     <section
-      class='max-w-4xl m-auto text-sm md:text-lg font-light text-theme-text w-full grid gap-6'
+      class='text-theme-text m-auto grid w-full max-w-4xl gap-6 text-sm font-light md:text-lg'
     >
       <Split />
       <div>
-        <div>
-          <h3 class='font-normal text-sm md:text-lg mb-2'>
-            Trabajo realizado por :
-          </h3>
+        <div class='grid grid-cols-2'>
+          <section>
+            <h3 class='mb-2 text-sm font-normal md:text-lg'>
+              Trabajo realizado por :
+            </h3>
 
-          <ul>
-            {
-              publication?.work_done_bies.map(
-                ({ name_member }: { name_member: string }) => (
-                  <li class='text-xs sm:text-sm'>{name_member}</li>
+            <ul>
+              {
+                publication?.work_done_bies.map(
+                  ({ name_member }: { name_member: string }) => (
+                    <li class='text-xs sm:text-sm'>{name_member}</li>
+                  )
                 )
-              )
-            }
-          </ul>
+              }
+            </ul>
+          </section>
+          <section>
+            <h3 class='mb-2 text-sm font-normal md:text-lg'>Evento :</h3>
+
+            <ul>
+              <!-- {
+                publication?.work_done_bies.map(
+                  ({ name_member }: { name_member: string }) => ( -->
+              <!-- <li class='text-xs sm:text-sm'>{name_member}</li> -->
+              <li class='text-xs sm:text-sm'>Semillero 2025</li>
+              <!-- )
+                  <!-- )
+                )
+              } -->
+            </ul>
+          </section>
         </div>
-        <div class='flex gap-2 items-center flex-wrap mt-4'>
+        <div class='mt-4 flex flex-wrap items-center gap-2'>
           {
             publication?.types.map((type: any) => (
               <button
-                class='flex items-center border-[1px] border-theme-decoration gap-2 text-[10px] sm:text-xs w-max px-4 py-1 rounded-sm'
+                class='border-theme-decoration flex w-max items-center gap-2 rounded-sm border-[1px] px-4 py-1 text-[10px] sm:text-xs'
                 style={`background-color: color-mix(in oklab, ${type.color_type} 10%, transparent);`}
               >
                 <span>{type.title}</span>
@@ -83,7 +100,7 @@ const content = publication?.content
       <Split />
 
       <div
-        class='prose prose-sm sm:prose-lg lg:prose-xl w-full prose-h1:text-theme-title prose-h2:text-theme-title prose-h3:text-theme-title prose-h4:text-theme-title prose-h5:text-theme-title prose-h6:text-theme-title text-theme-text'
+        class='prose prose-sm sm:prose-lg lg:prose-xl prose-h1:text-theme-title prose-h2:text-theme-title prose-h3:text-theme-title prose-h4:text-theme-title prose-h5:text-theme-title prose-h6:text-theme-title text-theme-text w-full'
       >
         <ContentMarkdown markdown={content} />
       </div>
