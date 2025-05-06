@@ -1,15 +1,15 @@
 ---
-const { image, title } = Astro.props
+const { image, title, slug } = Astro.props
 ---
 
-<article class='h-72 bg-theme-decoration/10 relative group overflow-hidden'>
-  <img src={image} alt={title} class='w-full h-full object-cover select-none' />
+<article class='bg-theme-decoration/10 group relative h-72 overflow-hidden'>
+  <img src={image} alt={title} class='h-full w-full object-cover select-none' />
 
   <a
-    href='#'
-    class='absolute bottom-4 left-1/2 px-4 py-1 rounded-sm -translate-x-1/2 bg-black/50 backdrop-blur-3xl sm:translate-y-20 sm:group-hover:translate-y-0 transition-transform ease-in-out'
+    href={`/publications/${slug}`}
+    class='absolute bottom-4 left-1/2 -translate-x-1/2 rounded-sm bg-black/50 px-4 py-1 backdrop-blur-3xl transition-transform ease-in-out sm:translate-y-20 sm:group-hover:translate-y-0'
   >
-    <h3 class='text-white text-center line-clamp-1 font-semibold text-sm'>
+    <h3 class='line-clamp-1 text-center text-sm font-semibold text-white'>
       {title}
     </h3>
   </a>
