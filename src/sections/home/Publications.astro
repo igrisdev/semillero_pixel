@@ -5,7 +5,7 @@ import Arrow from '@assets/icons/arrow.svg'
 import Container from '@share_components/Container.astro'
 import CartPublication from '@components/home/CartPublication.astro'
 
-import { getHomePublicationCard } from '@lib/api/get-home-publication-card'
+import { getHomePublicationCard } from '@lib/api/get-home-publications-card'
 import { parsePublications } from '@lib/parsePublications'
 
 const publications = await getHomePublicationCard()
