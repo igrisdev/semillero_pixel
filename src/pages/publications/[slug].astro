@@ -4,6 +4,7 @@ import Container from '@share_components/Container.astro'
 import Split from '@share_components/Split.astro'
 
 import Calendar from '@assets/icons/calendar.svg'
+import Arrow from '@assets/icons/arrow.svg'
 
 import { getPublicationBySlug } from '@lib/api/get-one-publication'
 import ContentMarkdown from '@share_components/ContentMarkdown.astro'
@@ -22,21 +23,30 @@ const content = publication?.content
 
   <Container styles='py-10 grid gap-5 md:gap-10'>
     <section class='text-theme-text grid gap-4 md:gap-7'>
-      <div
-        class='flex flex-wrap items-center gap-2 text-xs sm:gap-4 sm:text-sm md:gap-8 md:text-lg'
-      >
-        <section class='flex items-center gap-2'>
-          <div class='size-[24px] overflow-hidden'>
-            <img src={publication?.image_author} alt={publication?.author} />
-          </div>
+      <div class='flex flex-wrap items-center gap-4 sm:gap-3'>
+        <a
+          href='/'
+          class='border-theme-split hover:bg-theme-split grid place-content-center rounded-full border-1 p-2 transition-colors sm:p-3'
+        >
+          <Arrow class='rotate-180 sm:size-5' />
+        </a>
 
-          <span>{publication?.author}</span>
-        </section>
+        <div
+          class='flex flex-wrap items-center gap-2 text-xs sm:gap-4 sm:text-sm md:gap-8 md:text-lg'
+        >
+          <section class='flex items-center gap-2'>
+            <div class='size-[24px] overflow-hidden'>
+              <img src={publication?.image_author} alt={publication?.author} />
+            </div>
 
-        <section class='flex items-center gap-2'>
-          <Calendar class='size-[24px] overflow-hidden' />
-          <span>{publication?.date}</span>
-        </section>
+            <span>{publication?.author}</span>
+          </section>
+
+          <section class='flex items-center gap-2'>
+            <Calendar class='size-[24px] overflow-hidden' />
+            <span>{publication?.date}</span>
+          </section>
+        </div>
       </div>
 
       <h2
