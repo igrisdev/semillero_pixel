@@ -10,8 +10,8 @@ export function getPublicationBySlug(slug: string) {
     const publication = res.data[0]
     if (!publication) return null
 
-    const image = `${STRAPI_HOST_IMG}${publication.publisher.image_member.url}`
-    const authorName = publication.publisher.name_member
+    const image = `${STRAPI_HOST_IMG}${publication?.publisher?.image_member.url}`
+    const authorName = publication?.publisher?.name_member
     const date = parseDate(publication.date_publication)
 
     return {
