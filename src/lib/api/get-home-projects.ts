@@ -4,7 +4,7 @@ const { STRAPI_HOST_IMG } = import.meta.env
 
 export function getHomeProjects() {
   return query(
-    'projects?populate=image_project&populate=technology_project&populate=members'
+    'projects?populate=image_project&populate=technology_project&populate=members&populate=publication'
   ).then((res) => {
     const projects = res.data.map((project: any) => {
       const technologies = project.technology_project.map((tech: any) => {
@@ -26,6 +26,7 @@ export function getHomeProjects() {
         title: project.title_project,
         image: image_project,
         link_github: project.link_github,
+        slug: project?.publication?.slug,
         description: project.description_project,
         technologies: technologies,
         content: project.article_content_project,
