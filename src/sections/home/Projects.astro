@@ -2,12 +2,19 @@
 import Container from '@share_components/Container.astro'
 
 import SliderProjects from '@components/home/SliderProjects.astro'
-
 import CartProject from '@components/home/CartProject.astro'
 
 import { getHomeProjects } from '@lib/api/get-home-projects'
 
-const projects = await getHomeProjects()
+let projects = []
+let fetchError = false
+
+try {
+  projects = await getHomeProjects()
+} catch (error) {
+  console.error('Error al obtener los proyectos:', error)
+  fetchError = true
+}
 ---
 
 <Container styles='py-10 grid gap-10'>
@@ -18,8 +25,20 @@ const projects = await getHomeProjects()
   </h2>
 
   <section class='overflow-hidden'>
-    <SliderProjects>
-      {projects.map((project: any) => <CartProject {...project} />)}
-    </SliderProjects>
+    {
+      fetchError ? (
+        <div class='text-center text-red-600'>
+          <p class='text-lg font-medium'>
+            No se pudieron cargar los proyectos. Intenta más tarde.
+          </p>
+        </div>
+      ) : (
+        <SliderProjects>
+          {projects.map((project: any) => (
+            <CartProject {...project} />
+          ))}
+        </SliderProjects>
+      )
+    }
   </section>
 </Container>

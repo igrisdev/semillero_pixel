@@ -10,101 +10,108 @@ import Grid from '@assets/icons/grid.svg'
 import { getHomePublicationCard } from '@lib/api/get-home-publications-card'
 import { parsePublications } from '@lib/parsePublications'
 
-const publications: any[] = await getHomePublicationCard()
-
+let newPublications: any[] = []
+let types: string[] = []
+let fetchError = false
 const isYear = new Date().getFullYear()
 
-const newPublications = parsePublications(publications)
+try {
+  const publications: any[] = await getHomePublicationCard()
+  newPublications = parsePublications(publications)
 
-const filterPublications = new Set()
+  const filterPublications: Set<string> = new Set()
 
-newPublications.forEach(({ publications }) => {
-  publications.forEach((publication: any) => {
-    const { types } = publication
-
-    types.forEach((type: any) => {
-      filterPublications.add(type.title)
+  newPublications.forEach(({ publications }) => {
+    publications.forEach((publication: any) => {
+      const { types } = publication
+      types.forEach((type: any) => {
+        filterPublications.add(type.title)
+      })
     })
   })
-})
 
-const types = Array.from(filterPublications)
+  types = Array.from(filterPublications)
+} catch (error) {
+  console.error('Error al obtener publicaciones:', error)
+  fetchError = true
+}
 ---
 
 <Layout title='Artículos'>
   <Split />
   <Container styles='py-10 grid gap-10'>
     <h2
-      class='text-theme-title text-2xl sm:text-4xl font-bold uppercase mb-2 text-center'
+      class='text-theme-title mb-2 text-center text-2xl font-bold uppercase sm:text-4xl'
     >
       Publicaciones
     </h2>
 
-    <div class='grid gap-10'>
-      <section class='flex gap-4 justify-between items-center flex-wrap'>
-        <div class='flex flex-wrap gap-2 text-theme-text'>
-          <button
-            class='text-sm bg-theme-decoration/10 py-1 px-4 border-1 border-theme-decoration cursor-pointer'
-          >
-            Todos
-          </button>
-
-          {
-            types.map((type: any) => (
-              <button class='text-sm py-1 px-4 border-1 border-theme-decoration cursor-pointer'>
-                {type}
+    {
+      fetchError ? (
+        <div class='text-center text-red-600'>
+          <p class='text-lg font-medium'>
+            No se pudieron cargar las publicaciones. Intenta más tarde.
+          </p>
+        </div>
+      ) : (
+        <div class='grid gap-10'>
+          <section class='flex flex-wrap items-center justify-between gap-4'>
+            <div class='text-theme-text flex flex-wrap gap-2'>
+              <button class='bg-theme-decoration/10 border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'>
+                Todos
               </button>
-            ))
-          }
-        </div>
 
-        <div>
-          <button
-            id='btn-toggle-view-publications'
-            class='grid place-content-center size-7 text-theme-text cursor-pointer'
-            data-state='time-line'
-          >
-            <Grid class='w-full h-full to-years' />
-            <Row class='w-full h-full time-line' />
-          </button>
-        </div>
-      </section>
-
-      <section class='to-years grid grid-cols-1 gap-5 md:grid-cols-2'>
-        {
-          newPublications.map(({ publications }) =>
-            publications.map((publication: any) => (
-              <CartPublication {...publication} />
-            ))
-          )
-        }
-      </section>
-
-      <section class='time-line pl-4 border-l-2 border-theme-split grid gap-4'>
-        {
-          newPublications.map(({ year, publications }) => (
-            <div class='flex flex-col gap-2'>
-              <header class='relative'>
-                <span class='text-sm text-theme-title'>
-                  {isYear.toString() === year ? 'Ahora' : year}
-                </span>
-                <div class='size-3 bg-theme-decoration rounded-full absolute -left-[23px] top-[7px]' />
-              </header>
-
-              <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>
-                {publications.map((publication: any) => (
-                  <CartPublication {...publication} />
-                ))}
-              </section>
+              {types.map((type: any) => (
+                <button class='border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'>
+                  {type}
+                </button>
+              ))}
             </div>
-          ))
-        }
-      </section>
-    </div>
+
+            <div>
+              <button
+                id='btn-toggle-view-publications'
+                class='text-theme-text grid size-7 cursor-pointer place-content-center'
+                data-state='time-line'
+              >
+                <Grid class='to-years h-full w-full' />
+                <Row class='time-line h-full w-full' />
+              </button>
+            </div>
+          </section>
+
+          <section class='to-years grid grid-cols-1 gap-5 md:grid-cols-2'>
+            {newPublications.map(({ publications }) =>
+              publications.map((publication: any) => (
+                <CartPublication {...publication} />
+              ))
+            )}
+          </section>
+
+          <section class='time-line border-theme-split grid gap-4 border-l-2 pl-4'>
+            {newPublications.map(({ year, publications }) => (
+              <div class='flex flex-col gap-2'>
+                <header class='relative'>
+                  <span class='text-theme-title text-sm'>
+                    {isYear.toString() === year ? 'Ahora' : year}
+                  </span>
+                  <div class='bg-theme-decoration absolute top-[7px] -left-[23px] size-3 rounded-full' />
+                </header>
+
+                <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>
+                  {publications.map((publication: any) => (
+                    <CartPublication {...publication} />
+                  ))}
+                </section>
+              </div>
+            ))}
+          </section>
+        </div>
+      )
+    }
   </Container>
 </Layout>
 
-<!-- Seleccionar si quiero ver los artículos por años o por linea de tiempo -->
 <script is:inline>
   const btnToggleViewArticles = document.querySelector(
     '#btn-toggle-view-publications'
@@ -129,7 +136,6 @@ const types = Array.from(filterPublications)
     }
 
     const newType = type === 'to-years' ? 'time-line' : 'to-years'
-
     btnToggleViewArticles.setAttribute('data-state', newType)
   })
 
@@ -143,5 +149,3 @@ const types = Array.from(filterPublications)
     timeLine.forEach(el => el.classList.remove('hidden'))
   }
 </script>
-
-<!-- Filtrar los artículos por años seleccionados  -->

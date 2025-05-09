@@ -11,109 +11,112 @@ import ContentMarkdown from '@share_components/ContentMarkdown.astro'
 
 const { slug } = Astro.params
 
-const publication = await getPublicationBySlug(slug!)
+let publication: any = null
+let content = ''
+let fetchError = false
 
-if (!publication) return Astro.redirect('/404')
-
-const content = publication?.content
+try {
+  publication = await getPublicationBySlug(slug!)
+  if (!publication) return Astro.redirect('/404')
+  content = publication?.content
+} catch (error) {
+  console.error('Error al obtener la publicación:', error)
+  fetchError = true
+}
 ---
 
-<Layout title={slug + ' - Publicación Pixel'}>
+<Layout title={(publication?.title ?? slug) + ' - Publicación Pixel'}>
   <Split />
 
   <Container styles='py-10 grid gap-5 md:gap-10'>
-    <section class='text-theme-text grid gap-4 md:gap-7'>
-      <div class='flex flex-wrap items-center gap-4 sm:gap-3'>
-        <a
-          href='/'
-          class='border-theme-split hover:bg-theme-split grid place-content-center rounded-full border-1 p-2 transition-colors sm:p-3'
-        >
-          <Arrow class='rotate-180 sm:size-5' />
-        </a>
+    {
+      fetchError ? (
+        <section class='text-theme-text text-center'>
+          <h2 class='text-theme-title mb-4 text-3xl font-bold'>
+            Error al cargar la publicación
+          </h2>
+          <p class='text-sm text-red-600 md:text-base'>
+            Lo sentimos, ocurrió un problema al intentar obtener la información.
+            Intenta más tarde.
+          </p>
+        </section>
+      ) : (
+        <>
+          <section class='text-theme-text grid gap-4 md:gap-7'>
+            <div class='flex flex-wrap items-center gap-4 sm:gap-3'>
+              <a
+                href='/'
+                class='border-theme-split hover:bg-theme-split grid place-content-center rounded-full border-1 p-2 transition-colors sm:p-3'
+              >
+                <Arrow class='rotate-180 sm:size-5' />
+              </a>
 
-        <div
-          class='flex flex-wrap items-center gap-2 text-xs sm:gap-4 sm:text-sm md:gap-8 md:text-lg'
-        >
-          <section class='flex items-center gap-2'>
-            <div class='size-[24px] overflow-hidden'>
-              <img src={publication?.image_author} alt={publication?.author} />
+              <div class='flex flex-wrap items-center gap-2 text-xs sm:gap-4 sm:text-sm md:gap-8 md:text-lg'>
+                <section class='flex items-center gap-2'>
+                  <div class='size-[24px] overflow-hidden'>
+                    <img
+                      src={publication?.image_author}
+                      alt={publication?.author}
+                    />
+                  </div>
+                  <span>{publication?.author}</span>
+                </section>
+
+                <section class='flex items-center gap-2'>
+                  <Calendar class='size-[24px] overflow-hidden' />
+                  <span>{publication?.date}</span>
+                </section>
+              </div>
             </div>
 
-            <span>{publication?.author}</span>
+            <h2 class='text-theme-title max-w-3xl text-4xl leading-11 font-bold md:text-6xl md:leading-16'>
+              {publication?.title}
+            </h2>
           </section>
 
-          <section class='flex items-center gap-2'>
-            <Calendar class='size-[24px] overflow-hidden' />
-            <span>{publication?.date}</span>
+          <section class='text-theme-text m-auto grid w-full max-w-4xl gap-6 text-sm font-light md:text-lg'>
+            <Split />
+            <div>
+              <div class='grid grid-cols-2'>
+                <section>
+                  <h3 class='mb-2 text-sm font-normal md:text-lg'>
+                    Trabajo realizado por :
+                  </h3>
+                  <ul>
+                    {publication?.work_done_bies.map(
+                      ({ name_member }: { name_member: string }) => (
+                        <li class='text-xs sm:text-sm'>{name_member}</li>
+                      )
+                    )}
+                  </ul>
+                </section>
+                <section>
+                  <h3 class='mb-2 text-sm font-normal md:text-lg'>Evento :</h3>
+                  <ul>
+                    <li class='text-xs sm:text-sm'>Semillero 2025</li>
+                  </ul>
+                </section>
+              </div>
+              <div class='mt-4 flex flex-wrap items-center gap-2'>
+                {publication?.types.map((type: any) => (
+                  <button
+                    class='border-theme-decoration flex w-max items-center gap-2 rounded-sm border-[1px] px-4 py-1 text-[10px] sm:text-xs'
+                    style={`background-color: color-mix(in oklab, ${type.color_type} 10%, transparent);`}
+                  >
+                    <span>{type.title}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <Split />
+
+            <div class='prose prose-sm sm:prose-lg lg:prose-xl prose-h1:text-theme-title prose-h2:text-theme-title prose-h3:text-theme-title prose-h4:text-theme-title prose-h5:text-theme-title prose-h6:text-theme-title text-theme-text w-full'>
+              <ContentMarkdown markdown={content} />
+            </div>
           </section>
-        </div>
-      </div>
-
-      <h2
-        class='text-theme-title max-w-3xl text-4xl leading-11 font-bold md:text-6xl md:leading-16'
-      >
-        {publication?.title}
-      </h2>
-    </section>
-
-    <section
-      class='text-theme-text m-auto grid w-full max-w-4xl gap-6 text-sm font-light md:text-lg'
-    >
-      <Split />
-      <div>
-        <div class='grid grid-cols-2'>
-          <section>
-            <h3 class='mb-2 text-sm font-normal md:text-lg'>
-              Trabajo realizado por :
-            </h3>
-
-            <ul>
-              {
-                publication?.work_done_bies.map(
-                  ({ name_member }: { name_member: string }) => (
-                    <li class='text-xs sm:text-sm'>{name_member}</li>
-                  )
-                )
-              }
-            </ul>
-          </section>
-          <section>
-            <h3 class='mb-2 text-sm font-normal md:text-lg'>Evento :</h3>
-
-            <ul>
-              <!-- {
-                publication?.work_done_bies.map(
-                  ({ name_member }: { name_member: string }) => ( -->
-              <!-- <li class='text-xs sm:text-sm'>{name_member}</li> -->
-              <li class='text-xs sm:text-sm'>Semillero 2025</li>
-              <!-- )
-                  <!-- )
-                )
-              } -->
-            </ul>
-          </section>
-        </div>
-        <div class='mt-4 flex flex-wrap items-center gap-2'>
-          {
-            publication?.types.map((type: any) => (
-              <button
-                class='border-theme-decoration flex w-max items-center gap-2 rounded-sm border-[1px] px-4 py-1 text-[10px] sm:text-xs'
-                style={`background-color: color-mix(in oklab, ${type.color_type} 10%, transparent);`}
-              >
-                <span>{type.title}</span>
-              </button>
-            ))
-          }
-        </div>
-      </div>
-
-      <Split />
-
-      <div
-        class='prose prose-sm sm:prose-lg lg:prose-xl prose-h1:text-theme-title prose-h2:text-theme-title prose-h3:text-theme-title prose-h4:text-theme-title prose-h5:text-theme-title prose-h6:text-theme-title text-theme-text w-full'
-      >
-        <ContentMarkdown markdown={content} />
-      </div>
-    </section>
+        </>
+      )
+    }
   </Container>
 </Layout>

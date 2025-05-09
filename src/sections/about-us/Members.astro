@@ -4,11 +4,17 @@ import Container from '@share_components/Container.astro'
 
 import { getAboutUsMembers } from '@lib/api/get-about-us-members'
 
-const MEMBERS = await getAboutUsMembers()
+let MEMBERS: any[] = []
+let membersGraduated: any[] = []
+let fetchError = false
 
-const membersGraduated = MEMBERS.filter(
-  ({ rol }: { rol: 'Egresado' }) => rol == 'Egresado'
-)
+try {
+  MEMBERS = await getAboutUsMembers()
+  membersGraduated = MEMBERS.filter(({ rol }: { rol: string }) => rol === 'Egresado')
+} catch (error) {
+  console.error('Error al obtener miembros:', error)
+  fetchError = true
+}
 ---
 
 <section>
@@ -16,42 +22,51 @@ const membersGraduated = MEMBERS.filter(
     <h2
       class='text-theme-title text-2xl sm:text-4xl font-bold uppercase mb-2 text-center'
     >
-      Integrantes
+      Integrantes 
+    
     </h2>
   </Container>
 
-  <!-- Miembros Activos -->
-  <Container>
-    <div
-      class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-5 pb-10'
-    >
-      {
-        MEMBERS.filter(({ state, rol }: { state: boolean; rol: string }) => {
-          return state === true && rol !== 'Egresado'
-        }).map((member: any) => <CartMembers {...member} />)
-      }
-    </div>
-  </Container>
-
-  <!-- Miembros Graduados -->
   {
-    membersGraduated.length > 0 && (
+    !fetchError ? (
       <>
-        <div class='grid place-content-center border-y-1 border-theme-split'>
-          <h2 class='text-theme-text text-2xl font-semibold uppercase py-4'>
-            Graduados
-          </h2>
-        </div>
+        <!-- Miembros Activos -->
         <Container>
-          <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-10'>
-            {MEMBERS.filter(
-              ({ rol }: { rol: string }) => rol === 'Egresado'
-            ).map((member: any) => (
-              <CartMembers {...member} />
-            ))}
+          <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-5 pb-10'>
+            {
+              MEMBERS.filter(({ state, rol }: { state: boolean; rol: string }) => {
+                return state === true && rol !== 'Egresado'
+              }).map((member: any) => <CartMembers {...member} />)
+            }
           </div>
         </Container>
+
+        <!-- Miembros Graduados -->
+        {
+          membersGraduated.length > 0 && (
+            <>
+              <div class='grid place-content-center border-y-1 border-theme-split'>
+                <h2 class='text-theme-text text-2xl font-semibold uppercase py-4'>
+                  Graduados
+                </h2>
+              </div>
+              <Container>
+                <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-10'>
+                  {membersGraduated.map((member: any) => (
+                    <CartMembers {...member} />
+                  ))}
+                </div>
+              </Container>
+            </>
+          )
+        }
       </>
+    ) : (
+      <Container>
+        <p class='text-red-600 text-center text-base py-10'>
+          No se pudieron cargar los miembros. Intenta nuevamente más tarde.
+        </p>
+      </Container>
     )
   }
 </section>

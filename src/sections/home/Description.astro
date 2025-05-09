@@ -2,30 +2,51 @@
 import Container from '@share_components/Container.astro'
 import { getHomeHero } from '@lib/api/get-home-hero'
 
-const { title_hero, description_hero, image_hero } = await getHomeHero()
+let title_hero = ''
+let description_hero = ''
+let image_hero = ''
+let fetchError = false
+
+try {
+  const data = await getHomeHero()
+  title_hero = data.title_hero
+  description_hero = data.description_hero
+  image_hero = data.image_hero
+} catch (error) {
+  console.error('Error al obtener los datos del hero:', error)
+  fetchError = true
+}
 ---
 
 <Container styles='h-[54.9vh] flex py-10'>
   <div
-    class='grid grid-cols-3 gap-2 sm:gap-10 h-full w-full border-[1px] rounded-sm border-theme-decoration'
+    class='border-theme-decoration grid h-full w-full grid-cols-3 gap-2 rounded-sm border-[1px] sm:gap-10'
   >
-    <section
-      class='grid place-content-center col-span-3 sm:col-span-2 md:col-span-1 p-4 sm:pl-8'
-    >
-      <h2
-        class='text-xl sm:text-2xl md:text-3xl text-theme-title lg:text-4xl font-bold uppercase mb-2'
-      >
-        {title_hero}
-      </h2>
-      <p class='text-theme-text text-base lg:text-lg line-clamp-8 prose'>
-        {description_hero}
-      </p>
-    </section>
+    {
+      fetchError ? (
+        <section class='col-span-3 p-4 text-center text-red-600'>
+          <h2 class='text-theme-title text-xl font-bold'>
+            Error al cargar contenido
+          </h2>
+          <p>Por favor, intenta de nuevo más tarde.</p>
+        </section>
+      ) : (
+        <>
+          <section class='col-span-3 grid place-content-center p-4 sm:col-span-2 sm:pl-8 md:col-span-1'>
+            <h2 class='text-theme-title mb-2 text-xl font-bold uppercase sm:text-2xl md:text-3xl lg:text-4xl'>
+              {title_hero}
+            </h2>
+            <p class='text-theme-text prose line-clamp-8 text-base lg:text-lg'>
+              {description_hero}
+            </p>
+          </section>
 
-    <section
-      class='hidden sm:block sm:col-span-1 md:col-span-2 overflow-hidden bg-right bg-no-repeat bg-cover'
-      style={`background-image: url('${image_hero}')`}
-    >
-    </section>
+          <section
+            class='hidden overflow-hidden bg-cover bg-right bg-no-repeat sm:col-span-1 sm:block md:col-span-2'
+            style={`background-image: url('${image_hero}')`}
+          />
+        </>
+      )
+    }
   </div>
 </Container>

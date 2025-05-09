@@ -8,49 +8,62 @@ import CartPublication from '@components/home/CartPublication.astro'
 import { getHomePublicationCard } from '@lib/api/get-home-publications-card'
 import { parsePublications } from '@lib/parsePublications'
 
-const publications = await getHomePublicationCard()
+let newPublications: any[] = []
+let fetchError = false
 
-const newPublications = parsePublications(publications)
+try {
+  const publications = await getHomePublicationCard()
+  newPublications = parsePublications(publications)
+} catch (error) {
+  console.error('Error al obtener publicaciones:', error)
+  fetchError = true
+}
 ---
 
 <Container styles='py-10 grid gap-10'>
   <h2
-    class='text-theme-title text-2xl sm:text-4xl font-bold uppercase mb-2 text-center'
+    class='text-theme-title mb-2 text-center text-2xl font-bold uppercase sm:text-4xl'
   >
     Publicaciones
   </h2>
 
   <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>
     {
-      newPublications.map(({ publications }) =>
-        publications.map((publication: any) => (
-          <CartPublication {...publication} />
-        ))
+      fetchError ? (
+        <div class='col-span-full text-center text-red-600'>
+          <p class='text-lg font-medium'>
+            No se pudieron cargar las publicaciones. Intenta más tarde.
+          </p>
+        </div>
+      ) : (
+        <>
+          {newPublications.map(({ publications }) =>
+            publications.map((publication: any) => (
+              <CartPublication {...publication} />
+            ))
+          )}
+
+          <article class='text-theme-text grid grid-rows-2 gap-3 md:h-72'>
+            <section class='border-theme-decoration grid place-content-center rounded-sm border-1 p-3'>
+              <div class='flex items-center gap-2'>
+                <TimeArticle />
+                <h3 class='text-xl uppercase md:text-2xl lg:text-4xl'>
+                  Próximamente ...
+                </h3>
+              </div>
+            </section>
+
+            <section class='border-theme-decoration grid place-content-center rounded-sm border-1 p-3'>
+              <a href='/publications' class='flex items-center gap-2'>
+                <h3 class='text-xl uppercase md:text-2xl lg:text-4xl'>
+                  Ver más publicaciones
+                </h3>
+                <Arrow width={30} height={30} />
+              </a>
+            </section>
+          </article>
+        </>
       )
     }
-
-    <article class='grid grid-rows-2 gap-3 text-theme-text md:h-72'>
-      <section
-        class='border-1 rounded-sm border-theme-decoration p-3 grid place-content-center'
-      >
-        <div class='flex gap-2 items-center'>
-          <TimeArticle />
-          <h3 class='uppercase text-xl md:text-2xl lg:text-4xl'>
-            Próximamente ...
-          </h3>
-        </div>
-      </section>
-
-      <section
-        class='border-1 rounded-sm border-theme-decoration p-3 grid place-content-center'
-      >
-        <a href='/publications' class='flex gap-2 items-center'>
-          <h3 class='uppercase text-xl md:text-2xl lg:text-4xl'>
-            Ver más publicaciones
-          </h3>
-          <Arrow width={30} height={30} />
-        </a>
-      </section>
-    </article>
   </section>
 </Container>

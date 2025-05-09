@@ -6,7 +6,15 @@ import Arrow from '@assets/icons/arrow.svg'
 
 import { getHomeEventsCard } from '@lib/api/get-home-events-card'
 
-const events = await getHomeEventsCard()
+let events = []
+let fetchError = false
+
+try {
+  events = await getHomeEventsCard()
+} catch (error) {
+  console.error('Error al obtener los eventos:', error)
+  fetchError = true
+}
 ---
 
 <Container styles='py-10 grid gap-5'>
@@ -51,10 +59,20 @@ const events = await getHomeEventsCard()
 
     <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>
       {
-        events.map(({ title, info }: any) =>
-          info.map(({ image, slug }: any) => (
-            <CartEvent title={title} image={image} slug={slug} />
-          ))
+        fetchError ? (
+          <div class='col-span-full text-center text-red-600'>
+            <p class='text-lg font-medium'>
+              No se pudieron cargar los eventos. Intenta más tarde.
+            </p>
+          </div>
+        ) : (
+          <>
+            {events.map(({ title, info }: any) =>
+              info.map(({ image, slug }: any) => (
+                <CartEvent title={title} image={image} slug={slug} />
+              ))
+            )}
+          </>
         )
       }
     </section>

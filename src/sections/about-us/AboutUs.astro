@@ -3,23 +3,43 @@ import Logo_pixel from '@assets/icons/logo_pixel.svg'
 
 import { getAboutUsInfo } from '@lib/api/get-about-us-info'
 
-const { title_about_us, description_about_us } = await getAboutUsInfo()
+let title_about_us = 'Error al cargar'
+let description_about_us =
+  'No se pudo obtener la información. Por favor, intenta más tarde.'
+let fetchError = false
+
+try {
+  const data = await getAboutUsInfo()
+  title_about_us = data.title_about_us
+  description_about_us = data.description_about_us
+} catch (error) {
+  console.error('Error al obtener información de "Sobre Nosotros":', error)
+  fetchError = true
+}
 ---
 
-<div class='grid md:grid-cols-3 gap-4 py-10'>
+<div class='grid gap-4 py-10 md:grid-cols-3'>
   <section class='col-span-2 flex flex-col'>
-    <h2 class='text-theme-title text-2xl sm:text-4xl font-bold uppercase mb-2'>
+    <h2 class='text-theme-title mb-2 text-2xl font-bold uppercase sm:text-4xl'>
       {title_about_us}
     </h2>
 
-    <p class='text-theme-text text-xs sm:text-sm md:text-base'>
-      {description_about_us}
-    </p>
+    {
+      fetchError ? (
+        <p class='text-base text-red-600'>
+          No se pudieron cargar los datos. Intenta nuevamente más tarde.
+        </p>
+      ) : (
+        <p class='text-theme-text text-xs sm:text-sm md:text-base'>
+          {description_about_us}
+        </p>
+      )
+    }
   </section>
 
-  <section class='place-content-center text-theme-split hidden md:grid'>
+  <section class='text-theme-split hidden place-content-center md:grid'>
     <Logo_pixel
-      class='size-[40px] sm:size-[60px] md:size-[120px] lg:size-[150px] rotate-12'
+      class='size-[40px] rotate-12 sm:size-[60px] md:size-[120px] lg:size-[150px]'
     />
   </section>
 </div>
