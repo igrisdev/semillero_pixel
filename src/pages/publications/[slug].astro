@@ -8,6 +8,7 @@ import Arrow from '@assets/icons/arrow.svg'
 
 import { getPublicationBySlug } from '@lib/api/get-one-publication'
 import { getHomeEventsCard } from '@lib/api/get-home-events-card'
+import { getHomeProjects } from '@lib/api/get-home-projects'
 
 import ContentMarkdown from '@share_components/ContentMarkdown.astro'
 
@@ -22,7 +23,6 @@ try {
   if (!publication) return Astro.redirect('/404')
   content = publication?.content
 } catch (error) {
-  console.error('Error al obtener la publicación:', error)
   fetchError = true
 }
 
@@ -42,7 +42,22 @@ try {
     }
   }
 } catch (error) {
-  console.error('Error al obtener los eventos:', error)
+  fetchError = true
+}
+
+let projects: any[] = []
+
+try {
+  const newProjects: any[] = await getHomeProjects()
+
+  for (let i = 0; i < newProjects.length; i++) {
+    const project = newProjects[i]
+
+    if (project.slug === slug) {
+      projects.push(project.title)
+    }
+  }
+} catch (error) {
   fetchError = true
 }
 ---
@@ -100,18 +115,20 @@ try {
             <Split />
             <div>
               <div class='grid grid-cols-3'>
-                <section>
-                  <h3 class='mb-2 text-sm font-normal md:text-lg'>
-                    Trabajo realizado por :
-                  </h3>
-                  <ul>
-                    {publication?.work_done_bies.map(
-                      ({ name_member }: { name_member: string }) => (
-                        <li class='text-xs sm:text-sm'>{name_member}</li>
-                      )
-                    )}
-                  </ul>
-                </section>
+                {publication?.work_done_bies.length > 0 && (
+                  <section>
+                    <h3 class='mb-2 text-sm font-normal md:text-lg'>
+                      Trabajo realizado por :
+                    </h3>
+                    <ul>
+                      {publication?.work_done_bies.map(
+                        ({ name_member }: { name_member: string }) => (
+                          <li class='text-xs sm:text-sm'>{name_member}</li>
+                        )
+                      )}
+                    </ul>
+                  </section>
+                )}
 
                 {events.length > 0 && (
                   <section>
@@ -121,6 +138,19 @@ try {
                     <ul>
                       {events.map((event: any) => (
                         <li class='text-xs sm:text-sm'>{event}</li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+
+                {projects.length > 0 && (
+                  <section>
+                    <h3 class='mb-2 text-sm font-normal md:text-lg'>
+                      {projects.length > 1 ? 'Proyectos :' : 'Proyecto :'}
+                    </h3>
+                    <ul>
+                      {projects.map((project: any) => (
+                        <li class='text-xs sm:text-sm'>{project}</li>
                       ))}
                     </ul>
                   </section>
