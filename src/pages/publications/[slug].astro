@@ -7,6 +7,8 @@ import Calendar from '@assets/icons/calendar.svg'
 import Arrow from '@assets/icons/arrow.svg'
 
 import { getPublicationBySlug } from '@lib/api/get-one-publication'
+import { getHomeEventsCard } from '@lib/api/get-home-events-card'
+
 import ContentMarkdown from '@share_components/ContentMarkdown.astro'
 
 const { slug } = Astro.params
@@ -21,6 +23,26 @@ try {
   content = publication?.content
 } catch (error) {
   console.error('Error al obtener la publicación:', error)
+  fetchError = true
+}
+
+let events: any[] = []
+
+try {
+  const newEvents: any[] = await getHomeEventsCard()
+
+  for (let i = 0; i < newEvents.length; i++) {
+    const event = newEvents[i]
+
+    for (let ii = 0; ii < event.info.length; ii++) {
+      const info = event.info[ii]
+      if (info.slug === slug) {
+        events.push(event.title)
+      }
+    }
+  }
+} catch (error) {
+  console.error('Error al obtener los eventos:', error)
   fetchError = true
 }
 ---
@@ -77,7 +99,7 @@ try {
           <section class='text-theme-text m-auto grid w-full max-w-4xl gap-6 text-sm font-light md:text-lg'>
             <Split />
             <div>
-              <div class='grid grid-cols-2'>
+              <div class='grid grid-cols-3'>
                 <section>
                   <h3 class='mb-2 text-sm font-normal md:text-lg'>
                     Trabajo realizado por :
@@ -90,12 +112,19 @@ try {
                     )}
                   </ul>
                 </section>
-                <section>
-                  <h3 class='mb-2 text-sm font-normal md:text-lg'>Evento :</h3>
-                  <ul>
-                    <li class='text-xs sm:text-sm'>Semillero 2025</li>
-                  </ul>
-                </section>
+
+                {events.length > 0 && (
+                  <section>
+                    <h3 class='mb-2 text-sm font-normal md:text-lg'>
+                      {events.length > 1 ? 'Eventos :' : 'Evento :'}
+                    </h3>
+                    <ul>
+                      {events.map((event: any) => (
+                        <li class='text-xs sm:text-sm'>{event}</li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
               </div>
               <div class='mt-4 flex flex-wrap items-center gap-2'>
                 {publication?.types.map((type: any) => (
