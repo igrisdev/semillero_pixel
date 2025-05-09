@@ -11,7 +11,7 @@ export function getHomePublicationCard() {
       let authorName
 
       if (publication.publisher) {
-        image = `${STRAPI_HOST_IMG}${publication.publisher.image_member.url}`
+        image = `${STRAPI_HOST_IMG}${publication?.publisher?.image_member?.url}`
         authorName = publication.publisher.name_member
       } else {
         image = `/icons/image-not-found.svg`
