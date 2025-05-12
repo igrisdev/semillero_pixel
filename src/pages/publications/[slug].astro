@@ -54,12 +54,18 @@ try {
     const project = newProjects[i]
 
     if (project.slug === slug) {
-      projects.push(project.title)
+      console.log(project)
+      projects.push({
+        title: project.title,
+        content: project.content,
+      })
     }
   }
 } catch (error) {
   fetchError = true
 }
+
+console.log(projects)
 ---
 
 <Layout title={(publication?.title ?? slug) + ' - Publicación Pixel'}>
@@ -150,7 +156,7 @@ try {
                     </h3>
                     <ul>
                       {projects.map((project: any) => (
-                        <li class='text-xs sm:text-sm'>{project}</li>
+                        <li class='text-xs sm:text-sm'>{project.title}</li>
                       ))}
                     </ul>
                   </section>
@@ -170,9 +176,27 @@ try {
 
             <Split />
 
-            <div class='prose prose-sm sm:prose-lg lg:prose-xl prose-h1:text-theme-title prose-h2:text-theme-title prose-h3:text-theme-title prose-h4:text-theme-title prose-h5:text-theme-title prose-h6:text-theme-title text-theme-text w-full'>
-              <ContentMarkdown markdown={content} />
-            </div>
+            <ContentMarkdown markdown={content} />
+
+            <Split />
+
+            {projects.length > 0 && (
+              <section>
+                <h3 class='mb-2 text-lg font-semibold md:text-xl'>
+                  {projects.length > 1 ? 'Proyectos' : 'Proyecto'}
+                </h3>
+
+                {projects.map((project: any) => (
+                  <div>
+                    <h2 class='pt-4 pb-2 text-lg font-semibold sm:text-xl'>
+                      {project.title}
+                    </h2>
+
+                    <ContentMarkdown markdown={project.content} />
+                  </div>
+                ))}
+              </section>
+            )}
           </section>
         </>
       )
