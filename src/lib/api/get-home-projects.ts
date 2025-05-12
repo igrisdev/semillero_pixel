@@ -27,6 +27,7 @@ export function getHomeProjects() {
         image: image_project,
         link_github: project.link_github,
         slug: project?.publication?.slug,
+        id: project.slug,
         description: project.description_project,
         technologies: technologies,
         content: project.article_content_project,
