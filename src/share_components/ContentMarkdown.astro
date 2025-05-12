@@ -4,4 +4,8 @@ import { Markdown } from 'astro-remote'
 const { markdown } = Astro.props
 ---
 
-<Markdown content={markdown} />
+<div
+  class='prose prose-sm sm:prose-lg lg:prose-xl prose-h1:text-theme-title prose-h2:text-theme-title prose-h3:text-theme-title prose-h4:text-theme-title prose-h5:text-theme-title prose-h6:text-theme-title text-theme-text w-full'
+>
+  <Markdown content={markdown} />
+</div>
