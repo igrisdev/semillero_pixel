@@ -54,9 +54,9 @@ try {
     const project = newProjects[i]
 
     if (project.slug === slug) {
-      console.log(project)
       projects.push({
         title: project.title,
+        slug: project.id,
         content: project.content,
       })
     }
@@ -64,8 +64,6 @@ try {
 } catch (error) {
   fetchError = true
 }
-
-console.log(projects)
 ---
 
 <Layout title={(publication?.title ?? slug) + ' - Publicación Pixel'}>
@@ -156,7 +154,9 @@ console.log(projects)
                     </h3>
                     <ul>
                       {projects.map((project: any) => (
-                        <li class='text-xs sm:text-sm'>{project.title}</li>
+                        <li class='text-xs sm:text-sm'>
+                          <a href={`#${project.slug}`}>{project.title}</a>
+                        </li>
                       ))}
                     </ul>
                   </section>
@@ -188,7 +188,10 @@ console.log(projects)
 
                 {projects.map((project: any) => (
                   <div>
-                    <h2 class='pt-4 pb-2 text-lg font-semibold sm:text-xl'>
+                    <h2
+                      id={project.slug}
+                      class='pt-4 pb-2 text-lg font-semibold sm:text-xl'
+                    >
                       {project.title}
                     </h2>
 
