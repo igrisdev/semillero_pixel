@@ -9,6 +9,7 @@ const {
   description,
   technologies,
   slug,
+  id,
   // content,
   // author,
   // developers,
@@ -26,7 +27,7 @@ const {
 
     <main class='flex flex-1 flex-col overflow-hidden p-4'>
       <section class='flex items-center justify-between gap-2'>
-        <a href={`/publications/${slug}`} class='w-max truncate'>
+        <a href={`/publications/${slug}#${id}`} class='w-max truncate'>
           <h2 class='text-theme-title text-xl font-medium'>{title}</h2>
         </a>
 
@@ -55,7 +56,7 @@ const {
       </section>
 
       <a
-        href={`/publications/${slug}`}
+        href={`/publications/${slug}#${id}`}
         class='text-theme-text flex items-center gap-2 text-xs'
       >
         Leer más
