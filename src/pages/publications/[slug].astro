@@ -152,9 +152,9 @@ try {
                     <h3 class='mb-2 text-sm font-semibold md:text-lg'>
                       {projects.length > 1 ? 'Proyectos :' : 'Proyecto :'}
                     </h3>
-                    <ul>
+                    <ul class='flex list-inside list-disc flex-col gap-3'>
                       {projects.map((project: any) => (
-                        <li class='text-xs sm:text-sm'>
+                        <li class='hover:text-theme-decoration text-xs sm:text-sm'>
                           <a href={`#${project.slug}`}>{project.title}</a>
                         </li>
                       ))}
