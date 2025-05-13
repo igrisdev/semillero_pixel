@@ -53,9 +53,9 @@ try {
           </p>
         </div>
       ) : (
-        <div class='grid gap-10'>
+        <div class='grid gap-5'>
           <section class='flex flex-wrap items-center justify-between gap-4'>
-            <div class='text-theme-text flex flex-wrap gap-2'>
+            <div class='text-theme-text flex flex-wrap items-center gap-2'>
               <button
                 data-btn-filter-type='all'
                 class='bg-theme-decoration/20 border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'
@@ -84,6 +84,12 @@ try {
               </button>
             </div>
           </section>
+
+          <div class='bg-theme-decoration/20 text-theme-title block w-max rounded-full px-6 py-0.5 text-sm'>
+            <p>
+              Total: <span id='total-publications'> </span>
+            </p>
+          </div>
 
           <section class='to-years grid grid-cols-1 gap-5 md:grid-cols-2'>
             {newPublications.map(({ publications }) =>
@@ -162,8 +168,16 @@ try {
   const btnFilterType = document.querySelectorAll('[data-btn-filter-type]')
   const filterTypes = document.querySelectorAll('[data-filter-types]')
 
+  let totalPublications = 0
+  totalPublications = filterTypes.length / 2
+
+  const totalPublicationsElement = document.querySelector('#total-publications')
+
   function removeAllFilter() {
     filterTypes.forEach(el => el.classList.remove('hidden'))
+
+    totalPublications = filterTypes.length / 2
+    updateTotalPublications()
   }
 
   function selectBtnFilterType(type: string) {
@@ -177,14 +191,19 @@ try {
   }
 
   function handleFilterType(type: string) {
+    totalPublications = 0
+
     filterTypes.forEach((el: any) => {
       const name: string[] = el.dataset.filterTypes.split(',')
 
       if (name.includes(type)) {
         el.classList.remove('hidden')
+        totalPublications += 1 / 2
       } else {
         el.classList.add('hidden')
       }
+
+      updateTotalPublications()
     })
   }
 
@@ -204,6 +223,12 @@ try {
       })
     )
   }
+
+  function updateTotalPublications() {
+    totalPublicationsElement!.innerHTML = totalPublications.toString()
+  }
+
+  updateTotalPublications()
 
   init()
 </script>
