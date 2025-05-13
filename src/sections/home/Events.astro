@@ -12,7 +12,6 @@ let fetchError = false
 try {
   events = await getHomeEventsCard()
 } catch (error) {
-  console.error('Error al obtener los eventos:', error)
   fetchError = true
 }
 ---

@@ -12,7 +12,6 @@ try {
   MEMBERS = await getAboutUsMembers()
   membersGraduated = MEMBERS.filter(({ rol }: { rol: string }) => rol === 'Egresado')
 } catch (error) {
-  console.error('Error al obtener miembros:', error)
   fetchError = true
 }
 ---
