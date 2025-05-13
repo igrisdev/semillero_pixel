@@ -6,13 +6,13 @@ import Calendar from '@assets/icons/calendar.svg'
 const { title, author, date, description, image_author, slug, types } =
   Astro.props
 
-console.log(types)
-
 const link = `publications/${slug}`
+const filterTypes = types.map((type: any) => type.title).join(',')
 ---
 
 <article
   class='border-theme-decoration flex h-72 flex-col gap-3 rounded-sm border-[1px] p-3'
+  data-filter-types={filterTypes}
 >
   <div class='flex items-center gap-1 sm:gap-4'>
     <Articles

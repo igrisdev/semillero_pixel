@@ -11,7 +11,10 @@ export function parsePublications(publications: any[]) {
     }
 
     const formattedDate = parseDate(publication.date)
-    const formattedTypes = publication.types.map((type: any) => type.title)
+    const formattedTypes = publication.types.map((type: any) => ({
+      title: type.title,
+      color_type: type.color_type,
+    }))
 
     publicationsByYear[year].push({
       title: publication.title,
