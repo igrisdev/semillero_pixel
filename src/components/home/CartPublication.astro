@@ -10,37 +10,37 @@ const link = `publications/${slug}`
 ---
 
 <article
-  class='border-[1px] rounded-sm border-theme-decoration p-3 flex flex-col gap-3 h-72'
+  class='border-theme-decoration flex h-72 flex-col gap-3 rounded-sm border-[1px] p-3'
 >
-  <div class='flex gap-1 sm:gap-4 items-center'>
+  <div class='flex items-center gap-1 sm:gap-4'>
     <Articles
-      class='min-w-[40px] min-h-[40px] sm:min-w-[50px] sm:min-h-[50px]'
+      class='min-h-[40px] min-w-[40px] sm:min-h-[50px] sm:min-w-[50px]'
     />
 
     <a href={link}>
       <h3
-        class='text-theme-title line-clamp-2 uppercase font-semibold text-base sm:text-lg md:text-xl'
+        class='text-theme-title line-clamp-2 text-base font-semibold uppercase sm:text-lg md:text-xl'
       >
         {title}
       </h3>
     </a>
   </div>
 
-  <div class='flex gap-2 items-center flex-wrap text-theme-text'>
+  <div class='text-theme-text flex flex-wrap items-center gap-2'>
     <div
-      class='flex items-center border-[1px] border-theme-decoration gap-2 text-[10px] sm:text-xs bg-theme-decoration/10 w-max px-4 py-1 rounded-sm'
+      class='border-theme-decoration bg-theme-decoration/10 flex w-max items-center gap-2 rounded-sm border-[1px] px-4 py-1 text-[10px] sm:text-xs'
     >
-      <div class='size-3 sm:size-4 bg-theme-decoration/5 overflow-hidden'>
+      <div class='bg-theme-decoration/5 size-3 overflow-hidden sm:size-4'>
         <img
           src={image_author}
           alt={author}
-          class='w-full h-full object-cover'
+          class='h-full w-full object-cover'
         />
       </div>
       <span>{author}</span>
     </div>
     <div
-      class='flex items-center border-[1px] border-theme-decoration gap-2 text-[10px] sm:text-xs bg-theme-decoration/10 w-max px-4 py-1 rounded-sm'
+      class='border-theme-decoration bg-theme-decoration/10 flex w-max items-center gap-2 rounded-sm border-[1px] px-4 py-1 text-[10px] sm:text-xs'
     >
       <Calendar />
       <span>{date}</span>
@@ -48,7 +48,7 @@ const link = `publications/${slug}`
     {
       types.map((type: any) => (
         <div
-          class='flex items-center border-[1px] border-theme-decoration gap-2 text-[10px] sm:text-xs w-max px-4 py-1 rounded-sm'
+          class='border-theme-decoration flex w-max items-center gap-2 rounded-sm border-[1px] px-4 py-1 text-[10px] sm:text-xs'
           style={`background-color: color-mix(in oklab, ${type.color_type} 10%, transparent);`}
         >
           <span>{type.title}</span>
@@ -58,12 +58,12 @@ const link = `publications/${slug}`
   </div>
 
   <div
-    class='flex-1 font-light text-xs [&>*]:mb-2 text-theme-text h-full overflow-y-auto text-ellipsis'
+    class='text-theme-text h-full flex-1 overflow-y-auto text-xs font-light text-ellipsis [&>*]:mb-2'
   >
     {description}
   </div>
 
-  <a href={link} class='text-xs text-theme-text flex gap-1 items-center w-max'>
+  <a href={link} class='text-theme-text flex w-max items-center gap-1 text-xs'>
     Continuar leyendo <Arrow />
   </a>
 </article>
