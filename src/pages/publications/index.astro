@@ -25,12 +25,15 @@ try {
     publications.forEach((publication: any) => {
       const { types } = publication
       types.forEach((type: any) => {
-        filterPublications.add(type.title)
+        filterPublications.add(type)
       })
     })
   })
 
   types = Array.from(filterPublications)
+
+  console.log(types)
+  console.log(newPublications)
 } catch (error) {
   fetchError = true
 }
