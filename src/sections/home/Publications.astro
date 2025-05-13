@@ -37,9 +37,9 @@ try {
       ) : (
         <>
           {newPublications.map(({ publications }) =>
-            publications.map((publication: any) => (
-              <CartPublication {...publication} />
-            ))
+            publications
+              .slice(0, 5)
+              .map((publication: any) => <CartPublication {...publication} />)
           )}
 
           <article class='text-theme-text grid grid-rows-2 gap-3 md:h-72'>

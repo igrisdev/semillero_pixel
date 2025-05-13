@@ -6,7 +6,7 @@ import Arrow from '@assets/icons/arrow.svg'
 
 import { getHomeEventsCard } from '@lib/api/get-home-events-card'
 
-let events = []
+let events: any[] = []
 let fetchError = false
 
 try {
@@ -67,9 +67,11 @@ try {
         ) : (
           <>
             {events.map(({ title, info }: any) =>
-              info.map(({ image, slug }: any) => (
-                <CartEvent title={title} image={image} slug={slug} />
-              ))
+              info
+                .slice(0, 9)
+                .map(({ image, slug }: any) => (
+                  <CartEvent title={title} image={image} slug={slug} />
+                ))
             )}
           </>
         )
