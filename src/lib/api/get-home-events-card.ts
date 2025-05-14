@@ -7,7 +7,7 @@ export function getHomeEventsCard() {
     'events?populate=picture_event.images_event&populate=picture_event.publication'
   ).then((res) => {
     const events = res.data.map((event: any) => {
-      const events = event.picture_event.map((info: any) => {
+      const newEvent = event.picture_event.map((info: any) => {
         const image_link = `${STRAPI_HOST_IMG}${info.images_event[0].url}`
         const publication = info.publication.slug
 
@@ -17,9 +17,12 @@ export function getHomeEventsCard() {
         }
       })
 
+      const year = new Date(event.date_start).getFullYear()
+
       return {
+        year,
         title: event.title_event,
-        info: events,
+        infoEvent: newEvent,
       }
     })
 
