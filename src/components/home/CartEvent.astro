@@ -1,8 +1,11 @@
 ---
-const { image, title, slug } = Astro.props
+const { year, image, title, slug } = Astro.props
 ---
 
-<article class='bg-theme-decoration/10 group relative h-72 overflow-hidden'>
+<article
+  data-filter-event={year}
+  class='bg-theme-decoration/10 group relative h-72 overflow-hidden'
+>
   <img src={image} alt={title} class='h-full w-full object-cover select-none' />
 
   <a
