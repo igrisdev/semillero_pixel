@@ -7,10 +7,19 @@ import Arrow from '@assets/icons/arrow.svg'
 import { getHomeEventsCard } from '@lib/api/get-home-events-card'
 
 let events: any[] = []
+let filters: string[] = []
 let fetchError = false
 
 try {
   events = await getHomeEventsCard()
+
+  const filtersEvents: Set<string> = new Set()
+
+  events.forEach(({ year }) => {
+    filtersEvents.add(year)
+  })
+
+  filters = Array.from(filtersEvents)
 } catch (error) {
   fetchError = true
 }
@@ -27,25 +36,21 @@ try {
     <section class='grid flex-wrap place-content-center gap-4'>
       <div class='text-theme-text flex flex-wrap gap-4'>
         <button
-          class='bg-theme-decoration/10 border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'
+          data-btn-filter-event='all'
+          class='bg-theme-decoration/20 border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'
         >
           Todos
         </button>
-        <button
-          class='border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'
-        >
-          2025
-        </button>
-        <button
-          class='border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'
-        >
-          2024
-        </button>
-        <button
-          class='border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'
-        >
-          2023
-        </button>
+        {
+          filters.map((year: string) => (
+            <button
+              data-btn-filter-event={year}
+              class='border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'
+            >
+              {year}
+            </button>
+          ))
+        }
         <a
           href='#'
           class='border-theme-decoration flex cursor-pointer items-center gap-2 border-1 px-4 py-1 text-sm'
@@ -66,11 +71,16 @@ try {
           </div>
         ) : (
           <>
-            {events.map(({ title, info }: any) =>
-              info
+            {events.map(({ year, title, infoEvent }: any) =>
+              infoEvent
                 .slice(0, 9)
                 .map(({ image, slug }: any) => (
-                  <CartEvent title={title} image={image} slug={slug} />
+                  <CartEvent
+                    title={title}
+                    image={image}
+                    slug={slug}
+                    year={year}
+                  />
                 ))
             )}
           </>
@@ -79,3 +89,56 @@ try {
     </section>
   </div>
 </Container>
+
+<!-- Filter by year -->
+<script>
+  const styleBtnSelected = 'bg-theme-decoration/20'
+
+  const btnFilterType = document.querySelectorAll('[data-btn-filter-event]')
+  const filterTypes = document.querySelectorAll('[data-filter-event]')
+
+  function removeAllFilter() {
+    filterTypes.forEach(el => el.classList.remove('hidden'))
+  }
+
+  function selectBtnFilterType(type: string) {
+    btnFilterType.forEach((el: any) => {
+      if (el.dataset.btnFilterEvent === type) {
+        el.classList.add(styleBtnSelected)
+      } else {
+        el.classList.remove(styleBtnSelected)
+      }
+    })
+  }
+
+  function handleFilterType(type: string) {
+    filterTypes.forEach((el: any) => {
+      const name: string[] = el.dataset.filterEvent.split(',')
+
+      if (name.includes(type)) {
+        el.classList.remove('hidden')
+      } else {
+        el.classList.add('hidden')
+      }
+    })
+  }
+
+  function init() {
+    btnFilterType.forEach(button =>
+      button.addEventListener('click', (e: any) => {
+        const filter = e.currentTarget.dataset.btnFilterEvent
+
+        selectBtnFilterType(filter)
+
+        if (filter === 'all') {
+          removeAllFilter()
+          return
+        }
+
+        handleFilterType(filter)
+      })
+    )
+  }
+
+  init()
+</script>
