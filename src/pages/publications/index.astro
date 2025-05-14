@@ -11,7 +11,7 @@ import { getHomePublicationCard } from '@lib/api/get-home-publications-card'
 import { parsePublications } from '@lib/parsePublications'
 
 let newPublications: any[] = []
-let types: string[] = []
+let filters: string[] = []
 let fetchError = false
 const isYear = new Date().getFullYear()
 
@@ -30,7 +30,7 @@ try {
     })
   })
 
-  types = Array.from(filterPublications)
+  filters = Array.from(filterPublications)
 } catch (error) {
   fetchError = true
 }
@@ -63,7 +63,7 @@ try {
                 Todos
               </button>
 
-              {types.map((type: any) => (
+              {filters.map((type: any) => (
                 <button
                   data-btn-filter-type={type}
                   class='border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'
