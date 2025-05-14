@@ -31,11 +31,13 @@ let events: any[] = []
 try {
   const newEvents: any[] = await getHomeEventsCard()
 
+  console.log('newEvents length', newEvents.length)
+
   for (let i = 0; i < newEvents.length; i++) {
     const event = newEvents[i]
 
-    for (let ii = 0; ii < event.info.length; ii++) {
-      const info = event.info[ii]
+    for (let ii = 0; ii < event.infoEvent.length; ii++) {
+      const info = event.infoEvent[ii]
       if (info.slug === slug) {
         events.push(event.title)
       }
@@ -44,6 +46,8 @@ try {
 } catch (error) {
   fetchError = true
 }
+
+console.log('events error', fetchError)
 
 let projects: any[] = []
 
@@ -64,6 +68,8 @@ try {
 } catch (error) {
   fetchError = true
 }
+
+console.log('projects error', fetchError)
 ---
 
 <Layout title={(publication?.title ?? slug) + ' - Publicación Pixel'}>
