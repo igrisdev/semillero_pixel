@@ -25,15 +25,42 @@ try {
 }
 ---
 
-<Container styles='py-10 grid gap-5'>
+<Container styles='py-10 grid gap-5 '>
   <h2
-    class='text-theme-title mb-2 text-center text-2xl font-bold uppercase sm:text-4xl'
+    class='text-theme-title mb-5 text-center text-2xl font-bold uppercase sm:text-4xl'
   >
     Eventos
   </h2>
 
-  <div class='grid gap-10'>
-    <section class='grid flex-wrap place-content-center gap-4'>
+  <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>
+    {
+      fetchError ? (
+        <div class='col-span-full text-center text-red-600'>
+          <p class='text-lg font-medium'>
+            No se pudieron cargar los eventos. Intenta más tarde.
+          </p>
+        </div>
+      ) : (
+        <>
+          {events.map(({ year, title, infoEvent }: any) =>
+            infoEvent
+              .slice(0, 9)
+              .map(({ image, slug }: any) => (
+                <CartEvent
+                  title={title}
+                  image={image}
+                  slug={slug}
+                  year={year}
+                />
+              ))
+          )}
+        </>
+      )
+    }
+  </section>
+</Container>
+
+<!-- <section class='grid flex-wrap place-content-center gap-4'>
       <div class='text-theme-text flex flex-wrap gap-4'>
         <button
           data-btn-filter-event='all'
@@ -59,39 +86,10 @@ try {
           <Arrow />
         </a>
       </div>
-    </section>
-
-    <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>
-      {
-        fetchError ? (
-          <div class='col-span-full text-center text-red-600'>
-            <p class='text-lg font-medium'>
-              No se pudieron cargar los eventos. Intenta más tarde.
-            </p>
-          </div>
-        ) : (
-          <>
-            {events.map(({ year, title, infoEvent }: any) =>
-              infoEvent
-                .slice(0, 9)
-                .map(({ image, slug }: any) => (
-                  <CartEvent
-                    title={title}
-                    image={image}
-                    slug={slug}
-                    year={year}
-                  />
-                ))
-            )}
-          </>
-        )
-      }
-    </section>
-  </div>
-</Container>
+    </section> -->
 
 <!-- Filter by year -->
-<script>
+<!-- <script>
   const styleBtnSelected = 'bg-theme-decoration/20'
 
   const btnFilterType = document.querySelectorAll('[data-btn-filter-event]')
@@ -141,4 +139,4 @@ try {
   }
 
   init()
-</script>
+</script> -->
