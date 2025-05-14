@@ -123,6 +123,7 @@ try {
   </Container>
 </Layout>
 
+<!-- Ver por linea de tiempo o grid -->
 <script is:inline>
   const btnToggleViewArticles = document.querySelector(
     '#btn-toggle-view-publications'
@@ -169,14 +170,15 @@ try {
   const filterTypes = document.querySelectorAll('[data-filter-types]')
 
   let totalPublications = 0
-  totalPublications = filterTypes.length / 2
+  const lengthPublications = filterTypes.length / 2
+  totalPublications = lengthPublications
 
   const totalPublicationsElement = document.querySelector('#total-publications')
 
   function removeAllFilter() {
     filterTypes.forEach(el => el.classList.remove('hidden'))
 
-    totalPublications = filterTypes.length / 2
+    totalPublications = lengthPublications
     updateTotalPublications()
   }
 
