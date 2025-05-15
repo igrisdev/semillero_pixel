@@ -86,7 +86,7 @@ try {
             </p>
           </div>
 
-          <section class='to-years grid grid-cols-1 gap-5 md:grid-cols-2'>
+          <section class='to-years grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3'>
             {newProjects.map(({ year, projects }) =>
               projects.map((project: any) => (
                 <CartProject year={year} {...project} />
