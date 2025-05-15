@@ -13,7 +13,6 @@ import CartProject from '@components/home/CartProject.astro'
 let newProjects: any[] = []
 let filters: string[] = []
 let fetchError = false
-const isYear = new Date().getFullYear()
 
 try {
   const projects: any[] = await getHomeProjects()

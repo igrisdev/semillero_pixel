@@ -13,7 +13,6 @@ import { parsePublications } from '@lib/parsePublications'
 let newPublications: any[] = []
 let filters: string[] = []
 let fetchError = false
-const isYear = new Date().getFullYear()
 
 try {
   const publications: any[] = await getHomePublicationCard()
