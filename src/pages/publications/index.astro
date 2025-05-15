@@ -103,9 +103,7 @@ try {
             {newPublications.map(({ year, publications }) => (
               <div class='flex flex-col gap-2'>
                 <header class='relative'>
-                  <span class='text-theme-title text-sm'>
-                    {isYear.toString() === year ? 'Ahora' : year}
-                  </span>
+                  <span class='text-theme-title text-sm'>{year}</span>
                   <div class='bg-theme-decoration absolute top-[7px] -left-[23px] size-3 rounded-full' />
                 </header>
 
