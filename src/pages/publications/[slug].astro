@@ -31,8 +31,6 @@ let events: any[] = []
 try {
   const newEvents: any[] = await getHomeEventsCard()
 
-  console.log('newEvents length', newEvents.length)
-
   for (let i = 0; i < newEvents.length; i++) {
     const event = newEvents[i]
 
@@ -46,8 +44,6 @@ try {
 } catch (error) {
   fetchError = true
 }
-
-console.log('events error', fetchError)
 
 let projects: any[] = []
 
@@ -68,8 +64,6 @@ try {
 } catch (error) {
   fetchError = true
 }
-
-console.log('projects error', fetchError)
 ---
 
 <Layout title={(publication?.title ?? slug) + ' - Publicación Pixel'}>
