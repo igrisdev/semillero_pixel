@@ -96,7 +96,7 @@ try {
 
           <section class='time-line border-theme-split grid gap-4 border-l-2 pl-4'>
             {newProjects.map(({ year, projects }) => (
-              <div class='flex flex-col gap-2'>
+              <div data-year={year} class='flex flex-col gap-2'>
                 <header class='relative'>
                   <span class='text-theme-title text-sm'>
                     {isYear.toString() === year ? 'Ahora' : year}
