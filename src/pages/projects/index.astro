@@ -1,0 +1,229 @@
+---
+import Container from '@share_components/Container.astro'
+import Layout from '@layouts/Layout.astro'
+import Split from '@share_components/Split.astro'
+
+import Row from '@assets/icons/row.svg'
+import Grid from '@assets/icons/grid.svg'
+
+import { getHomeProjects } from '@lib/api/get-home-projects'
+import { parseProjects } from '@lib/parseProjects'
+import CartProject from '@components/home/CartProject.astro'
+
+let newProjects: any[] = []
+let filters: string[] = []
+let fetchError = false
+const isYear = new Date().getFullYear()
+
+try {
+  const projects: any[] = await getHomeProjects()
+  newProjects = parseProjects(projects)
+
+  const filterProjects: Set<string> = new Set()
+
+  newProjects.forEach(({ year }) => {
+    filterProjects.add(year)
+  })
+
+  filters = Array.from(filterProjects)
+} catch (error) {
+  fetchError = true
+}
+---
+
+<Layout title='Artículos'>
+  <Split />
+  <Container styles='py-10 grid gap-10'>
+    <h2
+      class='text-theme-title mb-2 text-center text-2xl font-bold uppercase sm:text-4xl'
+    >
+      Proyectos
+    </h2>
+
+    {
+      fetchError ? (
+        <div class='text-center text-red-600'>
+          <p class='text-lg font-medium'>
+            No se pudieron cargar los proyectos. Intenta más tarde.
+          </p>
+        </div>
+      ) : (
+        <div class='grid gap-5'>
+          <section class='flex flex-wrap items-center justify-between gap-4'>
+            <div class='text-theme-text flex flex-wrap items-center gap-2'>
+              <button
+                data-btn-filter-type='all'
+                class='bg-theme-decoration/20 border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'
+              >
+                Todos
+              </button>
+
+              {filters.map((type: any) => (
+                <button
+                  data-btn-filter-type={type}
+                  class='border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'
+                >
+                  {type}
+                </button>
+              ))}
+            </div>
+
+            <div>
+              <button
+                id='btn-toggle-view-projects'
+                class='text-theme-text grid size-7 cursor-pointer place-content-center'
+                data-state='time-line'
+              >
+                <Grid class='to-years h-full w-full' />
+                <Row class='time-line h-full w-full' />
+              </button>
+            </div>
+          </section>
+
+          <div class='bg-theme-decoration/20 text-theme-title block w-max rounded-full px-6 py-0.5 text-sm'>
+            <p>
+              Total: <span id='total-projects'> </span>
+            </p>
+          </div>
+
+          <section class='to-years grid grid-cols-1 gap-5 md:grid-cols-2'>
+            {newProjects.map(({ projects }) =>
+              projects.map((project: any) => <CartProject {...project} />)
+            )}
+          </section>
+
+          <section class='time-line border-theme-split grid gap-4 border-l-2 pl-4'>
+            {newProjects.map(({ year, projects }) => (
+              <div class='flex flex-col gap-2'>
+                <header class='relative'>
+                  <span class='text-theme-title text-sm'>
+                    {isYear.toString() === year ? 'Ahora' : year}
+                  </span>
+                  <div class='bg-theme-decoration absolute top-[7px] -left-[23px] size-3 rounded-full' />
+                </header>
+
+                <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>
+                  {projects.map((project: any) => (
+                    <CartProject {...project} />
+                  ))}
+                </section>
+              </div>
+            ))}
+          </section>
+        </div>
+      )
+    }
+  </Container>
+</Layout>
+
+<!-- Ver por linea de tiempo o grid -->
+<script is:inline>
+  const btnToggleViewArticles = document.querySelector(
+    '#btn-toggle-view-projects'
+  )
+
+  const toYears = document.querySelectorAll('.to-years')
+  const timeLine = document.querySelectorAll('.time-line')
+
+  if (btnToggleViewArticles.dataset.state === 'to-years') {
+    handleTimeLine()
+  } else {
+    handleToYear()
+  }
+
+  btnToggleViewArticles.addEventListener('click', e => {
+    const type = e.currentTarget.dataset.state
+
+    if (type === 'to-years') {
+      handleToYear()
+    } else {
+      handleTimeLine()
+    }
+
+    const newType = type === 'to-years' ? 'time-line' : 'to-years'
+    btnToggleViewArticles.setAttribute('data-state', newType)
+  })
+
+  function handleToYear() {
+    toYears.forEach(el => el.classList.remove('hidden'))
+    timeLine.forEach(el => el.classList.add('hidden'))
+  }
+
+  function handleTimeLine() {
+    toYears.forEach(el => el.classList.add('hidden'))
+    timeLine.forEach(el => el.classList.remove('hidden'))
+  }
+</script>
+
+<!-- Filter by type -->
+<script>
+  const styleBtnSelected = 'bg-theme-decoration/20'
+
+  const btnFilterType = document.querySelectorAll('[data-btn-filter-type]')
+  const filterTypes = document.querySelectorAll('[data-filter-types]')
+
+  let totalPublications = 0
+  const lengthPublications = filterTypes.length / 2
+  totalPublications = lengthPublications
+
+  const totalPublicationsElement = document.querySelector('#total-projects')
+
+  function removeAllFilter() {
+    filterTypes.forEach(el => el.classList.remove('hidden'))
+
+    totalPublications = lengthPublications
+    updateTotalPublications()
+  }
+
+  function selectBtnFilterType(type: string) {
+    btnFilterType.forEach((el: any) => {
+      if (el.dataset.btnFilterType === type) {
+        el.classList.add(styleBtnSelected)
+      } else {
+        el.classList.remove(styleBtnSelected)
+      }
+    })
+  }
+
+  function handleFilterType(type: string) {
+    totalPublications = 0
+
+    filterTypes.forEach((el: any) => {
+      const name: string[] = el.dataset.filterTypes.split(',')
+
+      if (name.includes(type)) {
+        el.classList.remove('hidden')
+        totalPublications += 1 / 2
+      } else {
+        el.classList.add('hidden')
+      }
+
+      updateTotalPublications()
+    })
+  }
+
+  function init() {
+    btnFilterType.forEach(button =>
+      button.addEventListener('click', (e: any) => {
+        const filter = e.currentTarget.dataset.btnFilterType
+
+        selectBtnFilterType(filter)
+
+        if (filter === 'all') {
+          removeAllFilter()
+          return
+        }
+
+        handleFilterType(filter)
+      })
+    )
+  }
+
+  function updateTotalPublications() {
+    totalPublicationsElement!.innerHTML = totalPublications.toString()
+  }
+
+  updateTotalPublications()
+
+  init()
+</script>
