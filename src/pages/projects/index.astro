@@ -26,6 +26,9 @@ try {
   })
 
   filters = Array.from(filterProjects)
+
+  console.log('filters', filters)
+  console.log('newProjects', newProjects)
 } catch (error) {
   fetchError = true
 }
@@ -52,7 +55,7 @@ try {
           <section class='flex flex-wrap items-center justify-between gap-4'>
             <div class='text-theme-text flex flex-wrap items-center gap-2'>
               <button
-                data-btn-filter-type='all'
+                data-btn-filter-year='all'
                 class='bg-theme-decoration/20 border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'
               >
                 Todos
@@ -60,7 +63,7 @@ try {
 
               {filters.map((type: any) => (
                 <button
-                  data-btn-filter-type={type}
+                  data-btn-filter-year={type}
                   class='border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'
                 >
                   {type}
@@ -87,8 +90,10 @@ try {
           </div>
 
           <section class='to-years grid grid-cols-1 gap-5 md:grid-cols-2'>
-            {newProjects.map(({ projects }) =>
-              projects.map((project: any) => <CartProject {...project} />)
+            {newProjects.map(({ year, projects }) =>
+              projects.map((project: any) => (
+                <CartProject year={year} {...project} />
+              ))
             )}
           </section>
 
@@ -104,7 +109,7 @@ try {
 
                 <section class='grid grid-cols-1 gap-5 md:grid-cols-2'>
                   {projects.map((project: any) => (
-                    <CartProject {...project} />
+                    <CartProject year={year} {...project} />
                   ))}
                 </section>
               </div>
@@ -159,25 +164,25 @@ try {
 <script>
   const styleBtnSelected = 'bg-theme-decoration/20'
 
-  const btnFilterType = document.querySelectorAll('[data-btn-filter-type]')
-  const filterTypes = document.querySelectorAll('[data-filter-types]')
+  const btnFilterYear = document.querySelectorAll('[data-btn-filter-year]')
+  const filterYears = document.querySelectorAll('[data-filter-years]')
 
-  let totalPublications = 0
-  const lengthPublications = filterTypes.length / 2
-  totalPublications = lengthPublications
+  let totalProjects = 0
+  const lengthProjects = filterYears.length / 2
+  totalProjects = lengthProjects
 
-  const totalPublicationsElement = document.querySelector('#total-projects')
+  const totalProjectsElement = document.querySelector('#total-projects')
 
   function removeAllFilter() {
-    filterTypes.forEach(el => el.classList.remove('hidden'))
+    filterYears.forEach(el => el.classList.remove('hidden'))
 
-    totalPublications = lengthPublications
-    updateTotalPublications()
+    totalProjects = lengthProjects
+    updateTotalProjects()
   }
 
   function selectBtnFilterType(type: string) {
-    btnFilterType.forEach((el: any) => {
-      if (el.dataset.btnFilterType === type) {
+    btnFilterYear.forEach((el: any) => {
+      if (el.dataset.btnFilterYear === type) {
         el.classList.add(styleBtnSelected)
       } else {
         el.classList.remove(styleBtnSelected)
@@ -186,26 +191,26 @@ try {
   }
 
   function handleFilterType(type: string) {
-    totalPublications = 0
+    totalProjects = 0
 
-    filterTypes.forEach((el: any) => {
-      const name: string[] = el.dataset.filterTypes.split(',')
+    filterYears.forEach((el: any) => {
+      const name: string[] = el.dataset.filterYears.split(',')
 
       if (name.includes(type)) {
         el.classList.remove('hidden')
-        totalPublications += 1 / 2
+        totalProjects += 1 / 2
       } else {
         el.classList.add('hidden')
       }
 
-      updateTotalPublications()
+      updateTotalProjects()
     })
   }
 
   function init() {
-    btnFilterType.forEach(button =>
+    btnFilterYear.forEach(button =>
       button.addEventListener('click', (e: any) => {
-        const filter = e.currentTarget.dataset.btnFilterType
+        const filter = e.currentTarget.dataset.btnFilterYear
 
         selectBtnFilterType(filter)
 
@@ -219,11 +224,11 @@ try {
     )
   }
 
-  function updateTotalPublications() {
-    totalPublicationsElement!.innerHTML = totalPublications.toString()
+  function updateTotalProjects() {
+    totalProjectsElement!.innerHTML = totalProjects.toString()
   }
 
-  updateTotalPublications()
+  updateTotalProjects()
 
   init()
 </script>
