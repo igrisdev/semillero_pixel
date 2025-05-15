@@ -3,7 +3,7 @@ const { year, image, title, slug } = Astro.props
 ---
 
 <article
-  data-filter-event={year}
+  data-filter-years={year}
   class='bg-theme-decoration/10 group relative h-72 overflow-hidden'
 >
   <img src={image} alt={title} class='h-full w-full object-cover select-none' />
