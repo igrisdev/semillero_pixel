@@ -1,0 +1,256 @@
+---
+import Container from '@share_components/Container.astro'
+import Layout from '@layouts/Layout.astro'
+import Split from '@share_components/Split.astro'
+
+import Row from '@assets/icons/row.svg'
+import Grid from '@assets/icons/grid.svg'
+
+import { getHomeEventsCard } from '@lib/api/get-home-events-card'
+import { parseEvents } from '@lib/parseEvents'
+import CartEvent from '@components/home/CartEvent.astro'
+
+let newEvents: any[] = []
+let filters: string[] = []
+let fetchError = false
+
+try {
+  const events: any[] = await getHomeEventsCard()
+  newEvents = parseEvents(events)
+
+  const filterProjects: Set<string> = new Set()
+
+  newEvents.forEach(({ year }) => {
+    filterProjects.add(year)
+  })
+
+  filters = Array.from(filterProjects)
+} catch (error) {
+  fetchError = true
+}
+---
+
+<Layout title='Artículos'>
+  <Split />
+  <Container styles='py-10 grid gap-10'>
+    <h2
+      class='text-theme-title mb-2 text-center text-2xl font-bold uppercase sm:text-4xl'
+    >
+      Eventos
+    </h2>
+
+    {
+      fetchError ? (
+        <div class='text-center text-red-600'>
+          <p class='text-lg font-medium'>
+            No se pudieron cargar los eventos. Intenta más tarde.
+          </p>
+        </div>
+      ) : (
+        <div class='grid gap-5'>
+          <section class='flex flex-wrap items-center justify-between gap-4'>
+            <div class='text-theme-text flex flex-wrap items-center gap-2'>
+              <button
+                data-btn-filter-year='all'
+                class='bg-theme-decoration/20 border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'
+              >
+                Todos
+              </button>
+
+              {filters.map((type: any) => (
+                <button
+                  data-btn-filter-year={type}
+                  class='border-theme-decoration cursor-pointer border-1 px-4 py-1 text-sm'
+                >
+                  {type}
+                </button>
+              ))}
+            </div>
+
+            <div>
+              <button
+                id='btn-toggle-view-events'
+                class='text-theme-text grid size-7 cursor-pointer place-content-center'
+                data-state='time-line'
+              >
+                <Grid class='to-years h-full w-full' />
+                <Row class='time-line h-full w-full' />
+              </button>
+            </div>
+          </section>
+
+          <div class='bg-theme-decoration/20 text-theme-title block w-max rounded-full px-6 py-0.5 text-sm'>
+            <p>
+              Total: <span id='total-events'> </span>
+            </p>
+          </div>
+
+          <section class='to-years grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3'>
+            {newEvents.map(({ year, events }) =>
+              events.map(({ title, infoEvent }: any) =>
+                infoEvent.map(({ image, slug }: any) => (
+                  <CartEvent
+                    title={title}
+                    image={image}
+                    slug={slug}
+                    year={year}
+                  />
+                ))
+              )
+            )}
+          </section>
+
+          <section class='time-line border-theme-split grid gap-4 border-l-2 pl-4'>
+            {newEvents.map(({ year, events }) => (
+              <div data-filter-years-line={year} class='flex flex-col gap-2'>
+                <header class='relative'>
+                  <span class='text-theme-title text-sm'>{year}</span>
+                  <div class='bg-theme-decoration absolute top-[7px] -left-[23px] size-3 rounded-full' />
+                </header>
+
+                <section class='grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3'>
+                  {events.map(({ title, infoEvent }: any) =>
+                    infoEvent.map(({ image, slug }: any) => (
+                      <CartEvent
+                        title={title}
+                        image={image}
+                        slug={slug}
+                        year={year}
+                      />
+                    ))
+                  )}
+                </section>
+              </div>
+            ))}
+          </section>
+        </div>
+      )
+    }
+  </Container>
+</Layout>
+
+<!-- Ver por linea de tiempo o grid -->
+<script is:inline>
+  const btnToggleViewArticles = document.querySelector(
+    '#btn-toggle-view-events'
+  )
+
+  const toYears = document.querySelectorAll('.to-years')
+  const timeLine = document.querySelectorAll('.time-line')
+
+  if (btnToggleViewArticles.dataset.state === 'to-years') {
+    handleTimeLine()
+  } else {
+    handleToYear()
+  }
+
+  btnToggleViewArticles.addEventListener('click', e => {
+    const type = e.currentTarget.dataset.state
+
+    if (type === 'to-years') {
+      handleToYear()
+    } else {
+      handleTimeLine()
+    }
+
+    const newType = type === 'to-years' ? 'time-line' : 'to-years'
+    btnToggleViewArticles.setAttribute('data-state', newType)
+  })
+
+  function handleToYear() {
+    toYears.forEach(el => el.classList.remove('hidden'))
+    timeLine.forEach(el => el.classList.add('hidden'))
+  }
+
+  function handleTimeLine() {
+    toYears.forEach(el => el.classList.add('hidden'))
+    timeLine.forEach(el => el.classList.remove('hidden'))
+  }
+</script>
+
+<!-- Filter by type -->
+<script>
+  const styleBtnSelected = 'bg-theme-decoration/20'
+
+  const btnFilterYear = document.querySelectorAll('[data-btn-filter-year]')
+  const filterYears = document.querySelectorAll('[data-filter-years]')
+  const filterYearsLine = document.querySelectorAll('[data-filter-years-line]')
+
+  let totalProjects = 0
+  const lengthProjects = filterYears.length / 2
+  totalProjects = lengthProjects
+
+  const totalProjectsElement = document.querySelector('#total-events')
+
+  function removeAllFilter() {
+    filterYears.forEach(el => el.classList.remove('hidden'))
+    filterYearsLine.forEach(el => el.classList.remove('hidden'))
+
+    totalProjects = lengthProjects
+    updateTotalProjects()
+  }
+
+  function selectBtnFilterType(type: string) {
+    btnFilterYear.forEach((el: any) => {
+      if (el.dataset.btnFilterYear === type) {
+        el.classList.add(styleBtnSelected)
+      } else {
+        el.classList.remove(styleBtnSelected)
+      }
+    })
+  }
+
+  function handleFilterType(type: string) {
+    totalProjects = 0
+
+    filterYears.forEach((el: any) => {
+      const year: string[] = el.dataset.filterYears.split(',')
+
+      if (year.includes(type)) {
+        el.classList.remove('hidden')
+        totalProjects += 1 / 2
+      } else {
+        el.classList.add('hidden')
+      }
+
+      updateTotalProjects()
+    })
+
+    filterYearsLine.forEach((el: any) => {
+      const year: string[] = el.dataset.filterYearsLine.split(',')
+
+      if (year.includes(type)) {
+        el.classList.remove('hidden')
+      } else {
+        el.classList.add('hidden')
+      }
+
+      updateTotalProjects()
+    })
+  }
+
+  function init() {
+    btnFilterYear.forEach(button =>
+      button.addEventListener('click', (e: any) => {
+        const filter = e.currentTarget.dataset.btnFilterYear
+
+        selectBtnFilterType(filter)
+
+        if (filter === 'all') {
+          removeAllFilter()
+          return
+        }
+
+        handleFilterType(filter)
+      })
+    )
+  }
+
+  function updateTotalProjects() {
+    totalProjectsElement!.innerHTML = totalProjects.toString()
+  }
+
+  updateTotalProjects()
+
+  init()
+</script>
