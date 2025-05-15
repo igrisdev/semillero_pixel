@@ -45,10 +45,10 @@ const LINKS = [
     name: 'Inicio',
     link: '/',
   },
-  // {
-  //   name: 'Proyectos',
-  //   link: '#',
-  // },
+  {
+    name: 'Proyectos',
+    link: '/projects',
+  },
   {
     name: 'Publicaciones',
     link: '/publications',
@@ -64,11 +64,11 @@ const LINKS = [
 ]
 ---
 
-<header class='h-[45vh] overflow-hidden w-full flex flex-col relative'>
+<header class='relative flex h-[45vh] w-full flex-col overflow-hidden'>
   <Container
     styles='min-h-20 max-h-20 flex items-center justify-between relative'
   >
-    <div class='flex gap-5 text-theme-icon'>
+    <div class='text-theme-icon flex gap-5'>
       {
         SOCIALS_MEDIA.map(({ link, icon: Icon }) => (
           <a href={link} class='flex items-center gap-2'>
@@ -79,7 +79,7 @@ const LINKS = [
     </div>
 
     <nav class=''>
-      <ul class='gap-5 text-sm items-center font-medium hidden md:flex'>
+      <ul class='hidden items-center gap-5 text-sm font-medium md:flex'>
         {
           LINKS.map(({ name, link }) => (
             <li>
@@ -99,13 +99,13 @@ const LINKS = [
       </ul>
     </nav>
 
-    <div class='flex gap-6 text-theme-icon'>
+    <div class='text-theme-icon flex gap-6'>
       <button class='touch-change-theme cursor-pointer'>
         <Sun width={24} height={24} class='is-light' />
         <Moon width={24} height={24} class='is-dark' />
       </button>
 
-      <button class='block md:hidden touch-open cursor-pointer'>
+      <button class='touch-open block cursor-pointer md:hidden'>
         <Menu width={24} height={24} />
       </button>
     </div>
@@ -113,9 +113,9 @@ const LINKS = [
 
   <Split />
 
-  <section class='grid place-content-center h-full'>
+  <section class='grid h-full place-content-center'>
     <div
-      class='flex gap-4 sm:gap-6 md:gap-10 items-center h-full text-theme-title'
+      class='text-theme-title flex h-full items-center gap-4 sm:gap-6 md:gap-10'
     >
       <Logo_pixel
         class='size-[40px] sm:size-[60px] md:size-[80px] lg:size-[100px]'
@@ -123,7 +123,7 @@ const LINKS = [
 
       <a href='/'>
         <h1
-          class='uppercase font-micro5 text-5xl sm:text-7xl md:text-8xl lg:text-9xl'
+          class='font-micro5 text-5xl uppercase sm:text-7xl md:text-8xl lg:text-9xl'
         >
           Semillero <span class='text-theme-decoration'>Pixel</span>
         </h1>
@@ -135,12 +135,12 @@ const LINKS = [
 <!-- Menu para mobile -->
 <header
   id='is-view'
-  class='h-screen overflow-hidden w-full flex flex-col fixed top-0 z-50 md:hidden hidden bg-theme-decoration'
+  class='bg-theme-decoration fixed top-0 z-50 flex hidden h-screen w-full flex-col overflow-hidden md:hidden'
 >
   <Container
     styles='min-h-20 max-h-20 flex items-center justify-between relative bg-theme-background'
   >
-    <div class='flex gap-5 text-theme-icon'>
+    <div class='text-theme-icon flex gap-5'>
       {
         SOCIALS_MEDIA.map(({ link, icon: Icon }) => (
           <a href={link} class='flex items-center gap-2'>
@@ -151,9 +151,9 @@ const LINKS = [
     </div>
 
     <nav
-      class='absolute left-0 top-20 right-0 h-[92vh] grid place-content-center'
+      class='absolute top-20 right-0 left-0 grid h-[92vh] place-content-center'
     >
-      <ul class='gap-6 text-xl items-center font-medium flex flex-col'>
+      <ul class='flex flex-col items-center gap-6 text-xl font-medium'>
         {
           LINKS.map(({ name, link }) => (
             <li>
@@ -173,7 +173,7 @@ const LINKS = [
       </ul>
     </nav>
 
-    <div class='flex gap-6 text-theme-icon'>
+    <div class='text-theme-icon flex gap-6'>
       <button class='touch-change-theme cursor-pointer'>
         <Sun width={24} height={24} class='is-light' />
         <Moon width={24} height={24} class='is-dark' />
