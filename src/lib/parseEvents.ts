@@ -1,5 +1,3 @@
-import { parseDate } from './parseDate'
-
 export function parseEvents(events: any[]) {
   const eventsByYear: any = {}
 
