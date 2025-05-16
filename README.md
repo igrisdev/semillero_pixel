@@ -1,48 +1,77 @@
-# Astro Starter Kit: Basics
+# Semillero Pixel 🎨
 
-```sh
-bun create astro@latest -- --template basics
+Proyecto web construido con Astro y TailwindCSS para el semillero de desarrollo web.
+
+## 📋 Descripción
+
+Este proyecto es una aplicación web moderna que utiliza Astro como framework principal, junto con TailwindCSS para los estilos. Incluye características como carruseles de imágenes (usando Embla Carousel) y resaltado de código (usando Highlight.js).
+
+## 🚀 Estructura del Proyecto
+
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
+semillero_pixel/
 ├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── assets/        # Recursos estáticos (imágenes, etc)
+│   ├── components/    # Componentes reutilizables
+│   ├── layouts/       # Plantillas de página
+│   ├── lib/          # Utilidades y funciones auxiliares
+│   ├── pages/        # Páginas de la aplicación
+│   ├── sections/     # Secciones de página
+│   ├── share_components/ # Componentes compartidos
+│   └── styles/       # Estilos globales
+├── public/           # Archivos públicos
+└── astro.config.mjs  # Configuración de Astro
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🛠️ Tecnologías Principales
 
-## 🧞 Commands
+- **Astro** - Framework web
+- **TailwindCSS** - Framework de CSS
+- **Embla Carousel** - Para carruseles
+- **Highlight.js** - Resaltado de código
 
-All commands are run from the root of the project, from a terminal:
+## ⚙️ Instalación Local
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+1. Clona el repositorio:
 
-## 👀 Want to learn more?
+   ```bash
+   git clone https://github.com/igrisdev/semillero_pixel.git
+   cd semillero_pixel
+   ```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+2. Instala las dependencias:
+
+   ```bash
+   npm install
+   # o
+   bun install
+   ```
+
+3. Crea un archivo `.env.local` con las variables de entorno necesarias
+
+4. Inicia el servidor de desarrollo:
+
+   ```bash
+   npm run dev
+   # o
+   bun dev
+   ```
+
+5. Abre [http://localhost:4321](http://localhost:4321) en tu navegador
+
+## 📦 Scripts Disponibles
+
+- `dev` - Inicia el servidor de desarrollo
+- `build` - Construye el proyecto para producción
+- `preview` - Previsualiza la build de producción localmente
+
+## 🔧 Configuración
+
+El proyecto utiliza varias herramientas de desarrollo:
+
+- **Prettier** - Para formateo de código
+- **TailwindCSS Typography** - Para estilos de contenido
+
+## 🌐 Despliegue
+
+Desplegada en Vercel ver URL en descripción
