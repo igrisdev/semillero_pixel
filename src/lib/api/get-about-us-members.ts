@@ -1,3 +1,4 @@
+import { members } from 'src/mockups/data'
 import type { Member } from 'src/types/data.types'
 
 // import { query } from './strapi'
@@ -33,81 +34,6 @@ import type { Member } from 'src/types/data.types'
 //     return members
 //   })
 // }
-
-export const members: Member[] = [
-  {
-    image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-    name: 'Lorem ipsum dolor sit amet',
-    orcid: 'https://orcid.org/lorem-ipsum-dolor-sit-amet',
-    rol: 'Director',
-    career: 'Ingeniero de Software',
-    state: true,
-    date_init: '2022-01-01',
-    date_end: '2022-01-01',
-    social_media: [
-      {
-        logo_red_social:
-          'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        name_social_media: 'Lorem ipsum dolor sit amet',
-        link_red_social_media: 'https://lorem-ipsum-dolor-sit-amet.com',
-      },
-      {
-        logo_red_social:
-          'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        name_social_media: 'Lorem ipsum dolor sit amet',
-        link_red_social_media: 'https://lorem-ipsum-dolor-sit-amet.com',
-      },
-    ],
-  },
-  {
-    image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-    name: 'Lorem ipsum dolor sit amet',
-    orcid: 'https://orcid.org/lorem-ipsum-dolor-sit-amet',
-    rol: 'Director',
-    career: 'Ingeniero de Software',
-    state: true,
-    date_init: '2022-01-01',
-    date_end: '2022-01-01',
-    social_media: [
-      {
-        logo_red_social:
-          'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        name_social_media: 'Lorem ipsum dolor sit amet',
-        link_red_social_media: 'https://lorem-ipsum-dolor-sit-amet.com',
-      },
-      {
-        logo_red_social:
-          'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        name_social_media: 'Lorem ipsum dolor sit amet',
-        link_red_social_media: 'https://lorem-ipsum-dolor-sit-amet.com',
-      },
-    ],
-  },
-  {
-    image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-    name: 'Lorem ipsum dolor sit amet',
-    orcid: 'https://orcid.org/lorem-ipsum-dolor-sit-amet',
-    rol: 'Director',
-    career: 'Ingeniero de Software',
-    state: true,
-    date_init: '2022-01-01',
-    date_end: '2022-01-01',
-    social_media: [
-      {
-        logo_red_social:
-          'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        name_social_media: 'Lorem ipsum dolor sit amet',
-        link_red_social_media: 'https://lorem-ipsum-dolor-sit-amet.com',
-      },
-      {
-        logo_red_social:
-          'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        name_social_media: 'Lorem ipsum dolor sit amet',
-        link_red_social_media: 'https://lorem-ipsum-dolor-sit-amet.com',
-      },
-    ],
-  },
-]
 
 export async function getAboutUsMembers(): Promise<Member[]> {
   return await Promise.resolve(members)

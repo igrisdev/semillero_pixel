@@ -1,3 +1,4 @@
+import { events } from 'src/mockups/data'
 import type { Event } from 'src/types/data.types'
 
 // import { query } from './strapi'
@@ -31,53 +32,6 @@ import type { Event } from 'src/types/data.types'
 //     return events
 //   })
 // }
-
-export const events: Event[] = [
-  {
-    year: '2022',
-    title: 'Lorem ipsum dolor sit amet',
-    infoEvent: [
-      {
-        image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        slug: 'lorem-ipsum-dolor-sit-amet',
-      },
-      {
-        image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        slug: 'lorem-ipsum-dolor-sit-amet',
-      },
-      {
-        image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        slug: 'lorem-ipsum-dolor-sit-amet',
-      },
-      {
-        image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        slug: 'lorem-ipsum-dolor-sit-amet',
-      },
-    ],
-  },
-  {
-    year: '2022',
-    title: 'Lorem ipsum dolor sit amet',
-    infoEvent: [
-      {
-        image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        slug: 'lorem-ipsum-dolor-sit-amet',
-      },
-      {
-        image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        slug: 'lorem-ipsum-dolor-sit-amet',
-      },
-      {
-        image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        slug: 'lorem-ipsum-dolor-sit-amet',
-      },
-      {
-        image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        slug: 'lorem-ipsum-dolor-sit-amet',
-      },
-    ],
-  },
-]
 
 export async function getHomeEventsCard(): Promise<Event[]> {
   return await Promise.resolve(events)

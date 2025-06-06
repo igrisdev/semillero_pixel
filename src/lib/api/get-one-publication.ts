@@ -1,5 +1,5 @@
+import { publications } from 'src/mockups/data'
 import type { Publication, PublicationBySlug } from 'src/types/data.types'
-import { publications } from './get-home-publications-card'
 
 // import { parseDate } from '@lib/parseDate'
 // import { query } from './strapi'
