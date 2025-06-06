@@ -53,6 +53,16 @@ export async function getPublicationBySlug(
     image_author: publication!.image_author,
     content: content,
     types: publication!.types,
-    work_done_bies: [],
+    work_done_bies: [
+      {
+        name_member: 'Lorem ipsum dolor sit amet',
+      },
+      {
+        name_member: 'Lorem ipsum dolor sit amet',
+      },
+      {
+        name_member: 'Lorem ipsum dolor sit amet',
+      },
+    ],
   }
 }
