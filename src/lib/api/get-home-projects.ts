@@ -1,6 +1,8 @@
-import { query } from './strapi'
+import type { Project } from 'src/types/data.types'
 
-const { STRAPI_HOST_IMG } = import.meta.env
+// import { query } from './strapi'
+
+// const { STRAPI_HOST_IMG } = import.meta.env
 
 // export function getHomeProjects() {
 //   return query(
@@ -40,20 +42,6 @@ const { STRAPI_HOST_IMG } = import.meta.env
 //     return projects
 //   })
 // }
-
-interface Project {
-  title: string
-  image: string
-  link_github: string
-  slug: string
-  id: string
-  description: string
-  technologies: any[]
-  content: string
-  author: string
-  developers: any[]
-  date_deploy: string
-}
 
 export const projects: Project[] = [
   {

@@ -1,6 +1,8 @@
-import { query } from './strapi'
+import type { Hero } from 'src/types/data.types'
 
-const { STRAPI_HOST_IMG } = import.meta.env
+// import { query } from './strapi'
+
+// const { STRAPI_HOST_IMG } = import.meta.env
 
 // export function getHomeHero() {
 //   return query('home?populate=image_bg_hero').then((res) => {
@@ -10,12 +12,6 @@ const { STRAPI_HOST_IMG } = import.meta.env
 //     return { title_hero, description_hero, image_hero }
 //   })
 // }
-
-interface Hero {
-  title_hero: string
-  description_hero: string
-  image_hero: string
-}
 
 const hero: Hero[] = [
   {

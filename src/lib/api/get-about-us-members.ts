@@ -1,6 +1,8 @@
-import { query } from './strapi'
+import type { Member } from 'src/types/data.types'
 
-const { STRAPI_HOST_IMG } = import.meta.env
+// import { query } from './strapi'
+
+// const { STRAPI_HOST_IMG } = import.meta.env
 
 // export function getAboutUsMembers() {
 //   return query(
@@ -31,18 +33,6 @@ const { STRAPI_HOST_IMG } = import.meta.env
 //     return members
 //   })
 // }
-
-interface Member {
-  image: string
-  name: string
-  orcid: string
-  rol: string
-  career: string
-  state: boolean
-  date_init: string
-  date_end: string
-  social_media: any[]
-}
 
 export const members: Member[] = [
   {

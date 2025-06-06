@@ -1,6 +1,8 @@
-import { query } from './strapi'
+import type { Event } from 'src/types/data.types'
 
-const { STRAPI_HOST_IMG } = import.meta.env
+// import { query } from './strapi'
+
+// const { STRAPI_HOST_IMG } = import.meta.env
 
 // export function getHomeEventsCard() {
 //   return query(
@@ -29,12 +31,6 @@ const { STRAPI_HOST_IMG } = import.meta.env
 //     return events
 //   })
 // }
-
-interface Event {
-  year: string
-  title: string
-  infoEvent: any[]
-}
 
 export const events: Event[] = [
   {

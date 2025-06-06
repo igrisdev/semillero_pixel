@@ -1,7 +1,10 @@
-import { parseDate } from '@lib/parseDate'
-import { query } from './strapi'
+import type { Publication, PublicationBySlug } from 'src/types/data.types'
+import { publications } from './get-home-publications-card'
 
-const { STRAPI_HOST_IMG } = import.meta.env
+// import { parseDate } from '@lib/parseDate'
+// import { query } from './strapi'
+
+// const { STRAPI_HOST_IMG } = import.meta.env
 
 // export function getPublicationBySlug(slug: string) {
 //   return query(
@@ -25,18 +28,6 @@ const { STRAPI_HOST_IMG } = import.meta.env
 //     }
 //   })
 // }
-
-import { publications, type Publication } from './get-home-publications-card'
-
-interface PublicationBySlug {
-  title: string
-  author: string
-  date: string
-  image_author: string
-  content: string
-  types: any[]
-  work_done_bies: any[]
-}
 
 export async function getPublicationBySlug(
   slug: string

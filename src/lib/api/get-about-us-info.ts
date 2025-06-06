@@ -1,4 +1,6 @@
-import { query } from './strapi'
+import type { AboutUs } from 'src/types/data.types'
+
+// import { query } from './strapi'
 
 // export function getAboutUsInfo() {
 //   return query('about-us').then((res) => {
@@ -6,11 +8,6 @@ import { query } from './strapi'
 //     return { title_about_us, description_about_us }
 //   })
 // }
-
-interface AboutUs {
-  title_about_us: string
-  description_about_us: string
-}
 
 const aboutUs: AboutUs[] = [
   {

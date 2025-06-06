@@ -1,6 +1,8 @@
-import { query } from './strapi'
+import type { Publication } from 'src/types/data.types'
 
-const { STRAPI_HOST_IMG } = import.meta.env
+// import { query } from './strapi'
+
+// const { STRAPI_HOST_IMG } = import.meta.env
 
 // export function getHomePublicationCard() {
 //   return query(
@@ -32,16 +34,6 @@ const { STRAPI_HOST_IMG } = import.meta.env
 //     return publications
 //   })
 // }
-
-export interface Publication {
-  title: string
-  author: string
-  date: string
-  description: string
-  image_author: string
-  slug: string
-  types: any[]
-}
 
 export const publications: Publication[] = [
   {
