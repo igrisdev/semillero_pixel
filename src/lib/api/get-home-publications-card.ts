@@ -33,7 +33,7 @@ const { STRAPI_HOST_IMG } = import.meta.env
 //   })
 // }
 
-interface Publication {
+export interface Publication {
   title: string
   author: string
   date: string
