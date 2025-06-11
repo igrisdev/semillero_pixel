@@ -360,54 +360,29 @@ export const members: Member[] = [
       },
     ],
   },
-  {
-    image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-    name: 'Lorem ipsum dolor sit amet',
-    orcid: 'https://orcid.org/lorem-ipsum-dolor-sit-amet',
-    rol: 'Director',
-    career: 'Ingeniero de Software',
-    state: true,
-    date_init: '2022-01-01',
-    date_end: '2022-01-01',
-    social_media: [
-      {
-        logo_red_social:
-          'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        name_social_media: 'Lorem ipsum dolor sit amet',
-        link_red_social_media: 'https://lorem-ipsum-dolor-sit-amet.com',
-      },
-      {
-        logo_red_social:
-          'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        name_social_media: 'Lorem ipsum dolor sit amet',
-        link_red_social_media: 'https://lorem-ipsum-dolor-sit-amet.com',
-      },
-    ],
-  },
-  {
-    image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-    name: 'Lorem ipsum dolor sit amet',
-    orcid: 'https://orcid.org/lorem-ipsum-dolor-sit-amet',
-    rol: 'Director',
-    career: 'Ingeniero de Software',
-    state: true,
-    date_init: '2022-01-01',
-    date_end: '2022-01-01',
-    social_media: [
-      {
-        logo_red_social:
-          'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        name_social_media: 'Lorem ipsum dolor sit amet',
-        link_red_social_media: 'https://lorem-ipsum-dolor-sit-amet.com',
-      },
-      {
-        logo_red_social:
-          'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        name_social_media: 'Lorem ipsum dolor sit amet',
-        link_red_social_media: 'https://lorem-ipsum-dolor-sit-amet.com',
-      },
-    ],
-  },
+  // {
+  //   image: 'src/assets/images/members/johan-manuel-alvarez-pinta.jpg',
+  //   name: 'Johan Manuel Alvarez Pinta',
+  //   orcid: 'https://orcid.org/0009-0008-0696-5942',
+  //   rol: 'Lider de Proyectos - Programador',
+  //   career: 'Ingeniera Informática',
+  //   state: true,
+  //   date_init: '2022-01-01',
+  //   date_end: '',
+  //   social_media: [
+  //     {
+  //       logo_red_social: 'src/assets/images/socials/github.svg',
+  //       name_social_media: 'GitHub',
+  //       link_red_social_media: 'https://github.com/igrisdev',
+  //     },
+  //     {
+  //       logo_red_social: 'src/assets/images/socials/linkedIn.svg',
+  //       name_social_media: 'LinkedIn',
+  //       link_red_social_media:
+  //         'https://www.linkedin.com/in/johan-alvarez-pinta/',
+  //     },
+  //   ],
+  // },
 ]
 
 export const aboutUs: AboutUs[] = [
