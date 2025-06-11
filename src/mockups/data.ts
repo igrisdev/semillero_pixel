@@ -387,12 +387,7 @@ export const members: Member[] = [
 
 export const aboutUs: AboutUs[] = [
   {
-    title_about_us: 'Lorem ipsum dolor sit amet',
-    description_about_us:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.',
-  },
-  {
-    title_about_us: 'Lorem ipsum dolor sit amet',
+    title_about_us: 'Sobre Nosotros',
     description_about_us:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.',
   },
