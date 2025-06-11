@@ -1,6 +1,11 @@
 import type { Member } from 'src/types/data.types'
 
+// Imagen de miembros
 import ImageJohan from '@assets/images/members/johan-manuel-alvarez-pinta.jpg'
+
+// Imagen de redes sociales
+import ImageGithub from '@assets/images/socials/github.svg'
+import ImageLinkedIn from '@assets/images/socials/linkedIn.svg'
 
 export const members: Member[] = [
   {
@@ -14,12 +19,12 @@ export const members: Member[] = [
     date_end: '',
     social_media: [
       {
-        logo_red_social: 'src/assets/images/socials/github.svg',
+        logo_red_social: ImageGithub.src,
         name_social_media: 'GitHub',
         link_red_social_media: 'https://github.com/igrisdev',
       },
       {
-        logo_red_social: 'src/assets/images/socials/linkedIn.svg',
+        logo_red_social: ImageLinkedIn.src,
         name_social_media: 'LinkedIn',
         link_red_social_media:
           'https://www.linkedin.com/in/johan-alvarez-pinta/',
@@ -37,12 +42,12 @@ export const members: Member[] = [
     date_end: '',
     social_media: [
       {
-        logo_red_social: 'src/assets/images/socials/github.svg',
+        logo_red_social: ImageGithub.src,
         name_social_media: 'GitHub',
         link_red_social_media: 'https://github.com/Boli27',
       },
       {
-        logo_red_social: 'src/assets/images/socials/linkedIn.svg',
+        logo_red_social: ImageLinkedIn.src,
         name_social_media: 'LinkedIn',
         link_red_social_media:
           'https://www.linkedin.com/in/juan-eraso-485468287/',
@@ -60,12 +65,12 @@ export const members: Member[] = [
     date_end: '',
     social_media: [
       {
-        logo_red_social: 'src/assets/images/socials/github.svg',
+        logo_red_social: ImageGithub.src,
         name_social_media: 'GitHub',
         link_red_social_media: 'https://github.com/gabi-vasquez',
       },
       {
-        logo_red_social: 'src/assets/images/socials/linkedIn.svg',
+        logo_red_social: ImageLinkedIn.src,
         name_social_media: 'LinkedIn',
         link_red_social_media:
           'https://www.linkedin.com/in/gabriela-orozco-vasquez-57622736b/',
@@ -83,12 +88,12 @@ export const members: Member[] = [
     date_end: '',
     social_media: [
       {
-        logo_red_social: 'src/assets/images/socials/github.svg',
+        logo_red_social: ImageGithub.src,
         name_social_media: 'GitHub',
         link_red_social_media: 'https://github.com/Xhall1',
       },
       {
-        logo_red_social: 'src/assets/images/socials/linkedIn.svg',
+        logo_red_social: ImageLinkedIn.src,
         name_social_media: 'LinkedIn',
         link_red_social_media:
           'https://www.linkedin.com/in/santiago-torres-morocho-665011326/',
