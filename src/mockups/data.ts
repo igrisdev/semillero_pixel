@@ -360,29 +360,29 @@ export const members: Member[] = [
       },
     ],
   },
-  // {
-  //   image: 'src/assets/images/members/johan-manuel-alvarez-pinta.jpg',
-  //   name: 'Johan Manuel Alvarez Pinta',
-  //   orcid: 'https://orcid.org/0009-0008-0696-5942',
-  //   rol: 'Lider de Proyectos - Programador',
-  //   career: 'Ingeniera Informática',
-  //   state: true,
-  //   date_init: '2022-01-01',
-  //   date_end: '',
-  //   social_media: [
-  //     {
-  //       logo_red_social: 'src/assets/images/socials/github.svg',
-  //       name_social_media: 'GitHub',
-  //       link_red_social_media: 'https://github.com/igrisdev',
-  //     },
-  //     {
-  //       logo_red_social: 'src/assets/images/socials/linkedIn.svg',
-  //       name_social_media: 'LinkedIn',
-  //       link_red_social_media:
-  //         'https://www.linkedin.com/in/johan-alvarez-pinta/',
-  //     },
-  //   ],
-  // },
+  {
+    image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
+    name: 'Juan Diego Eraso Muñoz',
+    orcid: 'https://orcid.org/0009-0007-6917-1034 ',
+    rol: 'Investigador - Desarrollador',
+    career: 'Ingeniera Informática',
+    state: true,
+    date_init: '2023-01-01',
+    date_end: '',
+    social_media: [
+      {
+        logo_red_social: 'src/assets/images/socials/github.svg',
+        name_social_media: 'GitHub',
+        link_red_social_media: 'https://github.com/Boli27',
+      },
+      {
+        logo_red_social: 'src/assets/images/socials/linkedIn.svg',
+        name_social_media: 'LinkedIn',
+        link_red_social_media:
+          'https://www.linkedin.com/in/juan-eraso-485468287/',
+      },
+    ],
+  },
 ]
 
 export const aboutUs: AboutUs[] = [
