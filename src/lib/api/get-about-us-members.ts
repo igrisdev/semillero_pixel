@@ -1,4 +1,4 @@
-import { members } from 'src/mockups/data'
+import { members } from 'src/mockups/members.mockup'
 import type { Member } from 'src/types/data.types'
 
 // import { query } from './strapi'

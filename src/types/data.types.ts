@@ -46,7 +46,7 @@ export interface Event {
 }
 
 export interface Member {
-  image: string
+  image: any
   name: string
   orcid: string
   rol: string
