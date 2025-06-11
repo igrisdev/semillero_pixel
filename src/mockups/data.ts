@@ -348,17 +348,15 @@ export const members: Member[] = [
     date_end: '',
     social_media: [
       {
-        logo_red_social:
-          'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
+        logo_red_social: 'src/assets/images/socials/github.svg',
         name_social_media: 'GitHub',
-        link_red_social_media: 'https://lorem-ipsum-dolor-sit-amet.com',
+        link_red_social_media: 'https://github.com/igrisdev',
       },
       {
-        logo_red_social:
-          'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
+        logo_red_social: 'src/assets/images/socials/linkedIn.svg',
         name_social_media: 'LinkedIn',
         link_red_social_media:
-          'https://www.linkedin.com/in/johan-manuel-alvarez-pinta/',
+          'https://www.linkedin.com/in/johan-alvarez-pinta/',
       },
     ],
   },

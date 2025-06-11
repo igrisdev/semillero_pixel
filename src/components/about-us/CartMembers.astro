@@ -4,8 +4,6 @@ import Rol from '@assets/icons/rol.svg'
 import University from '@assets/icons/university.svg'
 import Orcid from '@assets/icons/orcid.svg'
 
-// import Johan from '@assets/images/members/johan-manuel-alvarez-pinta.jpg'
-
 const {
   image,
   name,
@@ -60,12 +58,12 @@ const {
             href={social.link_red_social_media}
             target='_blank'
             rel='noopener noreferrer'
+            class='size-7'
           >
             <img
               src={social.logo_red_social}
               alt={social.name_social_media}
-              width={24}
-              height={24}
+              class='w-full h-full object-contain'
             />
           </a>
         ))
