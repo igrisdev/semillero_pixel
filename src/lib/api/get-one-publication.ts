@@ -1,5 +1,6 @@
 import { publications } from 'src/mockups/data'
-import type { Publication, PublicationBySlug } from 'src/types/data.types'
+import { PUBLICATIONS, type Publication } from 'src/mockups/publications.mockup'
+import type { PublicationBySlug } from 'src/types/data.types'
 
 // import { parseDate } from '@lib/parseDate'
 // import { query } from './strapi'
@@ -32,28 +33,19 @@ import type { Publication, PublicationBySlug } from 'src/types/data.types'
 export async function getPublicationBySlug(
   slug: string
 ): Promise<PublicationBySlug> {
-  const publication = publications.find((pub: Publication) => pub.slug === slug)
-
-  const content =
-    'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.'
+  const publication = PUBLICATIONS.find((pub: Publication) => pub.slug === slug)
 
   return {
     title: publication!.title,
-    author: publication!.author,
-    date: publication!.date,
-    image_author: publication!.image_author,
-    content: content,
-    types: publication!.types,
+    author: publication!.publisher,
+    date: publication!.date_publication,
+    image_author: '',
+    content: publication!.write_all_the_information,
+    types: publication!.type_publications,
     work_done_bies: [
-      {
-        name_member: 'Lorem ipsum dolor sit amet',
-      },
-      {
-        name_member: 'Lorem ipsum dolor sit amet',
-      },
-      {
-        name_member: 'Lorem ipsum dolor sit amet',
-      },
+      publication!.work_done_bies.map((name: string) => ({
+        name_member: name,
+      })),
     ],
   }
 }

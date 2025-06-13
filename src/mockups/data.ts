@@ -9,49 +9,11 @@ import type {
 
 export const publications: Publication[] = [
   {
-    title: 'Lorem ipsum dolor sit amet',
-    author: 'Lorem ipsum dolor sit amet',
+    title: 'Lorem ipsum dolor sit',
+    author: 'Lorem ipsum dolor sit',
     date: '2022-01-01',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.',
-    image_author: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-    slug: 'lorem-ipsum-dolor-sit-amet',
-    types: [
-      {
-        title: 'Lorem ',
-        link: 'https://lorem-ipsum-dolor-sit-amet.com',
-      },
-      {
-        title: 'Lorem ipsum ',
-        link: 'https://lorem-ipsum-dolor-sit-amet.com',
-      },
-    ],
-  },
-  {
-    title: 'Lorem ipsum dolor sit amet',
-    author: 'Lorem ipsum dolor sit amet',
-    date: '2022-01-01',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.',
-    image_author: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-    slug: 'lorem-ipsum-dolor-sit-amet',
-    types: [
-      {
-        title: 'Lorem ',
-        link: 'https://lorem-ipsum-dolor-sit-amet.com',
-      },
-      {
-        title: 'Lorem ipsum ',
-        link: 'https://lorem-ipsum-dolor-sit-amet.com',
-      },
-    ],
-  },
-  {
-    title: 'Lorem ipsum dolor sit amet',
-    author: 'Lorem ipsum dolor sit amet',
-    date: '2022-01-01',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.',
+      'Lorem ipsum dolor sit, consectetur. Sed non risus. tortor, sit, nec, sed, dolor. diam. Maecenas ligula massa, semper, non, mi.',
     image_author: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
     slug: 'lorem-ipsum-dolor-sit-amet',
     types: [
