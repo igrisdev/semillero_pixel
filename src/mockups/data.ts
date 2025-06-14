@@ -60,6 +60,6 @@ export const aboutUs: AboutUs[] = [
   {
     title_about_us: 'Sobre Nosotros',
     description_about_us:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.',
+      'Somos un semillero enfocado en la investigación y el desarrollo de proyectos web. Deseamos impactar el mundo de la web y crear soluciones innovadoras para mejorar la experiencia de los usuarios.',
   },
 ]
