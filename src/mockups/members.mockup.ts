@@ -3,12 +3,36 @@ import type { Member } from 'src/types/data.types'
 // Imagen de miembros
 import ImageJohanManuelAlvarezPinta from '@assets/images/members/johan-manuel-alvarez-pinta.jpg'
 import ImageJuanDiegoErasoMuñoz from '@assets/images/members/juan-diego-eraso-muñoz.png'
+import ImageMartaCeciliaCamachoOjeda from '@assets/images/members/marta-cecilia-camacho-ojeda.jpg'
 
 // Imagen de redes sociales
 import ImageGithub from '@assets/images/socials/github.svg'
 import ImageLinkedIn from '@assets/images/socials/linkedIn.svg'
 
 export const MEMBERS: Member[] = [
+  {
+    image: ImageMartaCeciliaCamachoOjeda.src,
+    name: 'Marta Cecilia Camacho Ojeda',
+    orcid: 'https://orcid.org/0009-0008-0696-5942',
+    rol: 'Docente a Cargo',
+    career: 'Magister en Ingeniería Informática',
+    state: true,
+    date_init: '2022-01-01',
+    date_end: '',
+    social_media: [
+      {
+        logo_red_social: ImageGithub.src,
+        name_social_media: 'GitHub',
+        link_red_social_media: 'https://github.com/igrisdev',
+      },
+      {
+        logo_red_social: ImageLinkedIn.src,
+        name_social_media: 'LinkedIn',
+        link_red_social_media:
+          'https://www.linkedin.com/in/johan-alvarez-pinta/',
+      },
+    ],
+  },
   {
     image: ImageJohanManuelAlvarezPinta.src,
     name: 'Johan Manuel Alvarez Pinta',

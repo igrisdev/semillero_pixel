@@ -1,3 +1,4 @@
+import { MEMBERS } from 'src/mockups/members.mockup'
 import { PUBLICATIONS, type Publication } from 'src/mockups/publications.mockup'
 import type { PublicationCard } from 'src/types/data.types'
 
@@ -37,15 +38,17 @@ import type { PublicationCard } from 'src/types/data.types'
 // }
 
 export async function getHomePublicationCard(): Promise<PublicationCard[]> {
-  // const
-
   const publications = PUBLICATIONS.map((publication: Publication) => {
+    const image = MEMBERS.find(
+      ({ name }: { name: string }) => name === publication.publisher
+    )?.image
+
     return {
       title: publication.title,
       author: publication.publisher,
       date: publication.date_publication,
       description: publication.description,
-      image_author: '',
+      image_author: image,
       slug: publication.slug,
       types: publication.type_publications.map((type) => {
         return { title: type, link: '', color_type: '#F0F0F3' }
