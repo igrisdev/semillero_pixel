@@ -46,7 +46,7 @@ export async function getHomePublicationCard(): Promise<PublicationCard[]> {
       image_author: '',
       slug: publication.slug,
       types: publication.type_publications.map((type) => {
-        return { title: type }
+        return { title: type, link: '' }
       }),
     }
   })

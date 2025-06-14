@@ -1,7 +1,8 @@
 import type { Member } from 'src/types/data.types'
 
 // Imagen de miembros
-import ImageJohan from '@assets/images/members/johan-manuel-alvarez-pinta.jpg'
+import ImageJohanManuelAlvarezPinta from '@assets/images/members/johan-manuel-alvarez-pinta.jpg'
+import ImageJuanDiegoErasoMuñoz from '@assets/images/members/juan-diego-eraso-muñoz.png'
 
 // Imagen de redes sociales
 import ImageGithub from '@assets/images/socials/github.svg'
@@ -9,7 +10,7 @@ import ImageLinkedIn from '@assets/images/socials/linkedIn.svg'
 
 export const members: Member[] = [
   {
-    image: ImageJohan.src,
+    image: ImageJohanManuelAlvarezPinta.src,
     name: 'Johan Manuel Alvarez Pinta',
     orcid: 'https://orcid.org/0009-0008-0696-5942',
     rol: 'Líder de Proyectos - Programador',
@@ -32,7 +33,7 @@ export const members: Member[] = [
     ],
   },
   {
-    image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
+    image: ImageJuanDiegoErasoMuñoz.src,
     name: 'Juan Diego Eraso Muñoz',
     orcid: 'https://orcid.org/0009-0007-6917-1034',
     rol: 'Investigador - Desarrollador',

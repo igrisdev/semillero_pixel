@@ -17,6 +17,7 @@ export interface PublicationCard {
   slug: string
   types: {
     title: string
+    link: string
   }[]
 }
 

@@ -1,33 +1,4 @@
-import type {
-  AboutUs,
-  Event,
-  Hero,
-  Member,
-  Project,
-  PublicationCard,
-} from 'src/types/data.types'
-
-export const publications: PublicationCard[] = [
-  {
-    title: 'Lorem ipsum dolor sit',
-    author: 'Lorem ipsum dolor sit',
-    date: '2022-01-01',
-    description:
-      'Lorem ipsum dolor sit, consectetur. Sed non risus. tortor, sit, nec, sed, dolor. diam. Maecenas ligula massa, semper, non, mi.',
-    image_author: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-    slug: 'lorem-ipsum-dolor-sit-amet',
-    types: [
-      {
-        title: 'Lorem ',
-        link: 'https://lorem-ipsum-dolor-sit-amet.com',
-      },
-      {
-        title: 'Lorem ipsum ',
-        link: 'https://lorem-ipsum-dolor-sit-amet.com',
-      },
-    ],
-  },
-]
+import type { AboutUs, Event, Hero, Project } from 'src/types/data.types'
 
 export const projects: Project[] = [
   {

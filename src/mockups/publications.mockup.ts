@@ -12,8 +12,9 @@ export interface Publication {
 
 export const PUBLICATIONS: Publication[] = [
   {
-    title: 'Lorem ipsum dolor sit amet',
-    publisher: 'Lorem ipsum dolor sit amet',
+    title:
+      'Arquitectura de la información aplicada en el diseño de un repositorio de recursos educativos de estadística',
+    publisher: 'Marta Cecilia Camacho Ojeda',
     work_done_bies: [
       'Lorem ipsum dolor sit amet',
       'Lorem ipsum dolor sit amet',
