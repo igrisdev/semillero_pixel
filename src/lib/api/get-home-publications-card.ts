@@ -45,7 +45,7 @@ export async function getHomePublicationCard(): Promise<PublicationCard[]> {
     )?.image
 
     const typePublications = TYPE_PUBLICATIONS.filter((type) =>
-      publication.type_publications.includes(type.title)
+      type.publications.includes(publication.title)
     )
 
     return {

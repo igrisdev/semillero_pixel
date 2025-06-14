@@ -19,9 +19,7 @@ export const TYPE_PUBLICATIONS: TypePublication[] = [
     title: 'Monografía',
     description:
       'Monografía de 10 páginas, con un estilo de escritura y diseño de alta calidad.',
-    color_type: '#F0F0F3',
-    publications: [
-      'Arquitectura de la información aplicada en el diseño de un repositorio de recursos educativos de estadística',
-    ],
+    color_type: '#000FF7',
+    publications: [],
   },
 ]
