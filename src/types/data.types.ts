@@ -25,7 +25,7 @@ export interface PublicationCard {
   }[]
 }
 
-export interface Project {
+export interface ProjectCard {
   title: string
   image: string
   link_github: string
@@ -34,7 +34,6 @@ export interface Project {
   description: string
   technologies: any[]
   content: string
-
   author: string
   developers: any[]
   date_deploy: string

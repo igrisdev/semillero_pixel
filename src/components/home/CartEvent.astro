@@ -10,7 +10,7 @@ const isImage =
   class='bg-theme-decoration/10 group relative overflow-hidden'
 >
   <section class='h-72'>
-    <a href=''>
+    <a href={'publications/' + slug}>
       <img
         src={isImage}
         alt={titleEvent}
@@ -20,11 +20,16 @@ const isImage =
   </section>
 
   <section class='p-4'>
-    <h3
-      class='text-theme-title line-clamp-2 text-base font-semibold uppercase sm:text-lg md:text-xl mb-2'
+    <a
+      href={'publications/' + slug}
+      class='hover:text-theme-icon text-theme-title'
     >
-      {titleEvent}
-    </h3>
+      <h3
+        class='line-clamp-2 text-base font-semibold uppercase sm:text-lg md:text-xl mb-2'
+      >
+        {titleEvent}
+      </h3>
+    </a>
 
     <a
       href={'publications/' + slug}
