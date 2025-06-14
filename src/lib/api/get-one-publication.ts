@@ -1,5 +1,7 @@
+import { MEMBERS } from 'src/mockups/members.mockup'
 import { PUBLICATIONS, type Publication } from 'src/mockups/publications.mockup'
-import type { PublicationBySlug } from 'src/types/data.types'
+import { TYPE_PUBLICATIONS } from 'src/mockups/type_publication.mockup'
+import type { Member, PublicationBySlug } from 'src/types/data.types'
 
 // import { parseDate } from '@lib/parseDate'
 // import { query } from './strapi'
@@ -34,17 +36,25 @@ export async function getPublicationBySlug(
 ): Promise<PublicationBySlug> {
   const publication = PUBLICATIONS.find((pub: Publication) => pub.slug === slug)
 
+  const author = MEMBERS.find(
+    ({ name }: { name: string }) => name === publication!.publisher
+  )
+
+  const typePublications = TYPE_PUBLICATIONS.filter((type) =>
+    type.publications.includes(publication!.title)
+  )
+
+  const workDoneBies = MEMBERS.filter(({ name }: { name: string }) =>
+    publication!.work_done_bies.includes(name)
+  ).map(({ name }: { name: string }) => ({ name_member: name }))
+
   return {
     title: publication!.title,
-    author: publication!.publisher,
+    author: author!.name,
     date: publication!.date_publication,
-    image_author: '',
+    image_author: author!.image,
     content: publication!.write_all_the_information,
-    types: publication!.type_publications,
-    work_done_bies: [
-      publication!.work_done_bies.map((name: string) => ({
-        name_member: name,
-      })),
-    ],
+    types: typePublications,
+    work_done_bies: workDoneBies,
   }
 }
