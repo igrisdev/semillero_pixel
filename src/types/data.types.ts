@@ -8,7 +8,7 @@ export interface PublicationBySlug {
   work_done_bies: any[]
 }
 
-export interface Publication {
+export interface PublicationCard {
   title: string
   author: string
   date: string

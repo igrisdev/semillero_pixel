@@ -1,5 +1,5 @@
-import { publications } from 'src/mockups/data'
-// import type { Publication } from 'src/types/data.types'
+import { PUBLICATIONS, type Publication } from 'src/mockups/publications.mockup'
+import type { PublicationCard } from 'src/types/data.types'
 
 // import { query } from './strapi'
 
@@ -36,6 +36,20 @@ import { publications } from 'src/mockups/data'
 //   })
 // }
 
-export async function getHomePublicationCard(): Promise<any[]> {
+export async function getHomePublicationCard(): Promise<PublicationCard[]> {
+  const publications = PUBLICATIONS.map((publication: Publication) => {
+    return {
+      title: publication.title,
+      author: publication.publisher,
+      date: publication.date_publication,
+      description: publication.description,
+      image_author: '',
+      slug: publication.slug,
+      types: publication.type_publications.map((type) => {
+        return { title: type }
+      }),
+    }
+  })
+
   return await Promise.resolve(publications)
 }

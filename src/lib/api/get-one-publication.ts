@@ -1,4 +1,3 @@
-import { publications } from 'src/mockups/data'
 import { PUBLICATIONS, type Publication } from 'src/mockups/publications.mockup'
 import type { PublicationBySlug } from 'src/types/data.types'
 

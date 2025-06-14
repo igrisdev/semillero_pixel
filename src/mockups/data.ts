@@ -4,10 +4,10 @@ import type {
   Hero,
   Member,
   Project,
-  Publication,
+  PublicationCard,
 } from 'src/types/data.types'
 
-export const publications: Publication[] = [
+export const publications: PublicationCard[] = [
   {
     title: 'Lorem ipsum dolor sit',
     author: 'Lorem ipsum dolor sit',
