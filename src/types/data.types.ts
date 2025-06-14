@@ -18,6 +18,7 @@ export interface PublicationCard {
   types: {
     title: string
     link: string
+    color_type: string
   }[]
 }
 
