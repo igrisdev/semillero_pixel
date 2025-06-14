@@ -51,8 +51,9 @@ export const PROJECTS: Project[] = [
       'Mateo Jesus Cadena Cabrera',
       'Miguel Angel Llanten Llanten',
     ],
-    date_deploy_project: '2022-01-01',
-    slug: 'lorem-ipsum-dolor-sit-amet',
-    publication: 'Lorem ipsum dolor sit amet',
+    date_deploy_project: '2025-01-01',
+    slug: 'uniaprende',
+    publication:
+      'Arquitectura de la información aplicada en el diseño de un repositorio de recursos educativos de estadística',
   },
 ]
