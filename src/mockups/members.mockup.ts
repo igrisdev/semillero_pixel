@@ -8,7 +8,7 @@ import ImageJuanDiegoErasoMuñoz from '@assets/images/members/juan-diego-eraso-m
 import ImageGithub from '@assets/images/socials/github.svg'
 import ImageLinkedIn from '@assets/images/socials/linkedIn.svg'
 
-export const members: Member[] = [
+export const MEMBERS: Member[] = [
   {
     image: ImageJohanManuelAlvarezPinta.src,
     name: 'Johan Manuel Alvarez Pinta',

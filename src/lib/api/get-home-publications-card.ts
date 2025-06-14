@@ -37,6 +37,8 @@ import type { PublicationCard } from 'src/types/data.types'
 // }
 
 export async function getHomePublicationCard(): Promise<PublicationCard[]> {
+  // const
+
   const publications = PUBLICATIONS.map((publication: Publication) => {
     return {
       title: publication.title,

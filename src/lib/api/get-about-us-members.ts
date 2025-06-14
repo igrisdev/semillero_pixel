@@ -1,4 +1,4 @@
-import { members } from 'src/mockups/members.mockup'
+import { MEMBERS } from 'src/mockups/members.mockup'
 import type { Member } from 'src/types/data.types'
 
 // import { query } from './strapi'
@@ -36,5 +36,5 @@ import type { Member } from 'src/types/data.types'
 // }
 
 export async function getAboutUsMembers(): Promise<Member[]> {
-  return await Promise.resolve(members)
+  return await Promise.resolve(MEMBERS)
 }
