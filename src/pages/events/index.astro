@@ -6,7 +6,7 @@ import Split from '@share_components/Split.astro'
 import Row from '@assets/icons/row.svg'
 import Grid from '@assets/icons/grid.svg'
 
-import { getHomeEventsCard } from '@lib/api/get-home-events-card'
+import { getHomeEvents } from '@lib/api/get-home-events'
 import { parseEvents } from '@lib/parseEvents'
 import CartEvent from '@components/home/CartEvent.astro'
 
@@ -15,8 +15,11 @@ let filters: string[] = []
 let fetchError = false
 
 try {
-  const events: any[] = await getHomeEventsCard()
-  newEvents = parseEvents(events)
+  const events: any[] = await getHomeEvents()
+
+  newEvents = events.map(({ infoEvent }) => parseEvents(infoEvent)).flat()
+
+  console.log(newEvents[0].events)
 
   const filterProjects: Set<string> = new Set()
 
@@ -87,15 +90,16 @@ try {
 
           <section class='to-years grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3'>
             {newEvents.map(({ year, events }) =>
-              events.map(({ title, infoEvent }: any) =>
-                infoEvent.map(({ image, slug }: any) => (
+              events.map(
+                ({ titleEvent, image, slug, titlePublication }: any) => (
                   <CartEvent
-                    title={title}
-                    image={image}
-                    slug={slug}
                     year={year}
+                    image={image}
+                    titleEvent={titleEvent}
+                    titlePublication={titlePublication}
+                    slug={slug}
                   />
-                ))
+                )
               )
             )}
           </section>
@@ -109,15 +113,16 @@ try {
                 </header>
 
                 <section class='grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3'>
-                  {events.map(({ title, infoEvent }: any) =>
-                    infoEvent.map(({ image, slug }: any) => (
+                  {events.map(
+                    ({ image, slug, titleEvent, titlePublication }: any) => (
                       <CartEvent
-                        title={title}
-                        image={image}
-                        slug={slug}
                         year={year}
+                        image={image}
+                        titleEvent={titleEvent}
+                        titlePublication={titlePublication}
+                        slug={slug}
                       />
-                    ))
+                    )
                   )}
                 </section>
               </div>
