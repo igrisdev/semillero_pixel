@@ -15,7 +15,9 @@ export interface PublicationCard {
   description: string
   image_author: string
   slug: string
-  types: any[]
+  types: {
+    title: string
+  }[]
 }
 
 export interface Project {
