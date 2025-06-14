@@ -1,6 +1,39 @@
 import { PROJECTS } from 'src/mockups/projects.mockup'
 import type { ProjectCard } from 'src/types/data.types'
 
+export async function getHomeProjects(): Promise<ProjectCard[]> {
+  const newProjects = PROJECTS.map((project: any) => {
+    const technologies = project.technology_project.map((tech: any) => {
+      return {
+        title: tech.title_technology_project,
+        link: tech.link_page_technology_project,
+      }
+    })
+
+    const developers = project.members.map((member: any) => {
+      return {
+        name: member,
+      }
+    })
+
+    return {
+      title: project.title_project,
+      image: project.image_project,
+      link_github: project.link_github,
+      slug: project.slug,
+      id: project.slug,
+      description: project.description_project,
+      technologies: technologies,
+      content: project.article_content_project,
+      author: project.person_name_article_publisher_project,
+      developers: developers,
+      date_deploy: project.date_deploy_project,
+    }
+  })
+
+  return await Promise.resolve(newProjects)
+}
+
 // import { query } from './strapi'
 
 // const { STRAPI_HOST_IMG } = import.meta.env
@@ -43,36 +76,3 @@ import type { ProjectCard } from 'src/types/data.types'
 //     return projects
 //   })
 // }
-
-export async function getHomeProjects(): Promise<ProjectCard[]> {
-  const newProjects = PROJECTS.map((project: any) => {
-    const technologies = project.technology_project.map((tech: any) => {
-      return {
-        title: tech.title_technology_project,
-        link: tech.link_page_technology_project,
-      }
-    })
-
-    const developers = project.members.map((member: any) => {
-      return {
-        name: member,
-      }
-    })
-
-    return {
-      title: project.title_project,
-      image: project.image_project,
-      link_github: project.link_github,
-      slug: project.slug,
-      id: project.slug,
-      description: project.description_project,
-      technologies: technologies,
-      content: project.article_content_project,
-      author: project.person_name_article_publisher_project,
-      developers: developers,
-      date_deploy: project.date_deploy_project,
-    }
-  })
-
-  return await Promise.resolve(newProjects)
-}

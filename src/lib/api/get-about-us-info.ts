@@ -1,6 +1,10 @@
 import { aboutUs } from 'src/mockups/data'
 import type { AboutUs } from 'src/types/data.types'
 
+export async function getAboutUsInfo(): Promise<AboutUs> {
+  return await Promise.resolve(aboutUs[0])
+}
+
 // import { query } from './strapi'
 
 // export function getAboutUsInfo() {
@@ -9,7 +13,3 @@ import type { AboutUs } from 'src/types/data.types'
 //     return { title_about_us, description_about_us }
 //   })
 // }
-
-export async function getAboutUsInfo(): Promise<AboutUs> {
-  return await Promise.resolve(aboutUs[0])
-}

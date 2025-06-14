@@ -1,6 +1,10 @@
 import { MEMBERS } from 'src/mockups/members.mockup'
 import type { Member } from 'src/types/data.types'
 
+export async function getAboutUsMembers(): Promise<Member[]> {
+  return await Promise.resolve(MEMBERS)
+}
+
 // import { query } from './strapi'
 
 // const { STRAPI_HOST_IMG } = import.meta.env
@@ -34,7 +38,3 @@ import type { Member } from 'src/types/data.types'
 //     return members
 //   })
 // }
-
-export async function getAboutUsMembers(): Promise<Member[]> {
-  return await Promise.resolve(MEMBERS)
-}

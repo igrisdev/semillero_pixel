@@ -1,6 +1,10 @@
 import { hero } from 'src/mockups/data'
 import type { Hero } from 'src/types/data.types'
 
+export async function getHomeHero(): Promise<Hero> {
+  return await Promise.resolve(hero[0])
+}
+
 // import { query } from './strapi'
 
 // const { STRAPI_HOST_IMG } = import.meta.env
@@ -13,7 +17,3 @@ import type { Hero } from 'src/types/data.types'
 //     return { title_hero, description_hero, image_hero }
 //   })
 // }
-
-export async function getHomeHero(): Promise<Hero> {
-  return await Promise.resolve(hero[0])
-}

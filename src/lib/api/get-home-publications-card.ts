@@ -3,6 +3,30 @@ import { PUBLICATIONS, type Publication } from 'src/mockups/publications.mockup'
 import { TYPE_PUBLICATIONS } from 'src/mockups/type_publication.mockup'
 import type { PublicationCard } from 'src/types/data.types'
 
+export async function getHomePublicationCard(): Promise<PublicationCard[]> {
+  const publications = PUBLICATIONS.map((publication: Publication) => {
+    const image = MEMBERS.find(
+      ({ name }: { name: string }) => name === publication.publisher
+    )?.image
+
+    const typePublications = TYPE_PUBLICATIONS.filter((type) =>
+      type.publications.includes(publication.title)
+    )
+
+    return {
+      title: publication.title,
+      author: publication.publisher,
+      date: publication.date_publication,
+      description: publication.description,
+      image_author: image,
+      slug: publication.slug,
+      types: typePublications,
+    }
+  })
+
+  return await Promise.resolve(publications)
+}
+
 // import { query } from './strapi'
 
 // const { STRAPI_HOST_IMG } = import.meta.env
@@ -37,27 +61,3 @@ import type { PublicationCard } from 'src/types/data.types'
 //     return publications
 //   })
 // }
-
-export async function getHomePublicationCard(): Promise<PublicationCard[]> {
-  const publications = PUBLICATIONS.map((publication: Publication) => {
-    const image = MEMBERS.find(
-      ({ name }: { name: string }) => name === publication.publisher
-    )?.image
-
-    const typePublications = TYPE_PUBLICATIONS.filter((type) =>
-      type.publications.includes(publication.title)
-    )
-
-    return {
-      title: publication.title,
-      author: publication.publisher,
-      date: publication.date_publication,
-      description: publication.description,
-      image_author: image,
-      slug: publication.slug,
-      types: typePublications,
-    }
-  })
-
-  return await Promise.resolve(publications)
-}
