@@ -1,4 +1,5 @@
 import { PROJECTS } from 'src/mockups/projects.mockup'
+import { PUBLICATIONS, type Publication } from 'src/mockups/publications.mockup'
 import type { ProjectCard } from 'src/types/data.types'
 
 export async function getHomeProjects(): Promise<ProjectCard[]> {
@@ -16,11 +17,15 @@ export async function getHomeProjects(): Promise<ProjectCard[]> {
       }
     })
 
+    const publication = PUBLICATIONS.find(
+      ({ title }: Publication) => title === project.publication
+    )
+
     return {
       title: project.title_project,
       image: project.image_project,
       link_github: project.link_github,
-      slug: project.slug,
+      slug: publication!.slug,
       id: project.slug,
       description: project.description_project,
       technologies: technologies,

@@ -65,7 +65,9 @@ const isHome = pathname === '/'
       class='bg-theme-decoration/10 border-theme-decoration flex h-[520px] flex-col overflow-hidden rounded-sm border-1'
     >
       <header class='max-h-[280px] min-h-[280px] overflow-hidden'>
-        <img src={image} alt={title} class='h-full w-full object-cover' />
+        <a href={`/publications/${slug}#${id}`}>
+          <img src={image} alt={title} class='h-full w-full object-cover' />
+        </a>
       </header>
 
       <main class='flex flex-1 flex-col overflow-hidden p-4'>
@@ -92,7 +94,9 @@ const isHome = pathname === '/'
       <footer class='flex items-center justify-between px-4 py-2'>
         <section class='[&>*]:text-theme-text [&>*]:border-theme-decoration flex gap-1 overflow-x-auto [&>*]:rounded-sm [&>*]:border-1 [&>*]:px-2 [&>*]:py-1 [&>*]:text-[8px] [&>*]:font-medium'>
           {technologies.map((tech: any) => (
-            <span>{tech.title}</span>
+            <a href={tech.link} target='_blank' rel='noopener noreferrer'>
+              <span>{tech.title}</span>
+            </a>
           ))}
         </section>
 
