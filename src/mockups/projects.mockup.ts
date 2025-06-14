@@ -1,3 +1,5 @@
+import ImageUniAprende from '@assets/images/projects/uniaprende.png'
+
 export interface Project {
   title_project: string
   image_project: string
