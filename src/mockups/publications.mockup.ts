@@ -16,21 +16,19 @@ export const PUBLICATIONS: Publication[] = [
       'Arquitectura de la información aplicada en el diseño de un repositorio de recursos educativos de estadística',
     publisher: 'Marta Cecilia Camacho Ojeda',
     work_done_bies: [
-      'Lorem ipsum dolor sit amet',
-      'Lorem ipsum dolor sit amet',
-      'Lorem ipsum dolor sit amet',
+      'Johan Manuel Alvarez Pinta',
+      'Juan Diego Eraso Muñoz',
+      'Marta Cecilia Camacho Ojeda',
+      'Mateo Jesus Cadena Cabrera',
+      'Miguel Angel Rodriguez',
     ],
-    date_publication: '2022-01-01',
+    date_publication: '2024-10-24',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.',
-    slug: 'lorem-ipsum-dolor-sit-amet',
+      'Al realizar búsquedas sobre estadística, a menudo se presenta el inconveniente de no encontrar material confiable, ya sea para reforzar los conocimientos de los alumnos o el desarrollo de proyectos en los que se requiere el uso de esta área.',
+    slug: 'arquitectura-de-la-información-aplicada-en-el-diseño-de-un-repositorio-de-recursos educativos-de-estadística',
     write_all_the_information:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.',
+      'Al realizar búsquedas sobre estadística, a menudo se presenta el inconveniente de no encontrar material confiable, ya sea para reforzar los conocimientos de los alumnos o el desarrollo de proyectos en los que se requiere el uso de esta área. ',
     download_file: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-    type_publications: [
-      'Lorem ipsum dolor sit amet',
-      'Lorem ipsum dolor sit amet',
-      'Lorem ipsum dolor sit amet',
-    ],
+    type_publications: ['Articulo Largo'],
   },
 ]
