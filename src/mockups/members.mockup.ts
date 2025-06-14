@@ -14,7 +14,7 @@ export const MEMBERS: Member[] = [
     image: ImageMartaCeciliaCamachoOjeda.src,
     name: 'Marta Cecilia Camacho Ojeda',
     orcid: 'https://orcid.org/0009-0008-0696-5942',
-    rol: 'Docente a Cargo',
+    rol: 'Docente Encargada',
     career: 'Magister en Ingeniería Informática',
     state: true,
     date_init: '2022-01-01',
