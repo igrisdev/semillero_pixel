@@ -1,4 +1,5 @@
-import { PROJECTS, type TechnologyProject } from 'src/mockups/projects.mockup'
+import { PROJECTS, type Project } from 'src/mockups/projects.mockup'
+import { PUBLICATIONS, type Publication } from 'src/mockups/publications.mockup'
 
 interface ProjectCard {
   title: string
@@ -7,11 +8,14 @@ interface ProjectCard {
   slug: string
   id: string
   description: string
-  technologies: TechnologyProject[]
+  technologies: {
+    title: string
+    link: string
+  }[]
 }
 
 export async function getHomeProjectsCard(): Promise<ProjectCard[]> {
-  const newProjects = PROJECTS.map((project: any) => {
+  const newProjects = PROJECTS.map((project: Project) => {
     const technologies = project.technology_project.map((tech: any) => {
       return {
         title: tech.title_technology_project,
@@ -19,11 +23,15 @@ export async function getHomeProjectsCard(): Promise<ProjectCard[]> {
       }
     })
 
+    const publication = PUBLICATIONS.find(
+      ({ title }: Publication) => title === project.publication
+    )
+
     return {
       title: project.title_project,
       image: project.image_project,
       link_github: project.link_github,
-      slug: project.slug,
+      slug: publication!.slug,
       id: project.slug,
       description: project.description_project,
       technologies: technologies,
