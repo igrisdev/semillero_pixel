@@ -14,7 +14,9 @@ const isHome = pathname === '/'
     <div class='embla__slide'>
       <article class='bg-theme-decoration/10 border-theme-decoration flex h-[520px] flex-col overflow-hidden rounded-sm border-1'>
         <header class='max-h-[280px] min-h-[280px] overflow-hidden'>
-          <img src={image} alt={title} class='h-full w-full object-cover' />
+          <a href={`/publications/${slug}#${id}`}>
+            <img src={image} alt={title} class='h-full w-full object-cover' />
+          </a>
         </header>
 
         <main class='flex flex-1 flex-col overflow-hidden p-4'>
