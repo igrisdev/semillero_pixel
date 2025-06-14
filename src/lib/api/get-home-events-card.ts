@@ -1,5 +1,5 @@
-import { events } from 'src/mockups/data'
-import type { Event } from 'src/types/data.types'
+import { EVENTS, type Event } from 'src/mockups/events.mockup'
+import { PUBLICATIONS, type Publication } from 'src/mockups/publications.mockup'
 
 // import { query } from './strapi'
 
@@ -32,7 +32,33 @@ import type { Event } from 'src/types/data.types'
 //     return events
 //   })
 // }
+export interface EventCart {
+  year: string
+  image: string
+  titleEvent: string
+  titlePublication: string
+  slug: string
+}
 
-export async function getHomeEventsCard(): Promise<Event[]> {
-  return await Promise.resolve(events)
+export async function getHomeEventsCard(): Promise<EventCart[]> {
+  const events = EVENTS.flatMap((event: Event) => {
+    const newEvent = event.events.map((info: any) => {
+      const slug =
+        PUBLICATIONS.find(
+          ({ title }: { title: string }) => title === event.publication
+        )?.slug ?? ''
+
+      return {
+        year: info.date_init_event.split('-')[0],
+        image: info.images_event[0],
+        titleEvent: info.title_event,
+        titlePublication: event.publication,
+        slug: slug,
+      }
+    })
+
+    return newEvent
+  })
+
+  return Promise.resolve(events)
 }

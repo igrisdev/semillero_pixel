@@ -1,4 +1,4 @@
-import type { AboutUs, Event, Hero, Project } from 'src/types/data.types'
+import type { AboutUs, Hero, Project } from 'src/types/data.types'
 
 export const projects: Project[] = [
   {
@@ -222,7 +222,7 @@ export const hero: Hero[] = [
   },
 ]
 
-export const events: Event[] = [
+export const events = [
   {
     year: '2022',
     title: 'Lorem ipsum dolor sit amet',

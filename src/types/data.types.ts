@@ -1,3 +1,5 @@
+import type { Event } from 'src/mockups/events.mockup'
+
 export interface PublicationBySlug {
   title: string
   author: string
@@ -44,10 +46,13 @@ export interface Hero {
   image_hero: string
 }
 
-export interface Event {
+export interface EventCard {
   year: string
-  title: string
-  infoEvent: any[]
+  title: string[]
+  infoEvent: {
+    image: string[]
+    slug: string
+  }[]
 }
 
 export interface Member {

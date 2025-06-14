@@ -1,19 +1,36 @@
 ---
-const { year, image, title, slug } = Astro.props
+const { year, image, titleEvent, titlePublication, slug } = Astro.props
+
+const isImage =
+  image ?? 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg'
 ---
 
 <article
   data-filter-years={year}
-  class='bg-theme-decoration/10 group relative h-72 overflow-hidden'
+  class='bg-theme-decoration/10 group relative overflow-hidden'
 >
-  <img src={image} alt={title} class='h-full w-full object-cover select-none' />
+  <section class='h-72'>
+    <a href=''>
+      <img
+        src={isImage}
+        alt={titleEvent}
+        class='h-full w-full object-cover select-none'
+      />
+    </a>
+  </section>
 
-  <a
-    href={`/publications/${slug}`}
-    class='absolute bottom-4 left-1/2 -translate-x-1/2 rounded-sm bg-black/50 px-4 py-1 backdrop-blur-3xl transition-transform ease-in-out sm:translate-y-20 sm:group-hover:translate-y-0'
-  >
-    <h3 class='line-clamp-1 text-center text-sm font-semibold text-white'>
-      {title}
+  <section class='p-4'>
+    <h3
+      class='text-theme-title line-clamp-2 text-base font-semibold uppercase sm:text-lg md:text-xl mb-2'
+    >
+      {titleEvent}
     </h3>
-  </a>
+
+    <a
+      href={'publications/' + slug}
+      class='hover:text-theme-decoration text-sm'
+    >
+      {titlePublication}
+    </a>
+  </section>
 </article>

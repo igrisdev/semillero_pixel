@@ -21,6 +21,13 @@ export const EVENTS: Event[] = [
         title_event:
           'V Encuentro internacional de semilleros de investigación Prexia 2024',
       },
+      {
+        images_event: [Image2.src],
+        date_init_event: '2024-10-24',
+        date_end_event: '2024-10-25',
+        title_event:
+          '4 Encuentro internacional de semilleros de investigación Prexia 2024',
+      },
     ],
     publication:
       'Arquitectura de la información aplicada en el diseño de un repositorio de recursos educativos de estadística',

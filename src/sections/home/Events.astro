@@ -52,18 +52,13 @@ try {
         </div>
       ) : (
         <>
-          {events.map(({ year, title, infoEvent }: any) =>
-            infoEvent
-              .slice(0, 9)
-              .map(({ image, slug }: any) => (
-                <CartEvent
-                  title={title}
-                  image={image}
-                  slug={slug}
-                  year={year}
-                />
-              ))
-          )}
+          {events
+            .slice(0, 6)
+            .map(({ year, image, titleEvent, titlePublication, slug }) => (
+              <CartEvent
+                {...{ year, image, titleEvent, titlePublication, slug }}
+              />
+            ))}
         </>
       )
     }

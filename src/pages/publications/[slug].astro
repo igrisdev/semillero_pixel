@@ -32,14 +32,7 @@ try {
   const newEvents: any[] = await getHomeEventsCard()
 
   for (let i = 0; i < newEvents.length; i++) {
-    const event = newEvents[i]
-
-    for (let ii = 0; ii < event.infoEvent.length; ii++) {
-      const info = event.infoEvent[ii]
-      if (info.slug === slug) {
-        events.push(event.title)
-      }
-    }
+    events.push(newEvents[i].titleEvent)
   }
 } catch (error) {
   fetchError = true
