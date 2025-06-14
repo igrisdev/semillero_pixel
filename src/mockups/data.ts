@@ -1,4 +1,4 @@
-import type { AboutUs, Hero, Project } from 'src/types/data.types'
+import type { AboutUs, Hero } from 'src/types/data.types'
 
 export const hero: Hero[] = [
   {

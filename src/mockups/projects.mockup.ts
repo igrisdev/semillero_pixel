@@ -1,14 +1,11 @@
-import ImageUniAprende from '@assets/images/projects/uniaprende.png'
+import ImageUniAprende from '@assets/projects/uniaprende.png'
 
 export interface Project {
   title_project: string
   image_project: string
   link_github: string
   description_project: string
-  technology_project: {
-    title_technology_project: string
-    link_page_technology_project: string
-  }[]
+  technology_project: TechnologyProject[]
   article_content_project: string
   person_name_article_publisher_project: string
   members: string[]
@@ -17,25 +14,30 @@ export interface Project {
   publication: string
 }
 
+export interface TechnologyProject {
+  title_technology_project: string
+  link_page_technology_project: string
+}
+
 export const PROJECTS: Project[] = [
   {
     title_project: 'UniAprende',
-    image_project: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-    link_github: 'https://github.com/igrisdev',
+    image_project: ImageUniAprende.src,
+    link_github: 'https://github.com/igrisdev/uniaprende.git',
     description_project:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.',
+      'En la educación superior, el acceso y la organización eficiente de material educativo es crucial para un aprendizaje efectivo, especialmente en la estadística.',
     technology_project: [
-      {
-        title_technology_project: 'React',
-        link_page_technology_project: 'https://reactjs.org/',
-      },
-      {
-        title_technology_project: 'Next.js',
-        link_page_technology_project: 'https://nextjs.org/',
-      },
       {
         title_technology_project: 'Astro',
         link_page_technology_project: 'https://astro.build/',
+      },
+      {
+        title_technology_project: 'Starlight',
+        link_page_technology_project: 'https://starlight.astro.build/',
+      },
+      {
+        title_technology_project: 'TypeScript',
+        link_page_technology_project: 'https://www.typescriptlang.org/',
       },
     ],
     article_content_project:

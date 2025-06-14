@@ -3,20 +3,8 @@ const { pathname } = Astro.url
 import GitHub from '@assets/icons/github.svg'
 import Redirect from '@assets/icons/redirect.svg'
 
-const {
-  title,
-  image,
-  link_github,
-  description,
-  technologies,
-  slug,
-  id,
-  year,
-  // content,
-  // author,
-  // developers,
-  // date_deploy,
-} = Astro.props
+const { title, image, link_github, description, technologies, slug, id, year } =
+  Astro.props
 
 const isHome = pathname === '/'
 ---
@@ -53,7 +41,9 @@ const isHome = pathname === '/'
         <footer class='flex items-center justify-between px-4 py-2'>
           <section class='[&>*]:text-theme-text [&>*]:border-theme-decoration flex gap-1 overflow-x-auto [&>*]:rounded-sm [&>*]:border-1 [&>*]:px-2 [&>*]:py-1 [&>*]:text-[8px] [&>*]:font-medium'>
             {technologies.map((tech: any) => (
-              <span>{tech.title}</span>
+              <a href={tech.link} target='_blank' rel='noopener noreferrer'>
+                <span>{tech.title}</span>
+              </a>
             ))}
           </section>
 

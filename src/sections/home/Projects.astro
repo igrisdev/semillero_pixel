@@ -4,13 +4,13 @@ import Container from '@share_components/Container.astro'
 import SliderProjects from '@components/home/SliderProjects.astro'
 import CartProject from '@components/home/CartProject.astro'
 
-import { getHomeProjects } from '@lib/api/get-home-projects'
+import { getHomeProjectsCard } from '@lib/api/get-home-projects-card'
 
 let projects: any[] = []
 let fetchError = false
 
 try {
-  projects = await getHomeProjects()
+  projects = await getHomeProjectsCard()
 } catch (error) {
   fetchError = true
 }
