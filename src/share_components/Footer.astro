@@ -9,12 +9,13 @@ import { SOCIALS_MEDIA } from '@share_components/Header.astro'
   <section class='relative flex items-center justify-center gap-4'>
     {
       SOCIALS_MEDIA.map(({ link, icon: Icon }) => (
-        <a
-          href={link}
-          class='text-theme-icon bg-theme-background border-theme-split z-10 flex items-center gap-2 rounded-full border-4 p-2'
-        >
-          <Icon class='' />
-        </a>
+        <div />
+        // <a
+        //   href={link}
+        //   class='text-theme-icon bg-theme-background border-theme-split z-10 flex items-center gap-2 rounded-full border-4 p-2'
+        // >
+        //   <Icon class='' />
+        // </a>
       ))
     }
 
