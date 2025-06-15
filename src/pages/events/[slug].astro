@@ -2,12 +2,16 @@
 import Layout from '@layouts/Layout.astro'
 import Container from '@share_components/Container.astro'
 import Split from '@share_components/Split.astro'
+import { getOneEvent } from '@lib/api/get-one-event'
 
 const { slug } = Astro.params
 
-console.log(slug)
+if (!slug || slug === '') {
+  return Astro.redirect('/events')
+}
 
-// const newEvents: any[] = await getHomeEventsCard()
+const event: any[] = await getOneEvent(slug)
+console.log(event)
 ---
 
 <Layout title={'hoa' + ' - Publicación Pixel'}>
