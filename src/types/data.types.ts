@@ -8,7 +8,6 @@ export interface PublicationBySlug {
   content: string
   types: any[]
   work_done_bies: any[]
-  download_file: string
 }
 
 export interface PublicationCard {

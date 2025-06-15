@@ -25,10 +25,9 @@ export async function getPublicationBySlug(
     author: author!.name,
     date: publication!.date_publication,
     image_author: author!.image,
-    content: publication!.write_all_the_information,
     types: typePublications,
     work_done_bies: workDoneBies,
-    download_file: publication!.download_file,
+    content: publication!.pdf,
   }
 }
 
