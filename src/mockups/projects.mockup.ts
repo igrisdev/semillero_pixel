@@ -26,7 +26,7 @@ export const PROJECTS: Project[] = [
     image_project: ImageUniAprende.src,
     link_github: 'https://github.com/igrisdev/uniaprende.git',
     description_project:
-      'En la educación superior, el acceso y la organización eficiente de material educativo es crucial para un aprendizaje efectivo, especialmente en la estadística.',
+      'En la educación superior, el acceso y la organización eficiente de material educativo es crucial para un aprendizaje efectivo, especialmente en la estadística. Los recursos educativos disponibles en línea a menudo son variados y no siempre se ajustan a las necesidades específicas de los estudiantes, lo que dificulta su aprendizaje. Por ello se propone desarrollar un repositorio que agrupe estos recursos de manera coherente y optimice su accesibilidad y usabilidad. Se implementarán principios de arquitectura de la información y se priorizan las necesidades del usuario, esto incluye, una interfaz intuitiva y mecanismos de búsqueda eficientes. Este enfoque proporciona una herramienta adecuada para el aprendizaje de la estadística. La evaluación del sistema se realizará desde la experiencia de usuario, con la participación de estudiantes, docentes y expertos en usabilidad, verificando la relevancia y efectividad del repositorio.',
     technology_project: [
       {
         title_technology_project: 'Astro',
