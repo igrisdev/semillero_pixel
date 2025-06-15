@@ -13,9 +13,6 @@ export async function getOneEvent(slug: string): Promise<EventOne> {
     event.events.find((event: any) => event.slug_event === slug)
   ).filter((event: any) => event !== undefined)
 
-  console.log('slug', slug)
-  console.log('findEvent', findEvent)
-
   return Promise.resolve({
     images_event: findEvent[0]!.images_event,
     data_init_event: findEvent[0]!.date_init_event,
