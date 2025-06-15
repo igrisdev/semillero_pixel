@@ -1,0 +1,11 @@
+---
+const { PDF } = Astro.props
+
+if (!PDF || PDF === '') {
+  return Astro.redirect('/404')
+}
+---
+
+<div class='relative'>
+  <embed src={PDF} type='application/pdf' class='w-full h-screen' />
+</div>

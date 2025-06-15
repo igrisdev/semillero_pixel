@@ -1,7 +1,7 @@
 import { MEMBERS } from 'src/mockups/members.mockup'
 import { PUBLICATIONS, type Publication } from 'src/mockups/publications.mockup'
 import { TYPE_PUBLICATIONS } from 'src/mockups/type_publication.mockup'
-import type { Member, PublicationBySlug } from 'src/types/data.types'
+import type { PublicationBySlug } from 'src/types/data.types'
 
 export async function getPublicationBySlug(
   slug: string
@@ -28,6 +28,7 @@ export async function getPublicationBySlug(
     content: publication!.write_all_the_information,
     types: typePublications,
     work_done_bies: workDoneBies,
+    download_file: publication!.download_file,
   }
 }
 

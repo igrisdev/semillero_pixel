@@ -11,6 +11,7 @@ import { getHomeEventsCard } from '@lib/api/get-home-events-card'
 import { getHomeProjects } from '@lib/api/get-home-projects'
 
 import ContentMarkdown from '@share_components/ContentMarkdown.astro'
+import ContentPDF from '@share_components/ContentPDF.astro'
 
 const { slug } = Astro.params
 
@@ -173,7 +174,9 @@ try {
 
             <Split />
 
-            <ContentMarkdown markdown={content} />
+            {/* <ContentMarkdown markdown={content} /> */}
+
+            <ContentPDF PDF={publication?.download_file} />
 
             <Split />
 
