@@ -4,18 +4,37 @@ import Container from '@share_components/Container.astro'
 import Split from '@share_components/Split.astro'
 import { getOneEvent } from '@lib/api/get-one-event'
 
+import type { EventOne } from '@lib/api/get-one-event'
+
 const { slug } = Astro.params
 
 if (!slug || slug === '') {
   return Astro.redirect('/events')
 }
 
-const event: any[] = await getOneEvent(slug)
-console.log(event)
+const event: EventOne = await getOneEvent(slug)
 ---
 
-<Layout title={'hoa' + ' - Publicación Pixel'}>
+<Layout title={event.title_event + ' - Evento Pixel'}>
   <Split />
 
-  <Container styles='py-10 grid gap-5 md:gap-10' />
+  <Container styles='py-10 grid gap-5 md:gap-10'>
+    <h2
+      class='text-theme-title mb-5 text-center font-bold uppercase sm:text-3xl md:text-4xl'
+    >
+      {event.title_event} - Galería
+    </h2>
+
+    <section class='grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3'>
+      {
+        event.images_event.map((image: string) => (
+          <img
+            src={image}
+            alt={event.title_event}
+            class='w-full h-auto object-cover select-none rounded-xs'
+          />
+        ))
+      }
+    </section>
+  </Container>
 </Layout>
