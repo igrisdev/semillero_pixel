@@ -11,7 +11,10 @@ export interface EventOne {
 export async function getOneEvent(slug: string): Promise<EventOne> {
   const findEvent = EVENTS.map((event: Event) =>
     event.events.find((event: any) => event.slug_event === slug)
-  )
+  ).filter((event: any) => event !== undefined)
+
+  console.log('slug', slug)
+  console.log('findEvent', findEvent)
 
   return Promise.resolve({
     images_event: findEvent[0]!.images_event,
