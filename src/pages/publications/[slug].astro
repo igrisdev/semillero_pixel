@@ -10,21 +10,18 @@ import { getPublicationBySlug } from '@lib/api/get-one-publication'
 import { getHomeEventsCard } from '@lib/api/get-home-events-card'
 import { getHomeProjects } from '@lib/api/get-home-projects'
 
-import ContentMarkdown from '@share_components/ContentMarkdown.astro'
 import ContentPDF from '@share_components/ContentPDF.astro'
+import ContentMarkdown from '@share_components/ContentMarkdown.astro'
 
 const { slug } = Astro.params
 
 let publication: any = null
-let content = ''
 let fetchError = false
 
 try {
   publication = await getPublicationBySlug(slug!)
 
   if (!publication) return Astro.redirect('/404')
-
-  content = publication?.content
 } catch (error) {
   fetchError = true
 }
@@ -174,9 +171,7 @@ try {
 
             <Split />
 
-            {/* <ContentMarkdown markdown={content} /> */}
-
-            <ContentPDF PDF={publication?.download_file} />
+            <ContentPDF PDF={publication?.pdf} />
 
             <Split />
 
