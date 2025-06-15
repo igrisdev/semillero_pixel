@@ -1,4 +1,5 @@
 import ImageUniAprende from '@assets/projects/uniaprende.png'
+import ImageSisReport from '@assets/projects/sisreport.jpg'
 
 export interface Project {
   title_project: string
@@ -59,7 +60,7 @@ export const PROJECTS: Project[] = [
 
   {
     title_project: 'SisReport',
-    image_project: ImageUniAprende.src, // falta
+    image_project: ImageSisReport.src, // falta
     link_github: 'https://github.com/igrisdev/sisreportnextjs.git',
     description_project:
       'El objetivo de este proyecto fue desarrollar un aplicativo web que permita notificar sobre equipos dañados en la Institución Universitaria Colegio Mayor del Cauca. Esta aplicación web permitirá a los estudiantes y docentes de la institución reportar cualquier equipo que esté dañado o necesite mantenimiento, con el fin de que el personal encargado pueda solucionar el problema de manera eficiente y rápida. La aplicación web tendrá un formulario en el que los usuarios podrán ingresar la información del equipo dañado, como su ubicación, descripción del problema y cualquier otra información relevante. Además, la aplicación web incluirá un panel de administración para el personal encargado de la reparación de equipos. Este panel permitirá a los administradores asignar solicitudes a los técnicos correspondientes, así como realizar un seguimiento del estado de las solicitudes y generar reportes sobre el mantenimiento de los equipos. En resumen, este proyecto tiene como objetivo desarrollar una aplicación web que simplifique y optimice el proceso de reporte y reparación de equipos dañados en la Institución Universitaria Colegio Mayor del Cauca, lo que permitirá una gestión más eficiente y rápida del mantenimiento de los equipos.',
