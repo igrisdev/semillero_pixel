@@ -13,6 +13,7 @@ export const TYPE_PUBLICATIONS: TypePublication[] = [
     color_type: '#00FF00',
     publications: [
       'Arquitectura de la información aplicada en el diseño de un repositorio de recursos educativos de estadística',
+      'Sistema de reporte de fallas en las salas de cómputo de una Institución de Educación Superior',
     ],
   },
   {

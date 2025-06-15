@@ -12,53 +12,6 @@ export const hero: Hero[] = [
   },
 ]
 
-export const events = [
-  {
-    year: '2022',
-    title: 'Lorem ipsum dolor sit amet',
-    infoEvent: [
-      {
-        image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        slug: 'lorem-ipsum-dolor-sit-amet',
-      },
-      {
-        image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        slug: 'lorem-ipsum-dolor-sit-amet',
-      },
-      {
-        image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        slug: 'lorem-ipsum-dolor-sit-amet',
-      },
-      {
-        image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        slug: 'lorem-ipsum-dolor-sit-amet',
-      },
-    ],
-  },
-  {
-    year: '2022',
-    title: 'Lorem ipsum dolor sit amet',
-    infoEvent: [
-      {
-        image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        slug: 'lorem-ipsum-dolor-sit-amet',
-      },
-      {
-        image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        slug: 'lorem-ipsum-dolor-sit-amet',
-      },
-      {
-        image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        slug: 'lorem-ipsum-dolor-sit-amet',
-      },
-      {
-        image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
-        slug: 'lorem-ipsum-dolor-sit-amet',
-      },
-    ],
-  },
-]
-
 export const aboutUs: AboutUs[] = [
   {
     title_about_us: 'Sobre Nosotros',
