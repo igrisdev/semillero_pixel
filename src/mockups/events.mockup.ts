@@ -1,5 +1,5 @@
-import Image1 from '@assets/images/events/v-encuentro-internacional-de-semilleros-de-investigación-prexia-2024/1.jpg'
-import Image2 from '@assets/images/events/v-encuentro-internacional-de-semilleros-de-investigación-prexia-2024/2.jpg'
+import ImageVEncuentroInternacionalDeSemillerosDeInvestigacionPrexia2024_1 from '@assets/images/events/v-encuentro-internacional-de-semilleros-de-investigación-prexia-2024/1.jpg'
+import Image17CongresoColombianoDeComputación_1 from '@assets/images/events/17-congreso-colombiano-de-computacion/1.jpg'
 
 export interface Event {
   events: {
@@ -16,7 +16,9 @@ export const EVENTS: Event[] = [
   {
     events: [
       {
-        images_event: [Image1.src, Image2.src],
+        images_event: [
+          ImageVEncuentroInternacionalDeSemillerosDeInvestigacionPrexia2024_1.src,
+        ],
         date_init_event: '2024-10-24',
         date_end_event: '2024-10-25',
         title_event:
@@ -27,5 +29,18 @@ export const EVENTS: Event[] = [
     ],
     publication:
       'Arquitectura de la información aplicada en el diseño de un repositorio de recursos educativos de estadística',
+  },
+  {
+    events: [
+      {
+        images_event: [Image17CongresoColombianoDeComputación_1.src],
+        date_init_event: '2023-08-10',
+        date_end_event: '2023-08-11',
+        title_event: '17 Congreso Colombiano de Computación',
+        slug_event: '17-congreso-colombiano-de-computación',
+      },
+    ],
+    publication:
+      'Sistema de reporte de fallas en las salas de cómputo de una Institución de Educación Superior',
   },
 ]
