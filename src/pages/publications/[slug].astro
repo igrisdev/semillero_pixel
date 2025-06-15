@@ -20,7 +20,9 @@ let fetchError = false
 
 try {
   publication = await getPublicationBySlug(slug!)
+
   if (!publication) return Astro.redirect('/404')
+
   content = publication?.content
 } catch (error) {
   fetchError = true
@@ -32,7 +34,9 @@ try {
   const newEvents: any[] = await getHomeEventsCard()
 
   for (let i = 0; i < newEvents.length; i++) {
-    events.push(newEvents[i].titleEvent)
+    if (newEvents[i].titlePublication === publication?.title) {
+      events.push(newEvents[i].titleEvent)
+    }
   }
 } catch (error) {
   fetchError = true
