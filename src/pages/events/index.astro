@@ -19,8 +19,6 @@ try {
 
   newEvents = events.map(({ infoEvent }) => parseEvents(infoEvent)).flat()
 
-  console.log(newEvents[0].events)
-
   const filterProjects: Set<string> = new Set()
 
   newEvents.forEach(({ year }) => {
@@ -91,13 +89,20 @@ try {
           <section class='to-years grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3'>
             {newEvents.map(({ year, events }) =>
               events.map(
-                ({ titleEvent, image, slug, titlePublication }: any) => (
+                ({
+                  titleEvent,
+                  image,
+                  slug,
+                  slugEvent,
+                  titlePublication,
+                }: any) => (
                   <CartEvent
                     year={year}
                     image={image}
                     titleEvent={titleEvent}
                     titlePublication={titlePublication}
                     slug={slug}
+                    slugEvent={slugEvent}
                   />
                 )
               )
@@ -114,13 +119,20 @@ try {
 
                 <section class='grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3'>
                   {events.map(
-                    ({ image, slug, titleEvent, titlePublication }: any) => (
+                    ({
+                      image,
+                      slug,
+                      titleEvent,
+                      titlePublication,
+                      slugEvent,
+                    }: any) => (
                       <CartEvent
                         year={year}
                         image={image}
                         titleEvent={titleEvent}
                         titlePublication={titlePublication}
                         slug={slug}
+                        slugEvent={slugEvent}
                       />
                     )
                   )}

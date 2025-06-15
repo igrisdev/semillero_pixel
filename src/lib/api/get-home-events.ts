@@ -20,6 +20,7 @@ export async function getHomeEvents(): Promise<EventList[]> {
       return {
         image: info.images_event[0],
         slug: publication?.slug ?? '',
+        slugEvent: info.slug_event,
         year: info.date_init_event.split('-')[0],
         titleEvent: info.title_event,
         titlePublication: publication?.title ?? '',

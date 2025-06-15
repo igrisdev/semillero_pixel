@@ -7,6 +7,7 @@ export interface Event {
     date_init_event: string
     date_end_event: string
     title_event: string
+    slug_event: string
   }[]
   publication: string
 }
@@ -20,6 +21,8 @@ export const EVENTS: Event[] = [
         date_end_event: '2024-10-25',
         title_event:
           'V Encuentro internacional de semilleros de investigación Prexia 2024',
+        slug_event:
+          'v-encuentro-internacional-de-semilleros-de-investigación-prexia-2024',
       },
     ],
     publication:

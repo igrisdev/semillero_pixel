@@ -1,0 +1,17 @@
+---
+import Layout from '@layouts/Layout.astro'
+import Container from '@share_components/Container.astro'
+import Split from '@share_components/Split.astro'
+
+const { slug } = Astro.params
+
+console.log(slug)
+
+// const newEvents: any[] = await getHomeEventsCard()
+---
+
+<Layout title={'hoa' + ' - Publicación Pixel'}>
+  <Split />
+
+  <Container styles='py-10 grid gap-5 md:gap-10' />
+</Layout>

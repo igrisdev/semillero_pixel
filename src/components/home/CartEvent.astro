@@ -1,5 +1,6 @@
 ---
-const { year, image, titleEvent, titlePublication, slug } = Astro.props
+const { year, image, titleEvent, titlePublication, slug, slugEvent } =
+  Astro.props
 
 const isImage =
   image ?? 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg'
@@ -10,7 +11,7 @@ const isImage =
   class='bg-theme-decoration/10 group relative overflow-hidden'
 >
   <section class='h-72'>
-    <a href={'publications/' + slug}>
+    <a href={'events/' + slugEvent}>
       <img
         src={isImage}
         alt={titleEvent}
@@ -21,7 +22,7 @@ const isImage =
 
   <section class='p-4'>
     <a
-      href={'publications/' + slug}
+      href={'events/' + slugEvent}
       class='hover:text-theme-icon text-theme-title'
     >
       <h3

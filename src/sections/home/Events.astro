@@ -54,15 +54,25 @@ try {
         <>
           {events
             .slice(0, 6)
-            .map(({ year, image, titleEvent, titlePublication, slug }) => (
-              <CartEvent
-                year={year}
-                image={image}
-                titleEvent={titleEvent}
-                titlePublication={titlePublication}
-                slug={slug}
-              />
-            ))}
+            .map(
+              ({
+                year,
+                image,
+                titleEvent,
+                titlePublication,
+                slug,
+                slugEvent,
+              }) => (
+                <CartEvent
+                  year={year}
+                  image={image}
+                  titleEvent={titleEvent}
+                  titlePublication={titlePublication}
+                  slug={slug}
+                  slugEvent={slugEvent}
+                />
+              )
+            )}
         </>
       )
     }

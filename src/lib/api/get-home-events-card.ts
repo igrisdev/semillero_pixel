@@ -23,6 +23,7 @@ export async function getHomeEventsCard(): Promise<EventCart[]> {
         titleEvent: info.title_event,
         titlePublication: event.publication,
         slug: slug,
+        slugEvent: info.slug_event,
       }
     })
 
