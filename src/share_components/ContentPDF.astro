@@ -8,11 +8,11 @@ if (!PDF || PDF === '') {
 
 <div class='relative w-full h-screen'>
   <object data={PDF} type='application/pdf' class='w-full h-full'>
-    <!-- <embed src={PDF} type='application/pdf' class='w-full h-full' /> -->
+    <embed src={PDF} type='application/pdf' class='w-full h-full' />
 
     <p>
       Tu navegador no soporta la visualización directa de PDF. Puedes descargar
-      el PDF <a href={PDF} download>aquí</a>.
+      el PDF <a href={PDF} download class='underline text-green-200'>aquí</a>.
     </p>
   </object>
 </div>
