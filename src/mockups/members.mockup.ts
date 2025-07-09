@@ -63,7 +63,7 @@ export const MEMBERS: Member[] = [
     rol: 'Investigador - Desarrollador',
     career: 'Ingeniera Informática',
     state: true,
-    date_init: '2023-01-01',
+    date_init: '2022-01-01',
     date_end: '',
     social_media: [
       {
@@ -76,6 +76,29 @@ export const MEMBERS: Member[] = [
         name_social_media: 'LinkedIn',
         link_red_social_media:
           'https://www.linkedin.com/in/mateo-jesus-cadena-cabrera-b389532b9/',
+      },
+    ],
+  },
+  {
+    image: 'https://images6.alphacoders.com/105/thumb-1920-1050408.jpg',
+    name: 'Miguel Angel Llanten Llanten',
+    orcid: 'https://orcid.org/0009-0009-9353-9681',
+    rol: 'Analista - Desarrollador',
+    career: 'Ingeniera Informática',
+    state: true,
+    date_init: '2022-01-01',
+    date_end: '',
+    social_media: [
+      {
+        logo_red_social: ImageGithub.src,
+        name_social_media: 'GitHub',
+        link_red_social_media: 'https://github.com/filollan',
+      },
+      {
+        logo_red_social: ImageLinkedIn.src,
+        name_social_media: 'LinkedIn',
+        link_red_social_media:
+          'http://www.linkedin.com/in/miguel-%C3%A1ngel-llant%C3%A9n-62005a245',
       },
     ],
   },
