@@ -11,39 +11,39 @@ const isHome = pathname === '/'
 
 {
   isHome ? (
-    <div class='embla__slide'>
-      <article class='bg-theme-decoration/10 border-theme-decoration flex h-[520px] flex-col overflow-hidden rounded-sm border-1'>
-        <header class='max-h-[280px] min-h-[280px] overflow-hidden'>
+    <div class="embla__slide">
+      <article class="bg-theme-decoration/10 border-theme-decoration flex h-[520px] flex-col overflow-hidden rounded-sm border-1">
+        <header class="max-h-[280px] min-h-[280px] overflow-hidden">
           <a href={`/publications/${slug}#${id}`}>
-            <img src={image} alt={title} class='h-full w-full object-cover' />
+            <img src={image} alt={title} class="h-full w-full object-cover" />
           </a>
         </header>
 
-        <main class='flex flex-1 flex-col overflow-hidden p-4'>
-          <section class='flex items-center justify-between gap-2'>
-            <a href={`/publications/${slug}#${id}`} class='w-max truncate'>
-              <h2 class='text-theme-title text-xl font-medium'>{title}</h2>
+        <main class="flex flex-1 flex-col overflow-hidden p-4">
+          <section class="flex items-center justify-between gap-2">
+            <a href={`/publications/${slug}#${id}`} class="w-max truncate">
+              <h2 class="text-theme-title text-xl font-medium">{title}</h2>
             </a>
 
             <a
               href={link_github}
-              target='_blank'
-              rel='noopener noreferrer'
-              class='text-theme-icon'
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-theme-icon"
             >
               <GitHub width={24} height={24} />
             </a>
           </section>
 
-          <section class='overflow-y-auto pt-2'>
-            <p class='text-theme-text text-sm font-light'>{description}</p>
+          <section class="overflow-y-auto pt-2">
+            <p class="text-theme-text text-sm font-light">{description}</p>
           </section>
         </main>
 
-        <footer class='flex items-center justify-between px-4 py-2'>
-          <section class='[&>*]:text-theme-text [&>*]:border-theme-decoration flex gap-1 overflow-x-auto [&>*]:rounded-sm [&>*]:border-1 [&>*]:px-2 [&>*]:py-1 [&>*]:text-[8px] [&>*]:font-medium'>
+        <footer class="flex items-center justify-between px-4 py-2">
+          <section class="[&>*]:text-theme-text [&>*]:border-theme-decoration flex gap-1 overflow-x-auto [&>*]:rounded-sm [&>*]:border-1 [&>*]:px-2 [&>*]:py-1 [&>*]:text-[8px] [&>*]:font-medium">
             {technologies.map((tech: any) => (
-              <a href={tech.link} target='_blank' rel='noopener noreferrer'>
+              <a href={tech.link} target="_blank" rel="noopener noreferrer">
                 <span>{tech.title}</span>
               </a>
             ))}
@@ -51,7 +51,7 @@ const isHome = pathname === '/'
 
           <a
             href={`/publications/${slug}#${id}`}
-            class='text-theme-text flex items-center gap-2 text-xs'
+            class="text-theme-text flex items-center gap-2 text-xs"
           >
             Leer más
             <Redirect width={16} height={16} />
@@ -62,39 +62,39 @@ const isHome = pathname === '/'
   ) : (
     <article
       data-filter-years={year}
-      class='bg-theme-decoration/10 border-theme-decoration flex h-[520px] flex-col overflow-hidden rounded-sm border-1'
+      class="bg-theme-decoration/10 border-theme-decoration flex h-[520px] flex-col overflow-hidden rounded-sm border-1"
     >
-      <header class='max-h-[280px] min-h-[280px] overflow-hidden'>
+      <header class="max-h-[280px] min-h-[280px] overflow-hidden">
         <a href={`/publications/${slug}#${id}`}>
-          <img src={image} alt={title} class='h-full w-full object-cover' />
+          <img src={image} alt={title} class="h-full w-full object-cover" />
         </a>
       </header>
 
-      <main class='flex flex-1 flex-col overflow-hidden p-4'>
-        <section class='flex items-center justify-between gap-2'>
-          <a href={`/publications/${slug}#${id}`} class='w-max truncate'>
-            <h2 class='text-theme-title text-xl font-medium'>{title}</h2>
+      <main class="flex flex-1 flex-col overflow-hidden p-4">
+        <section class="flex items-center justify-between gap-2">
+          <a href={`/publications/${slug}#${id}`} class="w-max truncate">
+            <h2 class="text-theme-title text-xl font-medium">{title}</h2>
           </a>
 
           <a
             href={link_github}
-            target='_blank'
-            rel='noopener noreferrer'
-            class='text-theme-icon'
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-theme-icon"
           >
             <GitHub width={24} height={24} />
           </a>
         </section>
 
-        <section class='overflow-y-auto pt-2'>
-          <p class='text-theme-text text-sm font-light'>{description}</p>
+        <section class="overflow-y-auto pt-2">
+          <p class="text-theme-text text-sm font-light">{description}</p>
         </section>
       </main>
 
-      <footer class='flex items-center justify-between px-4 py-2'>
-        <section class='[&>*]:text-theme-text [&>*]:border-theme-decoration flex gap-1 overflow-x-auto [&>*]:rounded-sm [&>*]:border-1 [&>*]:px-2 [&>*]:py-1 [&>*]:text-[8px] [&>*]:font-medium'>
+      <footer class="flex items-center justify-between px-4 py-2">
+        <section class="[&>*]:text-theme-text [&>*]:border-theme-decoration flex gap-1 overflow-x-auto [&>*]:rounded-sm [&>*]:border-1 [&>*]:px-2 [&>*]:py-1 [&>*]:text-[8px] [&>*]:font-medium">
           {technologies.map((tech: any) => (
-            <a href={tech.link} target='_blank' rel='noopener noreferrer'>
+            <a href={tech.link} target="_blank" rel="noopener noreferrer">
               <span>{tech.title}</span>
             </a>
           ))}
@@ -102,7 +102,7 @@ const isHome = pathname === '/'
 
         <a
           href={`/publications/${slug}#${id}`}
-          class='text-theme-text flex items-center gap-2 text-xs'
+          class="text-theme-text flex items-center gap-2 text-xs"
         >
           Leer más
           <Redirect width={16} height={16} />
